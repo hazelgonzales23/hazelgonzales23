@@ -1,0 +1,913 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<title>性能优化</title>
+</head>
+<body>
+<h1 align="center" class="root">
+<a name="6v5urvlgthn44hj5165flroi4s">性能优化</a>
+</h1>
+<div align="center" class="globalOverview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.jpg"></div>
+<h2 class="topic">
+<a name="1e1a0tk242gh3f31vfqn5kaeup">CDN</a>
+</h2>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CDN.jpg"></div>
+<h3 class="topic">
+<a name="00e9mgeoci86qibvcnkqcb3rsu">&nbsp;CDN的概念</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png">, <span class="label">内容分发网络</span>
+</p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CDN%E7%9A%84%E6%A6%82%E5%BF%B5.jpg"></div>
+<h3 class="topic">
+<a name="16fa2lsc1ng9is0tepdmdrbnls">&nbsp;&nbsp;CDN（Content Delivery Network，内容分发网络）是指一种通过互联网互相连接的电脑网络系统，利用最靠近每位用户的服务器，更快、更可靠地将音乐、图片、视频、应用程序及其他文件发送给用户，来提供高性能、可扩展性及低成本的网络内容传递给用户。</a>
+</h3>
+<h3 class="topic">
+<a name="1ldnb6dgurqj6bn85kvm3q9j3i">&nbsp;CDN的作用</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_2.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CDN%E7%9A%84%E4%BD%9C%E7%94%A8.jpg"></div>
+<h3 class="topic">
+<a name="65ldpskd2bsdhjrc12ghgc545c">&nbsp;&nbsp;CDN一般会用来托管Web资源（包括文本、图片和脚本等），可供下载的资源（媒体文件、软件、文档等），应用程序（门户网站等）。使用CDN来加速这些资源的访问。</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CDN%E4%B8%80%E8%88%AC%E4%BC%9A%E7%94%A8%E6%9D%A5%E6%89%98%E7%AE%A1Web%E8%B5%84%E6%BA%90%EF%BC%88%E5%8C%85%E6%8B%AC%E6%96%87%E6%9C%AC%E3%80%81%E5%9B%BE%E7%89%87%E5%92%8C%E8%84%9A%E6%9C%AC%E7%AD%89%EF%BC%89%EF%BC%8C%E5%8F%AF%E4%BE%9B%E4%B8%8B%E8%BD%BD%E7%9A%84%E8%B5%84%E6%BA%90%EF%BC%88%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E3%80%81%E8%BD%AF%E4%BB%B6%E3%80%81%E6%96%87%E6%A1%A3%E7%AD%89%EF%BC%89%EF%BC%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99%E7%AD%89%EF%BC%89%E3%80%82%E4%BD%BF%E7%94%A8CDN%E6%9D%A5%E5%8A%A0%E9%80%9F%E8%BF%99%E4%BA%9B%E8%B5%84%E6%BA%90%E7%9A%84%E8%AE%BF%E9%97%AE%E3%80%82.jpg"></div>
+<h3 class="topic">
+<a name="48bvv2g6pe8ssu4hpp9ntmg79m">&nbsp;&nbsp;&nbsp;在性能方面，引入CDN的作用在于</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%9C%A8%E6%80%A7%E8%83%BD%E6%96%B9%E9%9D%A2%EF%BC%8C%E5%BC%95%E5%85%A5CDN%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9C%A8%E4%BA%8E.jpg"></div>
+<h3 class="topic">
+<a name="1tglrlm6dim7ik7spe0k80enta">&nbsp;&nbsp;&nbsp;&nbsp;● 用户收到的内容来自最近的数据中心，延迟更低，内容加载更快</a>
+</h3>
+<h3 class="topic">
+<a name="6lmn5kpt1olu57ihgte5petoit">&nbsp;&nbsp;&nbsp;&nbsp;● 部分资源请求分配给了CDN，减少了服务器的负载</a>
+</h3>
+<h3 class="topic">
+<a name="2h3s9s1do2jju9fc58dvc4u7p6">&nbsp;&nbsp;&nbsp;在安全方面，CDN有助于防御DDoS、MITM等网络攻击</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%9C%A8%E5%AE%89%E5%85%A8%E6%96%B9%E9%9D%A2%EF%BC%8CCDN%E6%9C%89%E5%8A%A9%E4%BA%8E%E9%98%B2%E5%BE%A1DDoS%E3%80%81MITM%E7%AD%89%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB.jpg"></div>
+<h3 class="topic">
+<a name="59jdvtlhu4ogrj5hocnocvkdr1">&nbsp;&nbsp;&nbsp;&nbsp;● 针对DDoS：通过监控分析异常流量，限制其请求频率</a>
+</h3>
+<h3 class="topic">
+<a name="7gq7d92cou261i6hl3uib5hss5">&nbsp;&nbsp;&nbsp;&nbsp;● 针对MITM：从源服务器到 CDN 节点到 ISP（Internet Service Provider），全链路 HTTPS 通信</a>
+</h3>
+<h3 class="topic">
+<a name="5kolh3uk3tu048lhrkerr68n25">&nbsp;&nbsp;&nbsp;除此之外，CDN作为一种基础的云服务，同样具有资源托管、按需扩展（能够应对流量高峰）等方面的优势。</a>
+</h3>
+<h3 class="topic">
+<a name="5af3all1aamskhcu6eh8c8098m">&nbsp;CDN的原理</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CDN%E7%9A%84%E5%8E%9F%E7%90%86.jpg"></div>
+<h3 class="topic">
+<a name="1ood1qdu3ojji6atarp6ir5dh4">&nbsp;&nbsp;用户未使用CDN缓存资源的过程</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E7%94%A8%E6%88%B7%E6%9C%AA%E4%BD%BF%E7%94%A8CDN%E7%BC%93%E5%AD%98%E8%B5%84%E6%BA%90%E7%9A%84%E8%BF%87%E7%A8%8B.jpg"></div>
+<h3 class="topic">
+<a name="14icm4mp186l626aj1njqaa389">&nbsp;&nbsp;&nbsp;1. 浏览器通过DNS对域名进行解析，依次得到此域名对应的IP地址</a>
+</h3>
+<h3 class="topic">
+<a name="7i2n8hfb6sn2l4br6dgdqi9jon">&nbsp;&nbsp;&nbsp;2. 浏览器根据得到的IP地址，向域名的服务主机发送数据请求</a>
+</h3>
+<h3 class="topic">
+<a name="2sieumnjiid5vf3qftsgj1vatg">&nbsp;&nbsp;&nbsp;3. 服务器向浏览器返回响应数据</a>
+</h3>
+<h3 class="topic">
+<a name="2nvb7rc56hnm0r4bhb68qdp6ua">&nbsp;&nbsp;用户使用CDN缓存资源的过程</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8CDN%E7%BC%93%E5%AD%98%E8%B5%84%E6%BA%90%E7%9A%84%E8%BF%87%E7%A8%8B.jpg"></div>
+<h3 class="topic">
+<a name="3ku8hlrbb6mq77nbbeqiot41ip">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/.jpg"></div>
+<p class="topicImage">
+<img height="468" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/493tiequ8gddauophpdm1gqot3.png" width="624"></p>
+<h3 class="topic">
+<a name="4gfdss08unkttd6bq36ifkjri3">&nbsp;&nbsp;&nbsp;&nbsp;1. 对于点击的数据的URL，经过本地DNS系统的解析，发现该URL对应的是一个CDN专用的DNS服务器，DNS系统就会将域名解析权交给CNAME指向的CDN专用的DNS服务器。</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/1. %E5%AF%B9%E4%BA%8E%E7%82%B9%E5%87%BB%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84URL%EF%BC%8C%E7%BB%8F%E8%BF%87%E6%9C%AC%E5%9C%B0DNS%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A7%A3%E6%9E%90%EF%BC%8C%E5%8F%91%E7%8E%B0%E8%AF%A5URL%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E4%B8%80%E4%B8%AACDN%E4%B8%93%E7%94%A8%E7%9A%84DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8CDNS%E7%B3%BB%E7%BB%9F%E5%B0%B1%E4%BC%9A%E5%B0%86%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%9D%83%E4%BA%A4%E7%BB%99CNAME%E6%8C%87%E5%90%91%E7%9A%84CDN%E4%B8%93%E7%94%A8%E7%9A%84DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%82.jpg"></div>
+<h3 class="topic">
+<a name="6etathat1qsg3fbmu099rk7md4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CNAME（意为：别名）：在域名解析中，实际上解析出来的指定域名对应的IP地址，或者该域名的一个CNAME，然后再根据这个CNAME来查找对应的IP地址。</a>
+</h3>
+<h3 class="topic">
+<a name="1ndpainpjtuk9grkcbq6oufpns">&nbsp;&nbsp;&nbsp;&nbsp;2. CDN专用DNS服务器将CDN的全局负载均衡设备IP地址返回给用户</a>
+</h3>
+<h3 class="topic">
+<a name="0gj2tt2u5ao1qh8hg168c5m09k">&nbsp;&nbsp;&nbsp;&nbsp;3. 用户向CDN的全局负载均衡设备发起数据请求</a>
+</h3>
+<h3 class="topic">
+<a name="6m4osp3g2p5bcs5cnv93bgq0p9">&nbsp;&nbsp;&nbsp;&nbsp;4. CDN的全局负载均衡设备根据用户的IP地址，以及用户请求的内容URL，选择一台用户所属区域的区域负载均衡设备</a>
+</h3>
+<h3 class="topic">
+<a name="2utatt6hkups0l8cudqji4q8bb">&nbsp;&nbsp;&nbsp;&nbsp;5. 区域负载均衡设备选择一台合适的缓存服务器来提供服务，将该缓存服务器的IP地址返回给全局负载均衡设备</a>
+</h3>
+<h3 class="topic">
+<a name="1tausj23ktuhtp1p0pgasgoi9e">&nbsp;&nbsp;&nbsp;&nbsp;6. 全局负载均衡设备把服务器的IP地址返回给用户，告诉用户向这台设备发起请求</a>
+</h3>
+<h3 class="topic">
+<a name="39dgv32tlcp8kgav7tal4sp5cp">&nbsp;&nbsp;&nbsp;&nbsp;7. 用户向该缓存服务器发起请求，缓存服务器响应用户的请求，将用户所需内容发送至用户终端。</a>
+</h3>
+<h3 class="topic">
+<a name="10ptip0ggcv619f87vj8oue5a5">&nbsp;&nbsp;&nbsp;&nbsp;8.如果缓存服务器没有用户想要的内容，那么缓存服务器就会向它的上一级缓存服务器请求内容，以此类推，直到获取到需要的资源。最后如果还是没有，就会回到自己的服务器去获取资源。</a>
+</h3>
+<h3 class="topic">
+<a name="0886st5tcae1s3lhpe98nah3nv">&nbsp;CDN的使用场景</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_2.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CDN%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.jpg"></div>
+<h3 class="topic">
+<a name="5kgfe1b095obj4k7vr5dlgvvnb">&nbsp;&nbsp;使用第三方的CDN服务</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E7%9A%84CDN%E6%9C%8D%E5%8A%A1.jpg"></div>
+<h3 class="topic">
+<a name="4u1hfnt1m1ls76ojuaadaf8b7b">&nbsp;&nbsp;&nbsp;如果想要开源一些项目，可以使用第三方的CDN服务</a>
+</h3>
+<h3 class="topic">
+<a name="0c77pk2bo4bgrl15h12569ch12">&nbsp;&nbsp;使用CDN进行静态资源的缓存</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BD%BF%E7%94%A8CDN%E8%BF%9B%E8%A1%8C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E7%9A%84%E7%BC%93%E5%AD%98.jpg"></div>
+<h3 class="topic">
+<a name="4mucmbqn8ts58ov2sbb8rtsa6n">&nbsp;&nbsp;&nbsp;将自己网站的静态资源放在CDN上，比如js、css、图片等。可以将整个项目放在CDN上，完成一键部署。</a>
+</h3>
+<h3 class="topic">
+<a name="2jpt0g1pg14qaanuidt8914p6k">&nbsp;&nbsp;直播传送</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E7%9B%B4%E6%92%AD%E4%BC%A0%E9%80%81.jpg"></div>
+<h3 class="topic">
+<a name="62sn74hadtl1ephjdse0hkflvu">&nbsp;&nbsp;&nbsp;直播本质上是使用流媒体进行传送，CDN也是支持流媒体传送的，所以直播完全可以使用CDN来提高访问速度。CDN在处理流媒体的时候与处理普通静态文件有所不同，普通文件如果在边缘节点没有找到的话，就会去上一层接着寻找，但是流媒体本身数据量就非常大，如果使用回源的方式，必然会带来性能问题，所以流媒体一般采用的都是主动推送的方式来进行。</a>
+</h3>
+<h2 class="topic">
+<a name="7d5q2a9oiiqfi7t6ribdp47gsd">懒加载</a>
+</h2>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%87%92%E5%8A%A0%E8%BD%BD.jpg"></div>
+<h3 class="topic">
+<a name="6bmtl3dflqtqjbrntsm9ro5udq">&nbsp;懒加载的概念</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_2.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%87%92%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%A6%82%E5%BF%B5.jpg"></div>
+<h3 class="topic">
+<a name="1trsgue1s6fccrcsf8s3238k31">&nbsp;&nbsp;懒加载也叫做延迟加载、按需加载，指的是在长网页中延迟加载图片数据，是一种较好的网页性能优化的方式。在比较长的网页或应用中，如果图片很多，所有的图片都被加载出来，而用户只能看到可视窗口的那一部分图片数据，这样就浪费了性能。如果使用图片的懒加载就可以解决以上问题。在滚动屏幕之前，可视化区域之外的图片不会进行加载，在滚动屏幕时才加载。这样使得网页的加载速度更快，减少了服务器的负载。懒加载适用于图片较多，页面列表较长（长列表）的场景中。</a>
+</h3>
+<h3 class="topic">
+<a name="3bk55c6eelbsiusndnf4ah5s0g">&nbsp;懒加载的特点</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_3.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%87%92%E5%8A%A0%E8%BD%BD%E7%9A%84%E7%89%B9%E7%82%B9.jpg"></div>
+<h3 class="topic">
+<a name="7v1choafthpv79uqll2ueqa5he">&nbsp;&nbsp;减少无用资源的加载</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%87%8F%E5%B0%91%E6%97%A0%E7%94%A8%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD.jpg"></div>
+<h3 class="topic">
+<a name="4684r2n8ue09fgh0c9lflenkbr">&nbsp;&nbsp;&nbsp;使用懒加载明显减少了服务器的压力和流量，同时也减小了浏览器的负担</a>
+</h3>
+<h3 class="topic">
+<a name="2sdnk57p23jeh18390hv8ljsmm">&nbsp;&nbsp;提升用户体验</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%8F%90%E5%8D%87%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C.jpg"></div>
+<h3 class="topic">
+<a name="5d8fsofs1chcph0aeh2mti7f2m">&nbsp;&nbsp;&nbsp;如果同时加载较多图片，可能需要等待的时间较长，这样影响了用户体验，而使用懒加载就能大大的提高用户体验。</a>
+</h3>
+<h3 class="topic">
+<a name="1q3mucob5ngeh6kjq9pl8mbu4b">&nbsp;&nbsp;防止加载过多图片而影响其他资源文件的加载</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E9%98%B2%E6%AD%A2%E5%8A%A0%E8%BD%BD%E8%BF%87%E5%A4%9A%E5%9B%BE%E7%89%87%E8%80%8C%E5%BD%B1%E5%93%8D%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E5%8A%A0%E8%BD%BD.jpg"></div>
+<h3 class="topic">
+<a name="400bshhipnv7jncl66mnj920bk">&nbsp;&nbsp;&nbsp;会影响网站应用的正常使用</a>
+</h3>
+<h3 class="topic">
+<a name="0qoko42ouj4566ve43l0qvggbq">&nbsp;懒加载的实现原理</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%87%92%E5%8A%A0%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.jpg"></div>
+<h3 class="topic">
+<a name="2vebclvr604vf75bthsn37548n">&nbsp;&nbsp;图片的加载是由src引起的，当对src赋值时，浏览器就会请求图片资源。根据这个原理，我们使用HTML5 的data-xxx属性来储存图片的路径，在需要加载图片的时候，将data-xxx中图片的路径赋值给src，这样就实现了图片的按需加载，即懒加载。</a>
+</h3>
+<h3 class="topic">
+<a name="6q54ef784e2en20p6iosvupjc5">&nbsp;&nbsp;懒加载的实现重点在于确定用户需要加载哪张图片，在浏览器中，可视区域内的资源就是用户需要的资源。所以当图片出现在可视区域时，获取图片的真实地址并赋值给图片即可。</a>
+</h3>
+<h3 class="topic">
+<a name="6hlpa1term3m6sl267qk2bhr4f">&nbsp;&nbsp;使用原生JavaScript实现懒加载</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9FJavaScript%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD.jpg"></div>
+<h3 class="topic">
+<a name="0h13vte92gvikius11kk57vs76">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/ 2.jpg"></div>
+<p class="topicImage">
+<img height="650" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/0u55pd7mropj84v8mimsgl0fpc.png" width="711"></p>
+<h3 class="topic">
+<a name="2lbtsr6jl6k6hj0271f1klk507">&nbsp;&nbsp;&nbsp;&nbsp;window.innerHeight 是浏览器可视区的高度</a>
+</h3>
+<h3 class="topic">
+<a name="2ktkqd9qn6uh9dv3onck25mblt">&nbsp;&nbsp;&nbsp;&nbsp;document.body.scrollTop || document.documentElement.scrollTop 是浏览器滚动的过的距离</a>
+</h3>
+<h3 class="topic">
+<a name="4pf3f3rt58v30b932vms6b42ko">&nbsp;&nbsp;&nbsp;&nbsp;imgs.offsetTop 是元素顶部距离文档顶部的高度（包括滚动条的距离）</a>
+</h3>
+<h3 class="topic">
+<a name="395mqbp66q4n0tklop5n3l524g">&nbsp;&nbsp;&nbsp;&nbsp;图片加载条件：img.offsetTop &lt; window.innerHeight + document.body.scrollTop;</a>
+</h3>
+<h3 class="topic">
+<a name="7ingbu2gjnu9v0vt9vsocg7jd0">&nbsp;&nbsp;&nbsp;代码实现</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0.jpg"></div>
+<h3 class="topic">
+<a name="5jj4eeob0mqdiaffsrtst9tugq">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="491" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/0r2q9ikdqelpadaoo4quk4tqeh.png" width="826"></p>
+<h3 class="topic">
+<a name="3g95aa3vo20bn2ra7ie9ev7tia">&nbsp;懒加载与预加载的区别</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_2.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%87%92%E5%8A%A0%E8%BD%BD%E4%B8%8E%E9%A2%84%E5%8A%A0%E8%BD%BD%E7%9A%84%E5%8C%BA%E5%88%AB.jpg"></div>
+<h3 class="topic">
+<a name="206c1p9vnv4t75kuhglnkojsjc">&nbsp;&nbsp;这两种方式都是提高网页性能的方式，两者主要区别是一个是提前加载，一个是迟缓甚至不加载。懒加载对服务器前端有一定的缓解压力作用，预加载则会增加服务器前端压力。</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E9%83%BD%E6%98%AF%E6%8F%90%E9%AB%98%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%B8%A4%E8%80%85%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E6%98%AF%E4%B8%80%E4%B8%AA%E6%98%AF%E6%8F%90%E5%89%8D%E5%8A%A0%E8%BD%BD%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%98%AF%E8%BF%9F%E7%BC%93%E7%94%9A%E8%87%B3%E4%B8%8D%E5%8A%A0%E8%BD%BD%E3%80%82%E6%87%92%E5%8A%A0%E8%BD%BD%E5%AF%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%89%8D%E7%AB%AF%E6%9C%89%E4%B8%80%E5%AE%9A%E7%9A%84%E7%BC%93%E8%A7%A3%E5%8E%8B%E5%8A%9B%E4%BD%9C%E7%94%A8%EF%BC%8C%E9%A2%84%E5%8A%A0%E8%BD%BD%E5%88%99%E4%BC%9A%E5%A2%9E%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%89%8D%E7%AB%AF%E5%8E%8B%E5%8A%9B%E3%80%82.jpg"></div>
+<h3 class="topic">
+<a name="7pcergofambi55l8nhs9o7oauj">&nbsp;&nbsp;&nbsp;懒加载</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%87%92%E5%8A%A0%E8%BD%BD 2.jpg"></div>
+<h3 class="topic">
+<a name="556k1dob002jda18o56v41qqd4">&nbsp;&nbsp;&nbsp;&nbsp;懒加载也叫延迟加载，指的是在长网页中延迟加载图片的时机，当用户需要访问时，再去加载，这样可以提高网站的首屏加载速度，提升用户的体验，并且可以减少服务器的压力。它适用于图片很多，页面很长的电商网站的场景。懒加载的实现原理是，将页面上的图片的 src 属性设置为空字符串，将图片的真实路径保存在一个自定义属性中，当页面滚动的时候，进行判断，如果图片进入页面可视区域内，则从自定义属性中取出真实路径赋值给图片的 src 属性，以此来实现图片的延迟加载。</a>
+</h3>
+<h3 class="topic">
+<a name="6muc0nhs603rthna4a5og66c8h">&nbsp;&nbsp;&nbsp;预加载</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E9%A2%84%E5%8A%A0%E8%BD%BD.jpg"></div>
+<h3 class="topic">
+<a name="4altp7e7jpvkl768j3cucs2ja0">&nbsp;&nbsp;&nbsp;&nbsp;预加载指的是将所需的资源提前请求加载到本地，这样后面在需要用到时就直接从缓存取资源。通过预加载能够减少用户的等待时间，提高用户的体验。我了解的预加载的最常用的方式是使用 js 中的 image 对象，通过为 image 对象来设置 src属性，来实现图片的预加载。</a>
+</h3>
+<h2 class="topic">
+<a name="6jfu0hd4843184pef1s0u743cg">节流与防抖</a>
+</h2>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96.jpg"></div>
+<h3 class="topic">
+<a name="5pl00ccvd129gco8hiksmo3kss">&nbsp;对节流与防抖的理解</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%AF%B9%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96%E7%9A%84%E7%90%86%E8%A7%A3.jpg"></div>
+<h3 class="topic">
+<a name="33h88tt27v3tpqjalicg6t9dun">&nbsp;&nbsp;防抖</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E9%98%B2%E6%8A%96.jpg"></div>
+<h3 class="topic">
+<a name="4b67f4004qmavv8r91a8fsdihs">&nbsp;&nbsp;&nbsp;概念</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%A6%82%E5%BF%B5.jpg"></div>
+<h3 class="topic">
+<a name="4tcvgrd3q75d68klijlrotuu2n">&nbsp;&nbsp;&nbsp;&nbsp;函数防抖是指在事件被触发 n 秒后再执行回调，如果在这 n 秒内事件又被触发，则重新计时。这可以使用在一些点击请求的事件上，避免因为用户的多次点击向后端发送多次请求。</a>
+</h3>
+<h3 class="topic">
+<a name="4dtc67e4nocd28rdb2gjub5srd">&nbsp;&nbsp;&nbsp;应用场景</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.jpg"></div>
+<h3 class="topic">
+<a name="6tqn8c0uca3cgvc98ksl58m889">&nbsp;&nbsp;&nbsp;&nbsp;按钮提交场景：防⽌多次提交按钮，只执⾏最后提交的⼀次 </a>
+</h3>
+<h3 class="topic">
+<a name="20vdnon614md3dmqedd5nrqd3l">&nbsp;&nbsp;&nbsp;&nbsp;服务端验证场景：表单验证需要服务端配合，只执⾏⼀段连续的输⼊事件的最后⼀次，还有搜索联想词功能类似⽣存环境请⽤lodash.debounce</a>
+</h3>
+<h3 class="topic">
+<a name="41aliqmftkp1rv8lu64qslv5a3">&nbsp;&nbsp;节流</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E8%8A%82%E6%B5%81.jpg"></div>
+<h3 class="topic">
+<a name="53iouf71vdpt15n78s2uje4458">&nbsp;&nbsp;&nbsp;概念</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%A6%82%E5%BF%B5 2.jpg"></div>
+<h3 class="topic">
+<a name="289avccriq1j996ltr12b3p1ji">&nbsp;&nbsp;&nbsp;&nbsp;函数节流是指规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。节流可以使用在 scroll 函数的事件监听上，通过事件节流来降低事件调用的频率。</a>
+</h3>
+<h3 class="topic">
+<a name="2m55p7l9ifcg0clikjhn0pov5m">&nbsp;&nbsp;&nbsp;应用场景</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF 2.jpg"></div>
+<h3 class="topic">
+<a name="6nge0a9aeqlmi65e5kvdldiv86">&nbsp;&nbsp;&nbsp;&nbsp;拖拽场景：固定时间内只执⾏⼀次，防⽌超⾼频次触发位置变动</a>
+</h3>
+<h3 class="topic">
+<a name="10skil247tidaqq6d2a9a0rr8g">&nbsp;&nbsp;&nbsp;&nbsp;缩放场景：监控浏览器resize </a>
+</h3>
+<h3 class="topic">
+<a name="1lapt5k9e98etvggh779qhh9da">&nbsp;&nbsp;&nbsp;&nbsp;动画场景：避免短时间内多次触发动画引起性能问题 </a>
+</h3>
+<h3 class="topic">
+<a name="3bs9vh7dhjurnclcnpp7kvec90">&nbsp;实现节流函数和防抖函数</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%AE%9E%E7%8E%B0%E8%8A%82%E6%B5%81%E5%87%BD%E6%95%B0%E5%92%8C%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0.jpg"></div>
+<h3 class="topic">
+<a name="66q05jnmv3gf1qq94d0pu8p94f">&nbsp;&nbsp;函数防抖实现</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%AE%9E%E7%8E%B0.jpg"></div>
+<h3 class="topic">
+<a name="3l5p94j6gpo69dverieim7lbii">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="533" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/326svtl5h6mg02bm144fug2tdh.png" width="626"></p>
+<h3 class="topic">
+<a name="6r5pgsgovn00cuv56329d7sqf3">&nbsp;&nbsp;函数节流实现</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E5%AE%9E%E7%8E%B0.jpg"></div>
+<h3 class="topic">
+<a name="4m8lbvqko4874c953uqv8g08bk">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="846" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/0prrupo2q8fr3k3tn8vp0jlp9d.png" width="635"></p>
+<h2 class="topic">
+<a name="2s6fo8qkkb9o764599td9dqn3n">减少回流与重绘</a>
+</h2>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%87%8F%E5%B0%91%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98.jpg"></div>
+<h3 class="topic">
+<a name="5c8kloeb0q6se017cctmiam0qa">&nbsp;回流与重绘的概念及触发条件</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png">, <span class="label">回流一定重绘，重绘不一定回流。</span>
+</p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6.jpg"></div>
+<h3 class="topic">
+<a name="3iao1a3t6pi2j5e5muepsvict4">&nbsp;&nbsp;回流/重排</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%9B%9E%E6%B5%81 %E9%87%8D%E6%8E%92.jpg"></div>
+<h3 class="topic">
+<a name="5otffqge5270vknuepgpuen4b1">&nbsp;&nbsp;&nbsp;概念</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%A6%82%E5%BF%B5 3.jpg"></div>
+<h3 class="topic">
+<a name="1iu6csj97forcvieoj63lnc0gf">&nbsp;&nbsp;&nbsp;&nbsp;当渲染树中部分或者全部元素的尺寸、结构或者属性发生变化时，浏览器会重新渲染部分或者全部文档的过程就称为回流。</a>
+</h3>
+<h3 class="topic">
+<a name="7oikla0gsmevvhhatre4dp01vs">&nbsp;&nbsp;&nbsp;触发条件</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6.jpg"></div>
+<h3 class="topic">
+<a name="0ifurk84le3p59jg6b83c7bdik">&nbsp;&nbsp;&nbsp;&nbsp;● 页面的首次渲染</a>
+</h3>
+<h3 class="topic">
+<a name="0qi2vu5lao3a0uilh0998hq75i">&nbsp;&nbsp;&nbsp;&nbsp;● 浏览器的窗口大小发生变化</a>
+</h3>
+<h3 class="topic">
+<a name="0v3b58ia4h7b577j598t9ujpve">&nbsp;&nbsp;&nbsp;&nbsp;● 元素的内容发生变化</a>
+</h3>
+<h3 class="topic">
+<a name="6ciifhdkqmdr96gmrbjmt21bi9">&nbsp;&nbsp;&nbsp;&nbsp;● 元素的尺寸或者位置发生变化</a>
+</h3>
+<h3 class="topic">
+<a name="698np4kouc4pns5adhn4htgdkt">&nbsp;&nbsp;&nbsp;&nbsp;● 元素的字体大小发生变化</a>
+</h3>
+<h3 class="topic">
+<a name="30fbfjdt8parvoblejajj44p9t">&nbsp;&nbsp;&nbsp;&nbsp;● 激活CSS伪类</a>
+</h3>
+<h3 class="topic">
+<a name="336sc56l19v7t4f0a2111pv3mf">&nbsp;&nbsp;&nbsp;&nbsp;● 查询某些属性或者调用某些方法</a>
+</h3>
+<h3 class="topic">
+<a name="2dgc58shkff0rv796sdrd33lte">&nbsp;&nbsp;&nbsp;&nbsp;● 添加或者删除可见的DOM元素</a>
+</h3>
+<h3 class="topic">
+<a name="57lp9fg8hm3q7si9lqo5g097pr">&nbsp;&nbsp;重绘</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E9%87%8D%E7%BB%98.jpg"></div>
+<h3 class="topic">
+<a name="5d7p72v9ktkb3qh00oj67lmrvf">&nbsp;&nbsp;&nbsp;概念</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%A6%82%E5%BF%B5 4.jpg"></div>
+<h3 class="topic">
+<a name="1hbog8c1u4ln88vt8li5f1gtc0">&nbsp;&nbsp;&nbsp;&nbsp;当页面中某些元素的样式发生变化，但是不会影响其在文档流中的位置时，浏览器就会对元素进行重新绘制，这个过程就是重绘。</a>
+</h3>
+<h3 class="topic">
+<a name="5uv08sgi0cake626tc85p7h8s7">&nbsp;&nbsp;&nbsp;触发条件</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6 2.jpg"></div>
+<h3 class="topic">
+<a name="7vscqj3jtlc3dehf12f79uinbe">&nbsp;&nbsp;&nbsp;&nbsp;● color、background 相关属性：background-color、background-image 等</a>
+</h3>
+<h3 class="topic">
+<a name="31nfdnad5pn041mm20ejhuafib">&nbsp;&nbsp;&nbsp;&nbsp;● outline 相关属性：outline-color、outline-width 、text-decoration</a>
+</h3>
+<h3 class="topic">
+<a name="7na7hdon0u09oq7f0dt25gevb4">&nbsp;&nbsp;&nbsp;&nbsp;● border-radius、visibility、box-shadow</a>
+</h3>
+<h3 class="topic">
+<a name="4urqi2dhgveft9n3imrard1jio">&nbsp;如何避免回流与重绘</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98.jpg"></div>
+<h3 class="topic">
+<a name="0u540eob9f2mcefnpggeqiuuep">&nbsp;&nbsp;CSS</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CSS.jpg"></div>
+<h3 class="topic">
+<a name="39ig4o1cbmll81rsnigjmq47ia">&nbsp;&nbsp;&nbsp;避免设置多层内联样式。</a>
+</h3>
+<h3 class="topic">
+<a name="5gg2pp7rbg3q2sn6m0lcdoti7l">&nbsp;&nbsp;&nbsp;如果需要设置动画效果，最好使用absolute或者fixed，使元素脱离文档流，这样他们发生变化就不会影响其他元素。</a>
+</h3>
+<h3 class="topic">
+<a name="4ufj9ns87f51pp16lphiorag5g">&nbsp;&nbsp;&nbsp;避免使用CSS表达式（例如：calc()）。</a>
+</h3>
+<div class="notesContainer">
+<p>css表达式不仅在页面呈现和调整大小时进行重新计算，而且在页面滚动时甚至在用户将鼠标移动到页面上时进行计算。</p>
+</div>
+<h3 class="topic">
+<a name="645ajsknbvpqlldc2cjcdacdlr">&nbsp;&nbsp;JS</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/JS.jpg"></div>
+<h3 class="topic">
+<a name="3melcjt8qsquhd9ib08nlf63vn">&nbsp;&nbsp;&nbsp;避免频繁操作样式，最好将样式列表定义为class并一次性更改class属性。</a>
+</h3>
+<h3 class="topic">
+<a name="7jjh60iamc7pt5ke62plbcmvst">&nbsp;&nbsp;&nbsp;避免频繁操作DOM，创建一个documentFragment，在它上面应用所有DOM操作，最后再把它添加到文档中。</a>
+</h3>
+<h3 class="topic">
+<a name="68gdq3fvrrev8srrd7g7j85grn">&nbsp;&nbsp;&nbsp;可以先为元素设置为不可见：display: none，操作结束后再把它显示出来。因为在display属性为none的元素上进行的DOM操作不会引发回流和重绘。</a>
+</h3>
+<h3 class="topic">
+<a name="3lrnf8lktmfrquu1f121k2a2em">&nbsp;&nbsp;浏览器针对页面的回流与重绘，进行了自身的优化&mdash;&mdash;渲染队列</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%92%88%E5%AF%B9%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BA%86%E8%87%AA%E8%BA%AB%E7%9A%84%E4%BC%98%E5%8C%96%E2%80%94%E2%80%94%E6%B8%B2%E6%9F%93%E9%98%9F%E5%88%97.jpg"></div>
+<h3 class="topic">
+<a name="2g4cure3k1pqje67rrg8k2eo1c">&nbsp;&nbsp;&nbsp;浏览器会将所有的回流、重绘的操作放在一个队列中，当队列中的操作到了一定的数量或者到了一定的时间间隔，浏览器就会对队列进行批量处理。这样就会让多次的回流、重绘变成一次回流重绘。</a>
+</h3>
+<h3 class="topic">
+<a name="59ecf9manjldhf0itmtlerlop2">&nbsp;documentFragment是什么？用它跟直接操作DOM的区别是什么？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_2.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/documentFragment%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E7%94%A8%E5%AE%83%E8%B7%9F%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9CDOM%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="4ht1l9hm9v865nok8nmgqkidie">&nbsp;&nbsp;概念</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%A6%82%E5%BF%B5 5.jpg"></div>
+<h3 class="topic">
+<a name="37n9toi4c62c8q4239865do1h8">&nbsp;&nbsp;&nbsp;DocumentFragment，文档片段接口，一个没有父对象的最小文档对象。它被作为一个轻量版的 Document使用，就像标准的document一样，存储由节点（nodes）组成的文档结构。与document相比，最大的区别是DocumentFragment不是真实 DOM 树的一部分，它的变化不会触发 DOM 树的重新渲染，且不会导致性能等问题。</a>
+</h3>
+<h3 class="topic">
+<a name="2jqtdi5mrc2l7ncdgeo9if85rm">&nbsp;&nbsp;与直接操作 DOM 的区别</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%B8%8E%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9C DOM %E7%9A%84%E5%8C%BA%E5%88%AB.jpg"></div>
+<h3 class="topic">
+<a name="3311ohp6sj557j2r5mu8q6jfmi">&nbsp;&nbsp;&nbsp;由于DocumentFragment不会出现在文档树中，将DocumentFragment插入文档树中，相当于把把他的子孙节点插入到文档树中，在频繁的DOM操作时，我们就可以将DOM元素插入DocumentFragment，之后一次性的将所有的子孙节点插入文档中。和直接操作DOM相比，将DocumentFragment 节点插入DOM树时，仅会触发页面的一次重绘，这样就大大提高了页面的性能。</a>
+</h3>
+<h2 class="topic">
+<a name="5phktgvvlhoh5gdi3a5l9ro9a4">图片优化</a>
+</h2>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96.jpg"></div>
+<h3 class="topic">
+<a name="3dak8de1ufms6ako4jmsr7fpv8">&nbsp;如何对项目中的图片进行优化？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%A6%82%E4%BD%95%E5%AF%B9%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%8C%96%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="1nnvute4spd218nt04gebhphvb">&nbsp;&nbsp;不用图片</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%B8%8D%E7%94%A8%E5%9B%BE%E7%89%87.jpg"></div>
+<h3 class="topic">
+<a name="6fn34083t2e2lddsl1kbd8g0oa">&nbsp;&nbsp;&nbsp;很多时候会使用到很多修饰类图片，其实这类修饰图片完全可以用 CSS 去代替。</a>
+</h3>
+<h3 class="topic">
+<a name="2j3kjav3qg229dan57je8mqi5q">&nbsp;&nbsp;对于移动端来说，屏幕宽度就那么点，完全没有必要去加载原图浪费带宽。一般图片都用 CDN 加载，可以计算出适配屏幕的宽度，然后去请求相应裁剪好的图片。</a>
+</h3>
+<h3 class="topic">
+<a name="66paah2fpe9kdjjodgc6395ass">&nbsp;&nbsp;小图使用 base64 格式</a>
+</h3>
+<h3 class="topic">
+<a name="5qr4v2poc0jsiorgcifg9ou8j8">&nbsp;&nbsp;将多个图标文件整合到一张图片中（雪碧图）</a>
+</h3>
+<h3 class="topic">
+<a name="7j1t8hs63ijs87cfqcpkemh5i6">&nbsp;&nbsp;选择正确的图片格式：</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E9%80%89%E6%8B%A9%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%EF%BC%9A.jpg"></div>
+<h3 class="topic">
+<a name="29b4s2v130ng7jm6itvh09jfmb">&nbsp;&nbsp;&nbsp;  ○ 对于能够显示 WebP 格式的浏览器尽量使用 WebP 格式。因为 WebP 格式具有更好的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的图像质量，缺点就是兼容性并不好</a>
+</h3>
+<h3 class="topic">
+<a name="6id8a4g3letvtofo5mel5vq1j3">&nbsp;&nbsp;&nbsp;  ○ 小图使用 PNG，其实对于大部分图标这类图片，完全可以使用 SVG 代替</a>
+</h3>
+<h3 class="topic">
+<a name="20uhi3114vjkems6mbrbn4i1ud">&nbsp;&nbsp;&nbsp;  ○ 照片使用 JPEG</a>
+</h3>
+<h3 class="topic">
+<a name="460fun8pp1th0ar3u3tep14ilq">&nbsp;常见的图片格式及使用场景？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_2.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="2mr246jg4g2aaekl6qbdim0vr4">&nbsp;&nbsp;BMP</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/BMP.jpg"></div>
+<h3 class="topic">
+<a name="2nc6q5re32ah5af1idu2mr393d">&nbsp;&nbsp;&nbsp;是无损的、既支持索引色也支持直接色的点阵图。这种图片格式几乎没有对数据进行压缩，所以BMP格式的图片通常是较大的文件。</a>
+</h3>
+<h3 class="topic">
+<a name="1arrigh28sihkobidh6lmp0rcr">&nbsp;&nbsp;GIF</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/GIF.jpg"></div>
+<h3 class="topic">
+<a name="3c8667aqq9ele5qdm8rtncet9h">&nbsp;&nbsp;&nbsp;是无损的、采用索引色的点阵图。采用LZW压缩算法进行编码。文件小，是GIF格式的优点，同时，GIF格式还具有支持动画以及透明的优点。但是GIF格式仅支持8bit的索引色，所以GIF格式适用于对色彩要求不高同时需要文件体积较小的场景。</a>
+</h3>
+<h3 class="topic">
+<a name="0im7afd137dl1okv1ejl40jqp3">&nbsp;&nbsp;JPEG</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/JPEG.jpg"></div>
+<h3 class="topic">
+<a name="6h77ft0uh1i02f6nbun4a5c41k">&nbsp;&nbsp;&nbsp;是有损的、采用直接色的点阵图。JPEG的图片的优点是采用了直接色，得益于更丰富的色彩，JPEG非常适合用来存储照片，与GIF相比，JPEG不适合用来存储企业Logo、线框类的图。因为有损压缩会导致图片模糊，而直接色的选用，又会导致图片文件较GIF更大。</a>
+</h3>
+<h3 class="topic">
+<a name="5vqg048igdtn94gpoqnli8h9du">&nbsp;&nbsp;PNG-8</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/PNG-8.jpg"></div>
+<h3 class="topic">
+<a name="1qkdmg0m041978kq6n95rjq1k4">&nbsp;&nbsp;&nbsp;是无损的、使用索引色的点阵图。PNG是一种比较新的图片格式，PNG-8是非常好的GIF格式替代者，在可能的情况下，应该尽可能的使用PNG-8而不是GIF，因为在相同的图片效果下，PNG-8具有更小的文件体积。除此之外，PNG-8还支持透明度的调节，而GIF并不支持。除非需要动画的支持，否则没有理由使用GIF而不是PNG-8。</a>
+</h3>
+<h3 class="topic">
+<a name="08gno4fhj849nt2sd6n2kookjv">&nbsp;&nbsp;PNG-24</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/PNG-24.jpg"></div>
+<h3 class="topic">
+<a name="5vdg1tc27cgitkim2r6gk449u0">&nbsp;&nbsp;&nbsp;是无损的、使用直接色的点阵图。PNG-24的优点在于它压缩了图片的数据，使得同样效果的图片，PNG-24格式的文件大小要比BMP小得多。当然，PNG24的图片还是要比JPEG、GIF、PNG-8大得多。</a>
+</h3>
+<h3 class="topic">
+<a name="372rn4re5atpb7q1v8sjm914g0">&nbsp;&nbsp;SVG</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/SVG.jpg"></div>
+<h3 class="topic">
+<a name="2t0j3p19lhbdfte8h5cnk6ujba">&nbsp;&nbsp;&nbsp;SVG是无损的矢量图。SVG是矢量图意味着SVG图片由直线和曲线以及绘制它们的方法组成。当放大SVG图片时，看到的还是线和曲线，而不会出现像素点。这意味着SVG图片在放大时，不会失真，所以它非常适合用来绘制Logo、Icon等。</a>
+</h3>
+<h3 class="topic">
+<a name="3qsq648cq0ma96feu44tuhc49a">&nbsp;&nbsp;WebP</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/WebP.jpg"></div>
+<h3 class="topic">
+<a name="3jpt6b1nir5t7u67ckionkooq1">&nbsp;&nbsp;&nbsp;WebP是谷歌开发的一种新图片格式，WebP是同时支持有损和无损压缩的、使用直接色的点阵图。从名字就可以看出来它是为Web而生的，什么叫为Web而生呢？就是说相同质量的图片，WebP具有更小的文件体积。现在网站上充满了大量的图片，如果能够降低每一个图片的文件大小，那么将大大减少浏览器和服务器之间的数据传输量，进而降低访问延迟，提升访问体验。目前只有Chrome浏览器和Opera浏览器支持WebP格式，兼容性不太好。</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/WebP%E6%98%AF%E8%B0%B7%E6%AD%8C%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B0%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%EF%BC%8CWebP%E6%98%AF%E5%90%8C%E6%97%B6%E6%94%AF%E6%8C%81%E6%9C%89%E6%8D%9F%E5%92%8C%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9%E7%9A%84%E3%80%81%E4%BD%BF%E7%94%A8%E7%9B%B4%E6%8E%A5%E8%89%B2%E7%9A%84%E7%82%B9%E9%98%B5%E5%9B%BE%E3%80%82%E4%BB%8E%E5%90%8D%E5%AD%97%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%87%BA%E6%9D%A5%E5%AE%83%E6%98%AF%E4%B8%BAWeb%E8%80%8C%E7%94%9F%E7%9A%84%EF%BC%8C%E4%BB%80%E4%B9%88%E5%8F%AB%E4%B8%BAWeb%E8%80%8C%E7%94%9F%E5%91%A2%EF%BC%9F%E5%B0%B1%E6%98%AF%E8%AF%B4%E7%9B%B8%E5%90%8C%E8%B4%A8%E9%87%8F%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%8CWebP%E5%85%B7%E6%9C%89%E6%9B%B4%E5%B0%8F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BD%93%E7%A7%AF%E3%80%82%E7%8E%B0%E5%9C%A8%E7%BD%91%E7%AB%99%E4%B8%8A%E5%85%85%E6%BB%A1%E4%BA%86%E5%A4%A7%E9%87%8F%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%83%BD%E5%A4%9F%E9%99%8D%E4%BD%8E%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%EF%BC%8C%E9%82%A3%E4%B9%88%E5%B0%86%E5%A4%A7%E5%A4%A7%E5%87%8F%E5%B0%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%87%8F%EF%BC%8C%E8%BF%9B%E8%80%8C%E9%99%8D%E4%BD%8E%E8%AE%BF%E9%97%AE%E5%BB%B6%E8%BF%9F%EF%BC%8C%E6%8F%90%E5%8D%87%E8%AE%BF%E9%97%AE%E4%BD%93%E9%AA%8C%E3%80%82%E7%9B%AE%E5%89%8D%E5%8F%AA%E6%9C%89Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8COpera%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81WebP%E6%A0%BC%E5%BC%8F%EF%BC%8C%E5%85%BC%E5%AE%B9%E6%80%A7%E4%B8%8D%E5%A4%AA%E5%A5%BD%E3%80%82.jpg"></div>
+<h3 class="topic">
+<a name="42rilj27s9q07etv7tqmd7vat5">&nbsp;&nbsp;&nbsp;&nbsp;● 在无损压缩的情况下，相同质量的WebP图片，文件大小要比PNG小26%；</a>
+</h3>
+<h3 class="topic">
+<a name="266doiosttbsipquoetqjdg3c2">&nbsp;&nbsp;&nbsp;&nbsp;● 在有损压缩的情况下，具有相同图片精度的WebP图片，文件大小要比JPEG小25%~34%；</a>
+</h3>
+<h3 class="topic">
+<a name="77f4bsfe6ugeqjdn2e5rsrja1f">&nbsp;&nbsp;&nbsp;&nbsp;● WebP图片格式支持图片透明度，一个无损压缩的WebP图片，如果要支持透明度只需要22%的格外文件大小。</a>
+</h3>
+<h2 class="topic">
+<a name="3t5ktstej3h423llv6fammb95g">webpack优化</a>
+</h2>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/webpack%E4%BC%98%E5%8C%96.jpg"></div>
+<h3 class="topic">
+<a name="5if8mhc3fanfhqbnmdjd1biit5">&nbsp;如何用webpack优化前端性能？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png">, <span class="label">⽤webpack优化前端性能是指优化webpack的输出结果，让打包的最终结果在浏览器运⾏快速⾼效。</span>
+</p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%A6%82%E4%BD%95%E7%94%A8webpack%E4%BC%98%E5%8C%96%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="0h0oi0n0ia0296doo47q9s2igk">&nbsp;&nbsp;通过webpack优化前端的手段</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E9%80%9A%E8%BF%87webpack%E4%BC%98%E5%8C%96%E5%89%8D%E7%AB%AF%E7%9A%84%E6%89%8B%E6%AE%B5.jpg"></div>
+<h3 class="topic">
+<a name="5eb26dn60vico0dfe0bpkenrae">&nbsp;&nbsp;&nbsp;代码压缩</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">删除多余的代码、注释、简化代码的写法等等⽅式。</span>
+</p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BB%A3%E7%A0%81%E5%8E%8B%E7%BC%A9.jpg"></div>
+<h3 class="topic">
+<a name="6mdrb0kjkci7nui5rhq7t83t8k">&nbsp;&nbsp;&nbsp;&nbsp;JS代码压缩</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/JS%E4%BB%A3%E7%A0%81%E5%8E%8B%E7%BC%A9.jpg"></div>
+<h3 class="topic">
+<a name="3cnd6vmflnbf9j8mpahret9ike">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利⽤webpack的 UglifyJsPlugin 和 ParallelUglifyPlugin 来压缩JS⽂件</a>
+</h3>
+<h3 class="topic">
+<a name="7pgcsshvje8btm3v2suvvfs4r8">&nbsp;&nbsp;&nbsp;&nbsp;CSS代码压缩</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/CSS%E4%BB%A3%E7%A0%81%E5%8E%8B%E7%BC%A9.jpg"></div>
+<h3 class="topic">
+<a name="0n77563dd45vrk5a1215ifa5se">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利⽤ cssnano （css-loader?minimize）来压缩css</a>
+</h3>
+<h3 class="topic">
+<a name="0ie7cihs3rofd48u2610bkri18">&nbsp;&nbsp;&nbsp;&nbsp;Html文件代码压缩</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/Html%E6%96%87%E4%BB%B6%E4%BB%A3%E7%A0%81%E5%8E%8B%E7%BC%A9.jpg"></div>
+<h3 class="topic">
+<a name="6bd3ed9dg3ia7vhdq4u5fupj1m">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用HtmlWebpackPlugin插件来生成HTML的模板时候，通过配置属性minify进行html优化</a>
+</h3>
+<h3 class="topic">
+<a name="6v5o1tlmfcb97cvvi220ohnvf1">&nbsp;&nbsp;&nbsp;文件大小压缩</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%8E%8B%E7%BC%A9.jpg"></div>
+<h3 class="topic">
+<a name="09rlueh3mhqmt2b8m9mfjact68">&nbsp;&nbsp;&nbsp;&nbsp;对文件的大小进行压缩，减少http传输过程中宽带的损耗</a>
+</h3>
+<h3 class="topic">
+<a name="64gdtgkg728ai81goja4n0qaru">&nbsp;&nbsp;&nbsp;图片压缩</a>
+</h3>
+<h3 class="topic">
+<a name="1klgcd780bj6vhgvqrm91u5n8e">&nbsp;&nbsp;&nbsp;Tree Shaking</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/Tree Shaking.jpg"></div>
+<h3 class="topic">
+<a name="26ijipc07a4vu9lvmrl5gucvin">&nbsp;&nbsp;&nbsp;&nbsp;将代码中永远不会⾛到的⽚段删除掉（消除死代码）。可以通过在启动webpack时追加参数 --optimize-minimize 来实现；</a>
+</h3>
+<h3 class="topic">
+<a name="0lh40cdo8t2kd2gt4r1tq7sqbc">&nbsp;&nbsp;&nbsp;代码分离</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB.jpg"></div>
+<h3 class="topic">
+<a name="4f0cttjimlg60a8gdbi09o9al5">&nbsp;&nbsp;&nbsp;&nbsp;代码按路由维度或者组件分块(chunk),这样做到按需加载,同时可以充分利⽤浏览器缓存</a>
+</h3>
+<h3 class="topic">
+<a name="2oddp5sml1jqg2tk5cjimq1o1v">&nbsp;&nbsp;&nbsp;提取公共第三⽅库</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E7%AC%AC%E4%B8%89%E2%BD%85%E5%BA%93.jpg"></div>
+<h3 class="topic">
+<a name="7ekfrjb871o1selmqdro0qhqh5">&nbsp;&nbsp;&nbsp;&nbsp;SplitChunksPlugin插件来进⾏公共模块抽取,利⽤浏览器缓存可以⻓期缓存这些⽆需频繁变动的公共代码 </a>
+</h3>
+<h3 class="topic">
+<a name="0dp3vh3ajatqbgce2nfn9qbv40">&nbsp;如何提高webpack构建速度？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_1.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98webpack%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="17b994v0f81l4h5oshf00ua2na">&nbsp;&nbsp;优化webpack构建的方式有很多，主要可以从优化搜索时间、缩小文件搜索范围、减少不必要的编译等方面入手</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BC%98%E5%8C%96webpack%E6%9E%84%E5%BB%BA%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%BE%88%E5%A4%9A%EF%BC%8C%E4%B8%BB%E8%A6%81%E5%8F%AF%E4%BB%A5%E4%BB%8E%E4%BC%98%E5%8C%96%E6%90%9C%E7%B4%A2%E6%97%B6%E9%97%B4%E3%80%81%E7%BC%A9%E5%B0%8F%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E8%8C%83%E5%9B%B4%E3%80%81%E5%87%8F%E5%B0%91%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E7%BC%96%E8%AF%91%E7%AD%89%E6%96%B9%E9%9D%A2%E5%85%A5%E6%89%8B.jpg"></div>
+<h3 class="topic">
+<a name="6nntfua9rkeoeijksahv46stn2">&nbsp;&nbsp;&nbsp;优化loader配置</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BC%98%E5%8C%96loader%E9%85%8D%E7%BD%AE.jpg"></div>
+<h3 class="topic">
+<a name="00fe8mk9mi016bdps92c3k4ll8">&nbsp;&nbsp;&nbsp;&nbsp;在使用loader时，可以通过配置include、exclude、test属性来匹配文件，缩小文件的搜索范围，优化搜索时间</a>
+</h3>
+<h3 class="topic">
+<a name="1is186q0i14b90pr1to3eoj4aa">&nbsp;&nbsp;&nbsp;多⼊⼝情况下，使⽤ CommonsChunkPlugin 来提取公共代码</a>
+</h3>
+<h3 class="topic">
+<a name="6j1bl55sh5gp1tr5rlgnj8ug2o">&nbsp;&nbsp;&nbsp;通过 externals 配置来提取常⽤库，脱离webpack打包，不被打⼊bundle中，从⽽减少打包时间</a>
+</h3>
+<h3 class="topic">
+<a name="23pga74g1ncr5fu311o2km1vb5">&nbsp;&nbsp;&nbsp;利⽤ DllPlugin 和 DllReferencePlugin 预编译资源模块 通过 DllPlugin 来对那些我们引⽤但是绝对不会修改的npm包来进⾏预编译，再通过 DllReferencePlugin 将预编译的模块加载进来，让⼀些基本不会改动的代码先打包成静态资源，避免反复编译浪费时间  </a>
+</h3>
+<h3 class="topic">
+<a name="21t7t7pkrnh8rn5re699as6d85">&nbsp;&nbsp;&nbsp;使⽤ Happypack 实现多线程加速编译 </a>
+</h3>
+<h3 class="topic">
+<a name="4c96dea2mo2gda4j96lmmngu6q">&nbsp;&nbsp;&nbsp;使⽤ webpack-uglify-parallel 来提升 uglifyPlugin 的压缩速度。 原理上 webpack-uglify-parallel 采⽤了多核并⾏压缩来提升压缩速度</a>
+</h3>
+<h3 class="topic">
+<a name="6dvkjm9ikf4kaug1kfjovvbog0">&nbsp;&nbsp;&nbsp;使⽤ Tree-shaking 和 Scope Hoisting 来剔除多余代码 </a>
+</h3>
+<h3 class="topic">
+<a name="5k7s1q5mk5k9a5cbgevvdgkt49">&nbsp;&nbsp;&nbsp;利⽤缓存提⾼rebuild效率</a>
+</h3>
+<h3 class="topic">
+<a name="30q0ao6rao7keb7cp4d51jamt8">&nbsp;如何减少webpack打包时间？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_4.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91webpack%E6%89%93%E5%8C%85%E6%97%B6%E9%97%B4%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="796aba282gto6lfq4mlv9r2418">&nbsp;&nbsp;优化 Loader</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BC%98%E5%8C%96 Loader.jpg"></div>
+<h3 class="topic">
+<a name="1eehd2dsgpt3oj4dft0maotp3a">&nbsp;&nbsp;&nbsp;对于 Loader 来说，影响打包效率首当其冲必属 Babel 了。因为 Babel 会将代码转为字符串生成 AST，然后对 AST 继续进行转变最后再生成新的代码，项目越大，转换代码越多，效率就越低。</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%AF%B9%E4%BA%8E Loader %E6%9D%A5%E8%AF%B4%EF%BC%8C%E5%BD%B1%E5%93%8D%E6%89%93%E5%8C%85%E6%95%88%E7%8E%87%E9%A6%96%E5%BD%93%E5%85%B6%E5%86%B2%E5%BF%85%E5%B1%9E Babel %E4%BA%86%E3%80%82%E5%9B%A0%E4%B8%BA Babel %E4%BC%9A%E5%B0%86%E4%BB%A3%E7%A0%81%E8%BD%AC%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90 AST%EF%BC%8C%E7%84%B6%E5%90%8E%E5%AF%B9 AST %E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E8%BD%AC%E5%8F%98%E6%9C%80%E5%90%8E%E5%86%8D%E7%94%9F%E6%88%90%E6%96%B0%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E9%A1%B9%E7%9B%AE%E8%B6%8A%E5%A4%A7%EF%BC%8C%E8%BD%AC%E6%8D%A2%E4%BB%A3%E7%A0%81%E8%B6%8A%E5%A4%9A%EF%BC%8C%E6%95%88%E7%8E%87%E5%B0%B1%E8%B6%8A%E4%BD%8E%E3%80%82.jpg"></div>
+<h3 class="topic">
+<a name="3n3rkubchi3gjrr5janp41gvq0">&nbsp;&nbsp;&nbsp;&nbsp;优化 Loader 的文件搜索范围</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BC%98%E5%8C%96 Loader %E7%9A%84%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E8%8C%83%E5%9B%B4.jpg"></div>
+<h3 class="topic">
+<a name="5dmeqkkoinrbpm9rnnvgilurlv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于 Babel 来说，希望只作用在 JS 代码上的，然后 node_modules 中使用的代码都是编译过的，所以完全没有必要再去处理一遍。</a>
+</h3>
+<p class="topicImage">
+<img height="294" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/74e2i2b0fb1jpmj2126p2a29ps.png" width="400"></p>
+<h3 class="topic">
+<a name="5slq6nj7eru9buf37i7p8g37qq">&nbsp;&nbsp;&nbsp;&nbsp;还可以将 Babel 编译过的文件缓存起来，下次只需要编译更改过的代码文件即可，这样可以大幅度加快打包时间</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%B0%86 Babel %E7%BC%96%E8%AF%91%E8%BF%87%E7%9A%84%E6%96%87%E4%BB%B6%E7%BC%93%E5%AD%98%E8%B5%B7%E6%9D%A5%EF%BC%8C%E4%B8%8B%E6%AC%A1%E5%8F%AA%E9%9C%80%E8%A6%81%E7%BC%96%E8%AF%91%E6%9B%B4%E6%94%B9%E8%BF%87%E7%9A%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%8F%AF%E4%BB%A5%E5%A4%A7%E5%B9%85%E5%BA%A6%E5%8A%A0%E5%BF%AB%E6%89%93%E5%8C%85%E6%97%B6%E9%97%B4.jpg"></div>
+<h3 class="topic">
+<a name="09cjmcobclvgih9v98thvn85sp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="42" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/5mlofgj797s05cdg7pr2thmbo3.png" width="400"></p>
+<h3 class="topic">
+<a name="76gr0i5af2kl6jh20qacinpepb">&nbsp;&nbsp;HappyPack</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/HappyPack.jpg"></div>
+<h3 class="topic">
+<a name="2r009vlr85m2fgr1hneutkkj0t">&nbsp;&nbsp;&nbsp;受限于 Node 是单线程运行的，所以 Webpack 在打包的过程中也是单线程的，特别是在执行 Loader 的时候，长时间编译的任务很多，这样就会导致等待的情况。HappyPack 可以将 Loader 的同步执行转换为并行的，这样就能充分利用系统资源来加快打包效率了</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%8F%97%E9%99%90%E4%BA%8E Node %E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E8%BF%90%E8%A1%8C%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5 Webpack %E5%9C%A8%E6%89%93%E5%8C%85%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%B9%9F%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%EF%BC%8C%E7%89%B9%E5%88%AB%E6%98%AF%E5%9C%A8%E6%89%A7%E8%A1%8C Loader %E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E9%95%BF%E6%97%B6%E9%97%B4%E7%BC%96%E8%AF%91%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%BE%88%E5%A4%9A%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%B0%B1%E4%BC%9A%E5%AF%BC%E8%87%B4%E7%AD%89%E5%BE%85%E7%9A%84%E6%83%85%E5%86%B5%E3%80%82HappyPack %E5%8F%AF%E4%BB%A5%E5%B0%86 Loader %E7%9A%84%E5%90%8C%E6%AD%A5%E6%89%A7%E8%A1%8C%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B9%B6%E8%A1%8C%E7%9A%84%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%B0%B1%E8%83%BD%E5%85%85%E5%88%86%E5%88%A9%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E6%9D%A5%E5%8A%A0%E5%BF%AB%E6%89%93%E5%8C%85%E6%95%88%E7%8E%87%E4%BA%86.jpg"></div>
+<h3 class="topic">
+<a name="0rnqg2ffalqn8p8hbb79bruokb">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="371" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/2gfh4bccl9pvc4o8b7ufdq5lic.png" width="400"></p>
+<h3 class="topic">
+<a name="3fqjp3l165njbam7ee6il8pgcp">&nbsp;&nbsp;DllPlugin</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/DllPlugin.jpg"></div>
+<h3 class="topic">
+<a name="4tjvhcj7oqg561mb0sn9cg7n7f">&nbsp;&nbsp;&nbsp;DllPlugin 可以将特定的类库提前打包然后引入。这种方式可以极大的减少打包类库的次数，只有当类库更新版本才有需要重新打包，并且也实现了将公共代码抽离成单独文件的优化方案。</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/DllPlugin %E5%8F%AF%E4%BB%A5%E5%B0%86%E7%89%B9%E5%AE%9A%E7%9A%84%E7%B1%BB%E5%BA%93%E6%8F%90%E5%89%8D%E6%89%93%E5%8C%85%E7%84%B6%E5%90%8E%E5%BC%95%E5%85%A5%E3%80%82%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8F%AF%E4%BB%A5%E6%9E%81%E5%A4%A7%E7%9A%84%E5%87%8F%E5%B0%91%E6%89%93%E5%8C%85%E7%B1%BB%E5%BA%93%E7%9A%84%E6%AC%A1%E6%95%B0%EF%BC%8C%E5%8F%AA%E6%9C%89%E5%BD%93%E7%B1%BB%E5%BA%93%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC%E6%89%8D%E6%9C%89%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85%EF%BC%8C%E5%B9%B6%E4%B8%94%E4%B9%9F%E5%AE%9E%E7%8E%B0%E4%BA%86%E5%B0%86%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E6%8A%BD%E7%A6%BB%E6%88%90%E5%8D%95%E7%8B%AC%E6%96%87%E4%BB%B6%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%E3%80%82.jpg"></div>
+<h3 class="topic">
+<a name="2djemhnrpko4t486kgamj79fom">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="389" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/1d6g4cuvvo3s091c9e92k3gevd.png" width="400"></p>
+<h3 class="topic">
+<a name="22jf444gfpnijeniip154186ih">&nbsp;&nbsp;&nbsp;&nbsp;然后需要执行这个配置文件生成依赖文件，接下来需要使用 DllReferencePlugin 将依赖文件引入项目中</a>
+</h3>
+<p class="topicImage">
+<img height="202" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/2hh4hp7bs4psjckmmu37nut616.png" width="400"></p>
+<h3 class="topic">
+<a name="41ahjgh4hgu366ve885e0av9mb">&nbsp;&nbsp;代码压缩</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E4%BB%A3%E7%A0%81%E5%8E%8B%E7%BC%A9 2.jpg"></div>
+<h3 class="topic">
+<a name="1t7igd4803dhkmlaru8m47846o">&nbsp;&nbsp;&nbsp;在 Webpack3 中，一般使用 UglifyJS 来压缩代码，但是这个是单线程运行的，为了加快效率，可以使用 webpack-parallel-uglify-plugin 来并行运行 UglifyJS，从而提高效率。在 Webpack4 中，不需要以上这些操作了，只需要将 mode 设置为 production 就可以默认开启以上功能。代码压缩也是我们必做的性能优化方案，当然我们不止可以压缩 JS 代码，还可以压缩 HTML、CSS 代码，并且在压缩 JS 代码的过程中，我们还可以通过配置实现比如删除 console.log 这类代码的功能。</a>
+</h3>
+<h3 class="topic">
+<a name="2v1vdnsj4836065rki36q9mf0u">&nbsp;&nbsp;其他</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%85%B6%E4%BB%96.jpg"></div>
+<h3 class="topic">
+<a name="4ai1kscmj8r4v1ajluke1koiij">&nbsp;&nbsp;&nbsp;resolve.extensions</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/resolve.extensions.jpg"></div>
+<h3 class="topic">
+<a name="6m7jf71caje50pp196g0tnl4jg">&nbsp;&nbsp;&nbsp;&nbsp;用来表明文件后缀列表，默认查找顺序是 ['.js', '.json']，如果你的导入文件没有添加后缀就会按照这个顺序查找文件。我们应该尽可能减少后缀列表长度，然后将出现频率高的后缀排在前面</a>
+</h3>
+<h3 class="topic">
+<a name="5jb2li9t2n17iv6s6rqsg93ome">&nbsp;&nbsp;&nbsp;resolve.alias</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/resolve.alias.jpg"></div>
+<h3 class="topic">
+<a name="06culnkknig10riknnmnhk565c">&nbsp;&nbsp;&nbsp;&nbsp;可以通过别名的方式来映射一个路径，能让 Webpack 更快找到路径</a>
+</h3>
+<h3 class="topic">
+<a name="4odqbi87bja9u36cino9cicibm">&nbsp;&nbsp;&nbsp;module.noParse</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/module.noParse.jpg"></div>
+<h3 class="topic">
+<a name="5gm78sf6c622apd5bc2tm1s67d">&nbsp;&nbsp;&nbsp;&nbsp;如果你确定一个文件下没有其他依赖，就可以使用该属性让 Webpack 不扫描该文件，这种方式对于大型的类库很有帮助</a>
+</h3>
+<h3 class="topic">
+<a name="7tncoom5nnuafoa77qt1bbp1c1">&nbsp;如何减少webpack打包体积？</a>
+</h3>
+<p class="labelsAndMarkers">
+<img class="marker" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/priority_4.png"></p>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91webpack%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%EF%BC%9F.jpg"></div>
+<h3 class="topic">
+<a name="0cqdicbdlbr2bptcpr4vra32ev">&nbsp;&nbsp;按需加载</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD.jpg"></div>
+<h3 class="topic">
+<a name="5d5a3ltm2u92p6ah351nk78djg">&nbsp;&nbsp;&nbsp;在开发 SPA 项目的时候，项目中都会存在很多路由页面。如果将这些页面全部打包进一个 JS 文件的话，虽然将多个请求合并了，但是同样也加载了很多并不需要的代码，耗费了更长的时间。那么为了首页能更快地呈现给用户，希望首页能加载的文件体积越小越好，这时候就可以使用按需加载，将每个路由页面单独打包为一个文件。当然不仅仅路由可以按需加载，对于 loadash 这种大型类库同样可以使用这个功能。</a>
+</h3>
+<h3 class="topic">
+<a name="6f2rgpjp9113krg42vh96mfuf8">&nbsp;&nbsp;Scope Hoisting</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/Scope Hoisting.jpg"></div>
+<h3 class="topic">
+<a name="1q0kdcah40irneh19spug49eq7">&nbsp;&nbsp;&nbsp;Scope Hoisting 会分析出模块之间的依赖关系，尽可能的把打包出来的模块合并到一个函数中去。这样的打包方式生成的代码明显比之前的少多了。如果在 Webpack4 中你希望开启这个功能，只需要启用 optimization.concatenateModules 就可以了</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/Scope Hoisting %E4%BC%9A%E5%88%86%E6%9E%90%E5%87%BA%E6%A8%A1%E5%9D%97%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%EF%BC%8C%E5%B0%BD%E5%8F%AF%E8%83%BD%E7%9A%84%E6%8A%8A%E6%89%93%E5%8C%85%E5%87%BA%E6%9D%A5%E7%9A%84%E6%A8%A1%E5%9D%97%E5%90%88%E5%B9%B6%E5%88%B0%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E4%B8%AD%E5%8E%BB%E3%80%82%E8%BF%99%E6%A0%B7%E7%9A%84%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F%E7%94%9F%E6%88%90%E7%9A%84%E4%BB%A3%E7%A0%81%E6%98%8E%E6%98%BE%E6%AF%94%E4%B9%8B%E5%89%8D%E7%9A%84%E5%B0%91%E5%A4%9A%E4%BA%86%E3%80%82%E5%A6%82%E6%9E%9C%E5%9C%A8 Webpack4 %E4%B8%AD%E4%BD%A0%E5%B8%8C%E6%9C%9B%E5%BC%80%E5%90%AF%E8%BF%99%E4%B8%AA%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%8F%AA%E9%9C%80%E8%A6%81%E5%90%AF%E7%94%A8 optimization.concatenateModules %E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86.jpg"></div>
+<h3 class="topic">
+<a name="5nee40m8a27mdgv3umigg51654">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="148" src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/5h962veevf8utl3gfran1jbm06.png" width="349"></p>
+<h3 class="topic">
+<a name="0ol1k9nv1ajs1mb2608hlpdfr1">&nbsp;&nbsp;Tree Shaking</a>
+</h3>
+<div class="overview">
+<img src="%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/images/Tree Shaking 2.jpg"></div>
+<h3 class="topic">
+<a name="48aekt5i9tmkb565o7b1bq6sb6">&nbsp;&nbsp;&nbsp;Tree Shaking 可以实现删除项目中未被引用的代码（死代码）</a>
+</h3>
+</body>
+</html>

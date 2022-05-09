@@ -1,0 +1,2605 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<title>VUE</title>
+</head>
+<body>
+<h1 align="center" class="root">
+<a name="33lqun4d5aila6kludk9nprtmm">VUE</a>
+</h1>
+<div align="center" class="globalOverview">
+<img src="VUE_files/images/VUE.jpg"></div>
+<h2 class="topic">
+<a name="39ve5ne49f4o2s31gnv5q93u57">1.vue核心</a>
+</h2>
+<h3 class="topic">
+<a name="359rvnstp8g1p6rahdgjj5s6o2">&nbsp;vue简介</a>
+</h3>
+<h3 class="topic">
+<a name="3tvq36vbmn0qhfst262cmsqe69">&nbsp;&nbsp;vue概念</a>
+</h3>
+<h3 class="topic">
+<a name="1gi9ajg8va0ijto7f1p6ehc04t">&nbsp;&nbsp;&nbsp;动态构建用户界面的渐进式 JavaScript 框架</a>
+</h3>
+<h3 class="topic">
+<a name="7jat8dl7st7hdt9ghs1q4afros">&nbsp;&nbsp;vue特点</a>
+</h3>
+<h3 class="topic">
+<a name="043crufg1ckhspjdep2nr421vc">&nbsp;&nbsp;&nbsp;采用组件化模式，提高代码复用率、且让代码更好维护</a>
+</h3>
+<h3 class="topic">
+<a name="1cs7uqv17kv4mh7ce5mmn69b1k">&nbsp;&nbsp;&nbsp;声明式编码，让编码人员无需直接操作DOM，提高开发效率</a>
+</h3>
+<h3 class="topic">
+<a name="14s56arlpkppj65k1nujk0vc7n">&nbsp;&nbsp;&nbsp;使用虚拟DOM+优秀的Diff算法，尽量复用DOM节点</a>
+</h3>
+<h3 class="topic">
+<a name="1kvefc2re61v622si6sl2q37va">&nbsp;&nbsp;创建vue</a>
+</h3>
+<h3 class="topic">
+<a name="0tj0ue9kmp9khet2o1fo1vncjm">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="365" src="VUE_files/1p2b5tvfgjdplikcn02hm6k6fg.png" width="642"></p>
+<h3 class="topic">
+<a name="701g3g1bcqmu8vqloo027g32ij">&nbsp;&nbsp;&nbsp;&nbsp;想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象</a>
+</h3>
+<h3 class="topic">
+<a name="0cbr145bv913vpo2r4gop5g4s5">&nbsp;&nbsp;&nbsp;&nbsp;root容器里的代码依然符合html规范，只不过混入一些特殊的Vue语法</a>
+</h3>
+<h3 class="topic">
+<a name="1vdqi3cv3s2tkstch70k3egs9a">&nbsp;&nbsp;&nbsp;&nbsp;root容器里的代码被称为【Vue模板】</a>
+</h3>
+<h3 class="topic">
+<a name="536ara1it8ungqm2p1dge7hspr">&nbsp;&nbsp;&nbsp;&nbsp;容器和Vue实例对象必须一一对应，即一个容器只能有一个对应的Vue，一个Vue只能找一个容器</a>
+</h3>
+<h3 class="topic">
+<a name="3j4moidopo1g1qdtfukabkmobc">&nbsp;&nbsp;&nbsp;&nbsp;实际开发中只有一个Vue实例，并且会配合着组件一起使用</a>
+</h3>
+<h3 class="topic">
+<a name="4qs2d1iscrfb2sshlu0ihgfkl9">&nbsp;&nbsp;&nbsp;&nbsp;{{xxx}}中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性</a>
+</h3>
+<h3 class="topic">
+<a name="4p7qmnh75sl5b50cd88uio9ns1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js表达式：一个表达式可以生成一个值，放在任何一个需要的地方，比如a、a+b、x===y？&ldquo;a&rdquo;：&ldquo;b&rdquo;</a>
+</h3>
+<h3 class="topic">
+<a name="5d4kiuklms19841vci3epvtiv2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js代码（js语句）：if（）{...}   for(）{...}</a>
+</h3>
+<h3 class="topic">
+<a name="1gc68a9tflngf9g6men935jpfr">&nbsp;&nbsp;&nbsp;&nbsp;一旦data中的数据发生改变，那么页面中用到该数据的地方会自动更新</a>
+</h3>
+<h3 class="topic">
+<a name="1v5naqi0cdd3g81jpe34n6kb29">&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="4sb2qbmjvj99fsu1i3932nucds">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由vue管理的函数，一定不要写成箭头函数，一旦写成箭头函数，this的指向就会为window，若写成普通函数，this的指向为vue实例对象，比如data、methods等</a>
+</h3>
+<h3 class="topic">
+<a name="6m40or4jisctat20g4qhjpctk5">&nbsp;MVVM模型</a>
+</h3>
+<h3 class="topic">
+<a name="4s928ivr2s168bnlb5jmk0j6rk">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="305" src="https://img-blog.csdnimg.cn/20190218151740267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNzYxNTkx,size_16,color_FFFFFF,t_70" width="614"></p>
+<h3 class="topic">
+<a name="7rp4uo5snqlnbe7ega9q60marh">&nbsp;&nbsp;&nbsp;简介</a>
+</h3>
+<h3 class="topic">
+<a name="70ncfkdnpbu2h8hp2cjem4tobo">&nbsp;&nbsp;&nbsp;&nbsp;MVVM 是Model-View-ViewModel 的缩写，它是一种基于前端开发的架构模式，实现了数据双向绑定。Vue.js 是一个提供了 MVVM 风格的双向数据绑定的 Javascript 库，专注于View 层。它的核心是 MVVM 中的 VM，也就是 ViewModel。 ViewModel负责连接 View 和 Model，保证视图和数据的一致性，这种轻量级的架构让前端开发更加高效、便捷</a>
+</h3>
+<h3 class="topic">
+<a name="5878iflohk4gvnc43uu3m892c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在MVVM的架构下，View层和Model层并没有直接联系，而是通过ViewModel层进行交互。ViewModel层通过双向数据绑定将View层和Model层连接了起来，使得View层和Model层的同步工作完全是自动的。因此开发者只需关注业务逻辑，无需手动操作DOM，复杂的数据状态维护交给MVVM统一来管理</a>
+</h3>
+<p class="topicImage">
+<img height="451" src="https://img-blog.csdnimg.cn/20190218151600647.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNzYxNTkx,size_16,color_FFFFFF,t_70" width="786"></p>
+<h3 class="topic">
+<a name="4jk7mqfvj6bh3sh7cjbciouk71">&nbsp;&nbsp;&nbsp;Vue.js中mvvm的体现</a>
+</h3>
+<h3 class="topic">
+<a name="54dog8o8nv2gqmbr8mbdeir128">&nbsp;&nbsp;&nbsp;&nbsp;Vue.js的实现方式，对数据（Model）进行劫持，当数据变动时，数据会出发劫持时绑定的方法，对视图进行更新</a>
+</h3>
+<h3 class="topic">
+<a name="6c010f6tjj6kusrhksm4rvt80a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Observer相当于Model层观察vue实例中的data数据，当数据发生变化时，通知Watcher订阅者（通过Object.defineProperty将data中的属性添加到vue实例身上，为每个添加到vue实例身上的属性都配置getter和setter，在内部它们让Vue追踪依赖。在属性被访问和修改时通知变化</a>
+</h3>
+<h3 class="topic">
+<a name="27igb3jtu193g1bhe75im83v7g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compile指令解析器位于View层，初始化View的视图，将数据变化与更新函数绑定，传给Watcher订阅者。</a>
+</h3>
+<h3 class="topic">
+<a name="2445r34hckqeo3044mbfth403k">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Watcher是整个模型的核心，对应ViewModel层，连接Observer和Compile。Watcher将Observer监听到的数据变化对应相应的回调函数，处理数据，反馈给View层更新界面视图</a>
+</h3>
+<h3 class="topic">
+<a name="6b03b4beqcp0l6vpnqujf0rhcp">&nbsp;指令语法</a>
+</h3>
+<h3 class="topic">
+<a name="6rfclu3g2ggqf4lem8k3up4ca1">&nbsp;&nbsp;功能</a>
+</h3>
+<h3 class="topic">
+<a name="6il2cg0n14qdd61q7od6jpve3r">&nbsp;&nbsp;&nbsp;解析标签属性、解析标签体内容、绑定事件</a>
+</h3>
+<h3 class="topic">
+<a name="0h7druo39b25oroida2qvmplsa">&nbsp;&nbsp;说明</a>
+</h3>
+<h3 class="topic">
+<a name="6v53nunmp1s6v5i9g073q4h5fp">&nbsp;&nbsp;&nbsp;Vue 中有有很多的指令，且形式都是v-？？？</a>
+</h3>
+<h3 class="topic">
+<a name="4d9dljtal6j32ueisvvoq65qjc">&nbsp;&nbsp;指令分类</a>
+</h3>
+<h3 class="topic">
+<a name="6rbl37vjr0p51suj0vp1h34h9b">&nbsp;&nbsp;&nbsp;内置指令</a>
+</h3>
+<h3 class="topic">
+<a name="4qvgq8fp4un5a7aat2792o7bfq">&nbsp;&nbsp;&nbsp;&nbsp;插值语法指令</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">用于解析标签体内容</span>
+</p>
+<h3 class="topic">
+<a name="4ihmlr7nrtd3rbpt94dr23qvvp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-text</a>
+</h3>
+<h3 class="topic">
+<a name="55620i0ofdohuss520ld87h9gu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用</a>
+</h3>
+<h3 class="topic">
+<a name="1k3tn22ip5c21hol9m8mg7hqbe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新该整个DOM元素的 textContent（不会解析标签）</a>
+</h3>
+<h3 class="topic">
+<a name="603k31l5r0b7ba9qktsmi9op7k">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="6kseqoip7hp7073teukapls9sv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="399" src="VUE_files/12jpabgkg2qpmmgijnig3ei82p.png" width="529"></p>
+<h3 class="topic">
+<a name="7ctp44a44pusn4115be1kuovb7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="55219v2clebokt5829gcnat027">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{xxx}} ，xxxx 是js表达式，且可以直接读取到data中所有属性</a>
+</h3>
+<h3 class="topic">
+<a name="6nvo1jghrej8j95bl1thio3tqn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-html</a>
+</h3>
+<h3 class="topic">
+<a name="27p41roanodit5qjgt8t5hu18i">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用</a>
+</h3>
+<h3 class="topic">
+<a name="2men3pd61ctgdn839797vp4ca7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新整个DOM元素的 innerHTML（会解析标签）</a>
+</h3>
+<h3 class="topic">
+<a name="5925slm0r34srshmsumhtqpsdm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="0cs3d0798nmfrne8h9cn0isfje">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="361" src="VUE_files/4jn4c2flv6v149cfjqqta2rcqn.png" width="526"></p>
+<h3 class="topic">
+<a name="02244k98j97c430p4obnkkogrd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="3e6u8r95m748toub9atdfdm4al">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-html有安全性问题！在网站上动态渲染任意HTML是非常危险的，容易受到XSS攻击，一定要在可信的内容上使用v-html，不要用在用户提交的内容上</a>
+</h3>
+<h3 class="topic">
+<a name="14ovr19mghk1qrimk817lv5ga4">&nbsp;&nbsp;&nbsp;&nbsp;数据绑定指令</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">实现实时监测，动态渲染</span>
+</p>
+<h3 class="topic">
+<a name="68b0hb515r8bo3r1ddt6bhpe5g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-bind：</a>
+</h3>
+<h3 class="topic">
+<a name="61spqnmam3vhqivj46hbm2bbp2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用</a>
+</h3>
+<h3 class="topic">
+<a name="6kg8dj5eb10vln1f6kk3mhrm0r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据只能从data流向页面</a>
+</h3>
+<h3 class="topic">
+<a name="0f8bbjd12icerj5ufrv94ari6t">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用</a>
+</h3>
+<h3 class="topic">
+<a name="77gaoq5808hkhrkq0psf3jruk9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于动态渲染页面中的内容，只渲染，无需收集页面的数据，一般用于不需要用户操作或者输入的页面内容上</a>
+</h3>
+<h3 class="topic">
+<a name="54u5ue8rj5lqb6hqd5tg6abjos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绑定样式</a>
+</h3>
+<h3 class="topic">
+<a name="7stq6iuu643hcf9khhalukcfhm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绑定class样式</a>
+</h3>
+<h3 class="topic">
+<a name="7u7gnsb03ghf1vjhs0r5ue14ji">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：class="xxx" xxx可以是字符串、对象、数组</a>
+</h3>
+<h3 class="topic">
+<a name="1h2qtd9lml8virf6uihndnh6e8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="608" src="VUE_files/7t2br07qg5arhh8k5es67hpspa.png" width="745"></p>
+<h3 class="topic">
+<a name="28g73vo8b0j7re8rqgn6h6dmtf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符串写法，适用于：只选择一个样式（多选一），样式的类名不确定，需要动态指定</a>
+</h3>
+<h3 class="topic">
+<a name="3329st9qrjjqemii9e65n04ip0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数组写法，适用于：要绑定的样式个数不确定、名字也不确定</a>
+</h3>
+<h3 class="topic">
+<a name="170dc1s5bgb071rj8jms3pr0uk">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象写法，适用于：要绑定的样式个数确定、名字也确定,但是不确定用不用</a>
+</h3>
+<h3 class="topic">
+<a name="2r48kbqmtjekvas53q63svjp5j">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绑定style样式</a>
+</h3>
+<h3 class="topic">
+<a name="2ob5jmugai2hs4jlggmcphvcjv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：style="xxx" xxx可以是对象、数组</a>
+</h3>
+<h3 class="topic">
+<a name="7fjanee8l6r31hmi2l6d0soq7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：style="{fontSize：xxx}" 其中xxx是动态值</a>
+</h3>
+<h3 class="topic">
+<a name="4abjs6t29pukr18e5li70r1f5g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/4hvlp61fl5qiueqmr5m47hcqv8.png"></p>
+<h3 class="topic">
+<a name="0eo43rh91l1dj6o7fu411f0ch3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：style="[a，b]" 其中a、b是样式对象</a>
+</h3>
+<h3 class="topic">
+<a name="4j7kis9gj17vdecpj26he8l25q">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="453" src="VUE_files/2rcvj4l7jp2n70ad58smu42mvm.png" width="362"></p>
+<h3 class="topic">
+<a name="5ej2evgk8e3hpcnqni1vbg9duf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="4a7hejom7ifektdg5bgsjoishu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="116" src="VUE_files/3vvu6j99v20u0ebc44kth6pdlp.png" width="475"></p>
+<h3 class="topic">
+<a name="6ql8u880pdekm9lh3mannr8e67">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-model：</a>
+</h3>
+<h3 class="topic">
+<a name="051r4cf4f78vf83dlkfqambisi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用</a>
+</h3>
+<h3 class="topic">
+<a name="1dj8snfacdi9m50c4n25qhh57m">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据不仅能从data流向页面，还可以从页面流向data</a>
+</h3>
+<h3 class="topic">
+<a name="15igcsprolaa670a8oi4tdabdn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用</a>
+</h3>
+<h3 class="topic">
+<a name="4a00t5596l5ioboae78a79cl8d">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;双向绑定一般都应用于表单元素上（如：input、select等），一般使用于收集表单元素上</a>
+</h3>
+<h3 class="topic">
+<a name="16lo0iaee5tfc8gt3oer7j5ldb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="4p09phu9fqd81u8nsdh819opvr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="115" src="VUE_files/1mdn0fltr96sni0n6kl03qn31i.png" width="472"></p>
+<h3 class="topic">
+<a name="1akjt2fbiarkmp6rv3387elscr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-model的三个修饰符</a>
+</h3>
+<h3 class="topic">
+<a name="731u1imi549cbpgalor54h4ueu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-model.lazy：失去焦点再收集数据</a>
+</h3>
+<h3 class="topic">
+<a name="5e12nhd677sr4dilsk7vhj0f3l">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-model.number：输入字符串转为有效的数字</a>
+</h3>
+<h3 class="topic">
+<a name="52pan06n4u5mqcvr5ukgoaeunn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-model.trim：输入首尾空格过滤</a>
+</h3>
+<h3 class="topic">
+<a name="5s8eaun3k8dt28hvi42gi7km87">&nbsp;&nbsp;&nbsp;&nbsp;事件处理指令</a>
+</h3>
+<h3 class="topic">
+<a name="2b426epulq92lanfie2k4qa50u">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-on：/@</a>
+</h3>
+<h3 class="topic">
+<a name="4en48u244jisebjh2othm67pib">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事件的基本使用</a>
+</h3>
+<h3 class="topic">
+<a name="4qpbaadusjnnh9a9v2clcadh7c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="484" src="VUE_files/411ue6tsc0d1g4cap4kr32gp28.png" width="571"></p>
+<h3 class="topic">
+<a name="5g6bj19ja8488vl1jg2t9tfsu6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用v-on：xxx或@xxx 绑定事件，其中xxx是事件名称</a>
+</h3>
+<h3 class="topic">
+<a name="4plj8admkmnfn4r1ov3spnvujr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事件的回调需要配置在methods对象中，最终会在vm上</a>
+</h3>
+<h3 class="topic">
+<a name="4hf6d8ts0shotcn467vtivhqp0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;methods中配置的函数，都是被Vue所管理的函数，this指向是vm或者组件实例对象</a>
+</h3>
+<h3 class="topic">
+<a name="7qp40kjhfaq1tr7hgb8ck3vak0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click=&ldquo;demo&rdquo;和@click=&ldquo;demo（$event）效果一致，但是后者可以传参</a>
+</h3>
+<h3 class="topic">
+<a name="542053ev361avftmf76mmj0umf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;键盘事件</a>
+</h3>
+<h3 class="topic">
+<a name="3g2el010lqa23psh1rng6tuejf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="341" src="VUE_files/1msart56mcoa3gktdmqdub0aap.png" width="600"></p>
+<h3 class="topic">
+<a name="78qth7ed8im7jvlbbg3uvrqr3k">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vue中常用的按键别名</a>
+</h3>
+<h3 class="topic">
+<a name="7n17l2k1mmhokmv7klbjdi6g6m">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.enter:按回车键</a>
+</h3>
+<h3 class="topic">
+<a name="7lp4vh1lm275qvdt85h873qekd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.delete:删除（捕获&rdquo;删除&ldquo;和&rdquo;退格&ldquo;）</a>
+</h3>
+<h3 class="topic">
+<a name="3r3koi3567lq62oudm701fbpd7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.esc:按退出键</a>
+</h3>
+<h3 class="topic">
+<a name="2ca2p5rc5842m88mid1l0aoccf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.space:按空格键</a>
+</h3>
+<h3 class="topic">
+<a name="5q0hg39a6iqn8kfmpl3nh5s91i">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keydown.tab:按换行键</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">特殊：必须配合keydown使用</span>
+</p>
+<h3 class="topic">
+<a name="28cpbaboi1f39dou2utq604cjp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.up:按上键</a>
+</h3>
+<h3 class="topic">
+<a name="4gc9r5tf4jreukiaimd6ekv8uf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.down:按下键</a>
+</h3>
+<h3 class="topic">
+<a name="361h5gvockt95vise1mmg6i548">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.left:按左键</a>
+</h3>
+<h3 class="topic">
+<a name="1uhkvu3nn0lr1buhr8f441mkb9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@keyup.right:按右键</a>
+</h3>
+<h3 class="topic">
+<a name="6a93s71t36f951k7ta8oe9g35i">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="772qkcqbv8cd6rl39lm0ofqnbn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vue未提供别名的按键，可以使用按键原始的key值去绑定，但要注意要转为kebab-case（短横线命名）</a>
+</h3>
+<h3 class="topic">
+<a name="5pmtifrdu2ojs46llln4avpifq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统修饰键（用法特殊）：ctrl、alt、shift、mata（win）</a>
+</h3>
+<h3 class="topic">
+<a name="0kso5t0pcueu1l1mvsfv96oddk">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发</a>
+</h3>
+<h3 class="topic">
+<a name="0tlhu8f6eefi7rkfiqge9rb8s9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配合keydown使用：正常触发事件</a>
+</h3>
+<h3 class="topic">
+<a name="1hrrv12ijtk811jcak1jgjqnrl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也可以使用keyCode去指定具体的按键（不推荐）例如：@keyup.13</a>
+</h3>
+<h3 class="topic">
+<a name="04s3m6onfj3e2oldc1g89m2mca">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vue.config.keyCodes.自定义键名 = 键码（13），可以去定制按键别名</a>
+</h3>
+<h3 class="topic">
+<a name="0d319d0ekiqi3r4nc42o1p8sjh">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当需要按下ctrl+y才能触发事件可以这样写：@keyup.ctrl.y="showInfo"</a>
+</h3>
+<h3 class="topic">
+<a name="11mlpb57ai00m07gnlts2r4cl8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鼠标事件</a>
+</h3>
+<h3 class="topic">
+<a name="2ul9bplaes6idjqeh6ooaqb15l">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鼠标事件分类</a>
+</h3>
+<h3 class="topic">
+<a name="2a0n258gkdeeg3g6krpd7tr1r2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click  //单击</a>
+</h3>
+<h3 class="topic">
+<a name="1r0ajgr6vs7m0dvth4h2hknfdf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.left  //左键单击</a>
+</h3>
+<h3 class="topic">
+<a name="7og9o563eqafenvdt6a34d7v4g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.right  //右键单击</a>
+</h3>
+<h3 class="topic">
+<a name="50pfhkeahhaap43tr5lpo6jurv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.middle  //点击中间滑轮</a>
+</h3>
+<h3 class="topic">
+<a name="6al5f8a4jcb4lvaui15qv4pu9c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@dblclick  //双击</a>
+</h3>
+<h3 class="topic">
+<a name="7dd54jc157c0jh1ftimbq1jcpi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mousedown  //按下</a>
+</h3>
+<h3 class="topic">
+<a name="027v3dgdp96bifhoabnpoq09ut">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mouseup  //抬起</a>
+</h3>
+<h3 class="topic">
+<a name="3703um1qomeplnsrljvvcr8rp5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mousemove  //移动</a>
+</h3>
+<h3 class="topic">
+<a name="06cb53lelgtmnqnihj72an416f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mouseout  //移出</a>
+</h3>
+<h3 class="topic">
+<a name="5m19kcsctka9krsjgctdva18sn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mouseenter  //进入</a>
+</h3>
+<h3 class="topic">
+<a name="705gagba5hefs7ai0etba2pi91">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mouseleave  //离开</a>
+</h3>
+<h3 class="topic">
+<a name="35gkei2hrbbteomrng3dqf9bql">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@mouseover  //经过</a>
+</h3>
+<h3 class="topic">
+<a name="5vsgb7kpshvp5o5237qp54ies5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事件修饰符</a>
+</h3>
+<h3 class="topic">
+<a name="36ko5i293gjg0q4jlru41uojbv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">修饰符可以连写：@click.stop.prevent = "showInfo"</span>
+</p>
+<p class="topicImage">
+<img height="469" src="VUE_files/3knb58kbb2qj641hjqm43mqalm.png" width="612"></p>
+<h3 class="topic">
+<a name="4b4nu7dmoscdt477j3jqj2hh55">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.prevent：阻止默认行为（常用）</a>
+</h3>
+<h3 class="topic">
+<a name="7m38htn1h9n2cu8ju43i8l59ph">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.stop：阻止事件冒泡（常用）</a>
+</h3>
+<h3 class="topic">
+<a name="0e2minu5102nmr81upi25s94f1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.once：事件只触发一次（常用）</a>
+</h3>
+<h3 class="topic">
+<a name="6uhtvrpkjmpl7u76gv5hfo8fef">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.capture：使用事件的捕获模式</a>
+</h3>
+<h3 class="topic">
+<a name="0a9b6c31nr2bprs34vfca3au8a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.self：只有event.target是当前操作的元素时才触发事件（只会触发自己范围内的事件，不包含子元素）</a>
+</h3>
+<h3 class="topic">
+<a name="7c5v79vh29t1hniq73mdfufefh">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@click.passive：事件的默认行为立即执行，无需等待事件回调执行完毕</a>
+</h3>
+<h3 class="topic">
+<a name="7vagvs306iid62tspmnhcfq57g">&nbsp;&nbsp;&nbsp;&nbsp;条件渲染指令</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">使用v-if时，元素可能无法被获取到，而是用v-show一定可以被获取到；template临时容器，不会在结构中显示</span>
+</p>
+<h3 class="topic">
+<a name="40jst57p28gcb2buldjdo1ai55">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-if</a>
+</h3>
+<h3 class="topic">
+<a name="2i1ah9sos87185bg9a52h30o2c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="11k663i3i8qop2mlmjenkofs2g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&reg; v-if=&ldquo;表达式&rdquo;</a>
+</h3>
+<h3 class="topic">
+<a name="6aj9aj49hfeiaoiimb9jos9n1c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-else-if=&ldquo;表达式&rdquo;</a>
+</h3>
+<h3 class="topic">
+<a name="7q6mc8ns8uouf1174vss895gco">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-else</a>
+</h3>
+<h3 class="topic">
+<a name="0l7jt1dke54d0q4ivjvprragdq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;适用场景</a>
+</h3>
+<h3 class="topic">
+<a name="2o9pgpt4eflrv24qev0ai2mbdd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换频率较低的场景</a>
+</h3>
+<h3 class="topic">
+<a name="21c56mc0i7tsm7r5r1m0dvbmkp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点</a>
+</h3>
+<h3 class="topic">
+<a name="1d1bahlhns5hausj30hla8mpcb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不展示的DOM元素直接被移除</a>
+</h3>
+<h3 class="topic">
+<a name="23gdjc2qo79rdnqkrsc3rj01cv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="4gh4t0tetggeacgjarat393gl1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-if可以和v-else-if、v-else一起使用，但要求结构不能被&ldquo;打断&rdquo;</a>
+</h3>
+<h3 class="topic">
+<a name="3jf6a9mkb4935gah4f4rd64rp6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-show</a>
+</h3>
+<h3 class="topic">
+<a name="1r9murorrj6m64cvfr5m8g2un2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="0ec9eqa3u2a14fua6n8f336320">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-show=&ldquo;表达式&rdquo;</a>
+</h3>
+<h3 class="topic">
+<a name="0c4upiidthrttcb73ilf1osd4e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;适用场景</a>
+</h3>
+<h3 class="topic">
+<a name="5j39hq74eqpl1lganccdpitndv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换频率较高的场景</a>
+</h3>
+<h3 class="topic">
+<a name="44n9vlmejhhf8u7kad49dr8if7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点</a>
+</h3>
+<h3 class="topic">
+<a name="7790nf7mir60fo2l2t6b5s20b9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不展示的DOM元素未被移除，仅仅是使用样式隐藏掉（display：none）</a>
+</h3>
+<h3 class="topic">
+<a name="2bhkrnnt2rtph06qvs4l863b4d">&nbsp;&nbsp;&nbsp;&nbsp;列表渲染指令    </a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">用于展示列表数据</span>
+</p>
+<h3 class="topic">
+<a name="4hu8gnsvmmlm7f094fmhm17d59">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-for</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">循环指令</span>
+</p>
+<h3 class="topic">
+<a name="5akti15d0hap7cpctqnq475kjq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语法</a>
+</h3>
+<h3 class="topic">
+<a name="3ukocu2a7svbipq9hfsskq47ea">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-for=&ldquo;（item，index） in（或者of） xxx&rdquo; ：key=&ldquo;yyy&rdquo;</a>
+</h3>
+<h3 class="topic">
+<a name="0fom7d67eh6tpqlmai5dhfq83k">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可遍历</a>
+</h3>
+<h3 class="topic">
+<a name="6u6hq1q5hejsoob7meuq4rgb83">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数组、对象、字符串（用的很少）、指定次数（用的很少）</a>
+</h3>
+<h3 class="topic">
+<a name="4d2hkopabdjofkpo355smml9qh">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key作用与原理（vue中的key有什么作用？）</a>
+</h3>
+<h3 class="topic">
+<a name="65uu63t62rnds2mi3m1d3avmtd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虚拟DOM中key的作用</a>
+</h3>
+<h3 class="topic">
+<a name="2ph73hk8cmu3s299hea6n5sct6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】, 随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则</a>
+</h3>
+<h3 class="topic">
+<a name="5blfivp51gbpi148i50v8fuvku">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧虚拟DOM中找到了与新虚拟DOM相同的key</a>
+</h3>
+<h3 class="topic">
+<a name="2eneunu9jbp79ulu7g2mf7g1pd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若虚拟DOM中内容没变, 直接使用之前的真实DOM</a>
+</h3>
+<h3 class="topic">
+<a name="7cqu18s1cknt948ijcp342c9ub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM</a>
+</h3>
+<h3 class="topic">
+<a name="3aau4ndb35rl61lek680ldhfn0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧虚拟DOM中未找到与新虚拟DOM相同的key</a>
+</h3>
+<h3 class="topic">
+<a name="29osu84trmvm6stqgpeu2lc7cf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建新的真实DOM，随后渲染到到页面</a>
+</h3>
+<h3 class="topic">
+<a name="2f40l4eucd4lt724tta5onk9u6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用index作为key可能会引发的问题</a>
+</h3>
+<h3 class="topic">
+<a name="36203rl3fg6frk2dh5529fju9o">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若对数据进行：逆序添加、逆序删除等破坏顺序操作:会产生没有必要的真实DOM更新 ==&gt; 界面效果没问题, 但效率低</a>
+</h3>
+<h3 class="topic">
+<a name="63fr4udavvpbs77erj1o5687a5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果结构中还包含输入类的DOM：会产生错误DOM更新 ==&gt; 界面有问题</a>
+</h3>
+<h3 class="topic">
+<a name="2alpo5cv5h1bs36t4dkkn0bu0j">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发中如何选择key?</a>
+</h3>
+<h3 class="topic">
+<a name="1gk99tkbu5hjougidgjdtpnc30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值</a>
+</h3>
+<h3 class="topic">
+<a name="72l3fan3dt27rbo78ufr51ms68">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的</a>
+</h3>
+<h3 class="topic">
+<a name="1467ibiivpj5l5n70nqn1v67pv">&nbsp;&nbsp;&nbsp;&nbsp;防止闪现指令</a>
+</h3>
+<h3 class="topic">
+<a name="3t9l1ih7jsgvafk2eaim7nv9e2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-cloak</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">无值</span>
+</p>
+<h3 class="topic">
+<a name="6ih7kaa52039hpkijvrr8qcshp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当网络较慢，网页还在加载 Vue.js ，而导致 Vue 来不及渲染，这时页面就会显示出 Vue 源代码。我们可以使用 v-cloak 指令来解决这一问题。v-cloak 指令设置样式，这些样式会在 Vue 实例编译结束时，从绑定的 HTML 元素上被移除</a>
+</h3>
+<h3 class="topic">
+<a name="2hut9md8goc958rakfa3bd8jia">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="86" src="VUE_files/4gi8cnjuccrr0jias9ik5c1egp.png" width="269"></p>
+<h3 class="topic">
+<a name="7lctvoi71cmrphmm7o36mr910o">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="97" src="VUE_files/2n3ang8dhpugagvq3qej3lcii6.png" width="267"></p>
+<h3 class="topic">
+<a name="75lsj69a60qg7crbk4fdcgu045">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="27p5n2soja2i2rd8m3lfa9gpan">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在简单项目中，使用 v-cloak 指令是解决屏幕闪动的好方法。但在大型、工程化的项目中（webpack、vue-router）只有一个空的 div 元素，元素中的内容是通过路由挂载来实现的，这时我们就不需要用到 v-cloak 指令（大型项目中一般不会出现闪现现象）</a>
+</h3>
+<h3 class="topic">
+<a name="02kvddesstnb3d1ukn5j75tkmm">&nbsp;&nbsp;&nbsp;&nbsp;静态内容指令</a>
+</h3>
+<h3 class="topic">
+<a name="10k5s5lom8544gvaf1mfpq8evs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-once</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">无值</span>
+</p>
+<h3 class="topic">
+<a name="0fumflbfn5lb2tdd5kgosqi0f0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-once所在节点在初次动态渲染后，就视为静态内容了，以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能</a>
+</h3>
+<h3 class="topic">
+<a name="691npi8ss6cp5roecqblbjac13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/1ll9tm4no71u6943gsi5rl7cme.png"></p>
+<h3 class="topic">
+<a name="6cgns1395kkg0aam5le8khlg0g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/3vcv58kfvpumo413p2cuds7i09.png"></p>
+<h3 class="topic">
+<a name="6on9k88mfb1ak79ctf9k3o92jf">&nbsp;&nbsp;&nbsp;&nbsp;跳过编译指令</a>
+</h3>
+<h3 class="topic">
+<a name="2v2si3rne9pj11lg6b2hmd6b02">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v-pre</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">无值</span>
+</p>
+<h3 class="topic">
+<a name="1ub9vvsihv5vp1h5gkde01sibb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳过其所在节点的编译过程，可利用它跳过：没有使用指令语法、没有使用插值语法的节点，会加快编译</a>
+</h3>
+<h3 class="topic">
+<a name="176r79nibt5bse9q3u4ni1468t">&nbsp;&nbsp;&nbsp;自定义指令       </a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">用directives：{}配置</span>
+</p>
+<h3 class="topic">
+<a name="3lbl96j0c86bi4drrhrecvlg4n">&nbsp;&nbsp;&nbsp;&nbsp;为什么要使用自定义指令</a>
+</h3>
+<h3 class="topic">
+<a name="4hlbv72ahup50m3n7612pdk7pv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令，一般需要对DOM元素进行底层操作时使用，尽量只用来操作 DOM展示，不修改内部的值。当使用自定义指令直接修改 value 值时绑定v-model的值也不会同步更新；如必须修改可以在自定义指令中使用keydown事件，在vue组件中使用 change事件，回调中修改vue数据</a>
+</h3>
+<h3 class="topic">
+<a name="4ntacu5o7ohnvv6p0ol55kjtlr">&nbsp;&nbsp;&nbsp;&nbsp;自定义指令分类</a>
+</h3>
+<h3 class="topic">
+<a name="1o5poi0een0qcdnl2e4asitk0a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局部指令</a>
+</h3>
+<h3 class="topic">
+<a name="71ohhll682hladmu0pn41ecb4p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只针定义自定义指令所在的组件内的元素</a>
+</h3>
+<div class="notesContainer">
+<p>将自定义指令写在组件内export default内的directives里面，direcives与data平级，可以是函数形式，也可以是配置对象形式</p>
+</div>
+<h3 class="topic">
+<a name="0t8o8o7h46gq7puo0epu7n094p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="405" src="VUE_files/1n9ma1pd4elllftf1ldcfr2vrc.png" width="736"></p>
+<h3 class="topic">
+<a name="13pet8fb0qppcnsnmmu3vu292d">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全局指令</a>
+</h3>
+<h3 class="topic">
+<a name="4t29bjp343c1bhq65d81rrk61p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在任意页面的任意位置都可使用的自定义指令</a>
+</h3>
+<h3 class="topic">
+<a name="4i099mopqvv1bks2nhi23vepr7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="109" src="VUE_files/5vubgbikkrsgo426h33r9jml70.png" width="1503"></p>
+<h3 class="topic">
+<a name="4o8qu60vmuqp76e6e707dnkmh9">&nbsp;&nbsp;&nbsp;&nbsp;自定义指令定义形式</a>
+</h3>
+<h3 class="topic">
+<a name="3ap8iib2ca6l43ao89a5n66m5c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数形式</a>
+</h3>
+<h3 class="topic">
+<a name="637pj9e47d3geifpprfhg7qudb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="624" src="VUE_files/0hmphn523m94t0e3a2bltetqpo.png" width="686"></p>
+<h3 class="topic">
+<a name="48l1uaajgadq6mtcdiiqp1lq04">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象形式</a>
+</h3>
+<h3 class="topic">
+<a name="29saiqvutr2rr8mh7cnedp75cl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 配置对象中常用的3个回调:&#13;
+□ bind:指令与元素成功绑定时调用。&#13;
+□ inserted:指令所在元素被插入页面时调用。&#13;
+□ update:指令所在模板结构被重新解析时调用。</a>
+</h3>
+<p class="topicImage">
+<img height="522" src="VUE_files/60lvr73vcdd5vi7pee3cf0m2o6.png" width="685"></p>
+<h3 class="topic">
+<a name="2dtig4oog53h5dhicc41l3qjgj">&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="15qs4djtt61kmaqui1msk0c54j">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指令定义时不加v-，但使用时要加v-</a>
+</h3>
+<h3 class="topic">
+<a name="3qqa5b14dhchksj7g4hrph8k3f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指令名如果是多个单词，要使用kebab-case命名方式，不要用camelCase命名，定义的时候要加引号&rsquo;kebab-case&lsquo;。</a>
+</h3>
+<h3 class="topic">
+<a name="6qe2tpfal91etnkohlks3vb9ku">&nbsp;数据代理</a>
+</h3>
+<h3 class="topic">
+<a name="6kej8embsa8cenpe87g4rlpj7j">&nbsp;&nbsp;原理</a>
+</h3>
+<h3 class="topic">
+<a name="70kqjgj5tesurnm09d44ifa0n0">&nbsp;&nbsp;&nbsp;Object.defineProperty</a>
+</h3>
+<h3 class="topic">
+<a name="40kn56qdua7k3dfi05nalhh4lm">&nbsp;&nbsp;&nbsp;&nbsp;vue是采用Object.defineProperty的getter和setter，并结合观察者模式来实现数据绑定的。</a>
+</h3>
+<h3 class="topic">
+<a name="522ces3l40vkradfb2c6fikmd3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="432" src="VUE_files/28p7acgubks1hvs25nnis8rrqk.png" width="594"></p>
+<h3 class="topic">
+<a name="3at8ogh2usoihn76nudf564eru">&nbsp;&nbsp;概念</a>
+</h3>
+<h3 class="topic">
+<a name="0q11jri6nqf5cds9tvtssoem3b">&nbsp;&nbsp;&nbsp;通过一个对象代理另一个对象中属性的操作（读/写）</a>
+</h3>
+<h3 class="topic">
+<a name="79ltvueufttp161pdibulocj25">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="313" src="VUE_files/491kbde3phua1ace8occ0796se.png" width="577"></p>
+<h3 class="topic">
+<a name="5jga76arrt6tm6rskhr5vdr72r">&nbsp;&nbsp;Vue中的数据代理</a>
+</h3>
+<h3 class="topic">
+<a name="2ab6d919sq78b4hf9nl1851btr">&nbsp;&nbsp;&nbsp;通过vm对象来代理data对象中属性的操作</a>
+</h3>
+<h3 class="topic">
+<a name="60uco51lc209gq3q1ea8ohun2n">&nbsp;&nbsp;&nbsp;Vue中数据代理的好处</a>
+</h3>
+<h3 class="topic">
+<a name="5p3t0ldvnp215vrc0vqdi60p0a">&nbsp;&nbsp;&nbsp;&nbsp;更加方便操作data中的数据</a>
+</h3>
+<h3 class="topic">
+<a name="7ddp90e8hv49n877irhjjldio2">&nbsp;&nbsp;&nbsp;基本原理</a>
+</h3>
+<h3 class="topic">
+<a name="2in9k212pq1ojbtdmdlvjrl0fe">&nbsp;&nbsp;&nbsp;&nbsp;通过Object.defineProperty()把data中所有属性添加到vm上</a>
+</h3>
+<h3 class="topic">
+<a name="3p6ft6spdtbmsa31gl4pr9b67j">&nbsp;&nbsp;&nbsp;&nbsp;为每个添加到vm上的属性，都指定一个getter和setter</a>
+</h3>
+<h3 class="topic">
+<a name="1ol3ld34t67c8smi5qedta66bq">&nbsp;&nbsp;&nbsp;&nbsp;在getter和setter内部操作（读/写）data中对应的属性</a>
+</h3>
+<h3 class="topic">
+<a name="48ri269fo0iem0rb3j3jkn63ie">&nbsp;Vue监测数据的原理</a>
+</h3>
+<h3 class="topic">
+<a name="5h3qal1crdl2qihvipmspba7n3">&nbsp;&nbsp;Vue会监测data中所有层次的数据</a>
+</h3>
+<h3 class="topic">
+<a name="54f5bd3prihq6tlfl7jfv6bgec">&nbsp;&nbsp;Vue如何监测data中对象中的数据</a>
+</h3>
+<h3 class="topic">
+<a name="5754b90mjrn7b1nnui9scdr0o5">&nbsp;&nbsp;&nbsp;通过setter实现监测，且要在new Vue时就传入要监测的数据</a>
+</h3>
+<h3 class="topic">
+<a name="1n6u3rn952u41a8c34oikdp96g">&nbsp;&nbsp;&nbsp;对象中的所有属性都有专门的setter</a>
+</h3>
+<h3 class="topic">
+<a name="19bjt3aj4t5mnb1ianmmji8sdq">&nbsp;&nbsp;&nbsp;对象中后加入的属性，Vue默认不做响应式处理</a>
+</h3>
+<h3 class="topic">
+<a name="0hit686liiofegao9p5273hcgg">&nbsp;&nbsp;&nbsp;如需要给对象中后加入的属性做响应式，要使用如下API去添加对象中新的属性</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">Vue.set（）或者vm.$set（）不能给vm或者vm的根数据对象添加属性，也就是括号内第一个值不能是vm</span>
+</p>
+<h3 class="topic">
+<a name="7822guu87q1tmjbpmrvp84olt4">&nbsp;&nbsp;&nbsp;&nbsp;Vue.set(target,propertyName/index,value)</a>
+</h3>
+<h3 class="topic">
+<a name="7870gt4rmmga023mlrjq58p2rr">&nbsp;&nbsp;&nbsp;&nbsp;vm.$set(target,propertyName/index,value)</a>
+</h3>
+<h3 class="topic">
+<a name="5q7940rgun289rsaog43sjbr3u">&nbsp;&nbsp;Vue如何监测data中数组中的数据</a>
+</h3>
+<h3 class="topic">
+<a name="6j6bmptsm3r1shn7c5nkm31h00">&nbsp;&nbsp;&nbsp;通过包裹数组更新元素的方法实现，本质上做了两件事</a>
+</h3>
+<h3 class="topic">
+<a name="0rom8nfsth1j1q5t6s09t1umgp">&nbsp;&nbsp;&nbsp;&nbsp;调用原生对应方法对数组进行更新</a>
+</h3>
+<h3 class="topic">
+<a name="6fv6o11une7rl9qvj4lkqi5ea2">&nbsp;&nbsp;&nbsp;&nbsp;重新解析模板，进而更新页面</a>
+</h3>
+<h3 class="topic">
+<a name="57ggi9vhd0i4cfp8m994fqqav0">&nbsp;&nbsp;&nbsp;数组中的每一项没有单独为其服务的setter，所以整体修改数组中的每一项Vue不会监测，即arr[0] = &hellip;没有效果</a>
+</h3>
+<h3 class="topic">
+<a name="1qr9qfeddp74v5b4q79se3m8t5">&nbsp;&nbsp;&nbsp;&reg; 如需在Vue修改数组中某个元素一定要用如下方法</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">Vue.set（）或者vm.$set（）不能给vm或者vm的根数据对象添加属性，也就是括号内第一个值不能是vm</span>
+</p>
+<h3 class="topic">
+<a name="51mt59g80fsf3iml840kks9fi3">&nbsp;&nbsp;&nbsp;&nbsp;使用这些数组本来的API：push（）、pop（）、shift（）、unshift（）、splice（）、sort（）、reverse（）</a>
+</h3>
+<h3 class="topic">
+<a name="2r01vgipdgvifn5b5tke62vje7">&nbsp;&nbsp;&nbsp;&nbsp;Vue.set(target,propertyName/index,value)</a>
+</h3>
+<h3 class="topic">
+<a name="3g2qo2sg61lvv55anrct6jai2n">&nbsp;&nbsp;&nbsp;&nbsp;vm.$set(target,propertyName/index,value)</a>
+</h3>
+<h3 class="topic">
+<a name="6o20913njsih22np0m63i645q0">&nbsp;属性</a>
+</h3>
+<h3 class="topic">
+<a name="0seiglud1bbq8tj5lsj4pjfclr">&nbsp;&nbsp;el</a>
+</h3>
+<h3 class="topic">
+<a name="1ta4rbq2p0u1gjgejrlir8icqf">&nbsp;&nbsp;&nbsp;el写法</a>
+</h3>
+<h3 class="topic">
+<a name="6ltpnl6nonrfuuki461rsb1nq8">&nbsp;&nbsp;&nbsp;&nbsp;new vue时配置el属性</a>
+</h3>
+<h3 class="topic">
+<a name="3sc17tdqk2ccm5eg48jp41ogj6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="201" src="VUE_files/3dm3cq1uks4qpf8726emm587nf.png" width="650"></p>
+<h3 class="topic">
+<a name="38fu02r2qkfmpshli7kgb9jes4">&nbsp;&nbsp;&nbsp;&nbsp;先创建Vue实例，随后通过实例.$mount('#root')指定el的值</a>
+</h3>
+<h3 class="topic">
+<a name="6p7qd5v4b63792p8nd4vaojkfp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="189" src="VUE_files/1pd4grp51o9bbt5u4h3d79fjv0.png" width="551"></p>
+<h3 class="topic">
+<a name="5jbi2530i83jmgfbuk77lif81j">&nbsp;&nbsp;data</a>
+</h3>
+<h3 class="topic">
+<a name="0bnj2gtg25bvc3p69bg99aj8uk">&nbsp;&nbsp;&nbsp;data写法</a>
+</h3>
+<h3 class="topic">
+<a name="5rf73j7097pios51cpmfd01brb">&nbsp;&nbsp;&nbsp;&nbsp; 对象式</a>
+</h3>
+<h3 class="topic">
+<a name="2uu6c4amuk8krd93hkcct0v75u">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="125" src="VUE_files/2hmd11o5pfoipdk21h921jnck2.png" width="561"></p>
+<h3 class="topic">
+<a name="4nso8ali4s4akup45msp7ji62u">&nbsp;&nbsp;&nbsp;&nbsp;函数式</a>
+</h3>
+<h3 class="topic">
+<a name="7tcg3q27io12up9vooqct7tnrl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/3uuks1hup5m82degr7428hkj9p.png"></p>
+<h3 class="topic">
+<a name="7891mmkhpvp8ancqmu7d4ui2ml">&nbsp;&nbsp;computed：计算属性</a>
+</h3>
+<h3 class="topic">
+<a name="5vjgbk0044uitn2lff18p4m9u4">&nbsp;&nbsp;&nbsp;定义</a>
+</h3>
+<h3 class="topic">
+<a name="3051dbl52bg8pcppr9ttme2u5g">&nbsp;&nbsp;&nbsp;&nbsp;要用的属性不存在，要通过已有的属性计算得来（通过data中的数据计算得来）</a>
+</h3>
+<h3 class="topic">
+<a name="39n3o12sj64a79baa8mkcvmnij">&nbsp;&nbsp;&nbsp;原理</a>
+</h3>
+<h3 class="topic">
+<a name="2o3ifmbnh4ishi8a64vdaakbii">&nbsp;&nbsp;&nbsp;&nbsp;底层借助Object.defineProperty方法提供的getter和setter</a>
+</h3>
+<h3 class="topic">
+<a name="3h99j7s13nomfa95g5h1gb89r2">&nbsp;&nbsp;&nbsp;get函数什么时候执行？</a>
+</h3>
+<h3 class="topic">
+<a name="75bm6rck3q1nrt4si4vsid3io5">&nbsp;&nbsp;&nbsp;&nbsp;初次读取时会执行一次</a>
+</h3>
+<h3 class="topic">
+<a name="1gqesh3v071re08ckjm3buq9ak">&nbsp;&nbsp;&nbsp;&nbsp;当依赖的函数改变时会再次调用</a>
+</h3>
+<h3 class="topic">
+<a name="62koib5qgovb6mqeirh3rmcdm9">&nbsp;&nbsp;&nbsp;优势</a>
+</h3>
+<h3 class="topic">
+<a name="7176odfcoio0fpvb68m1vmr558">&nbsp;&nbsp;&nbsp;&nbsp;与methods相比，内部有缓存机制（复用）效率更高，调试方便</a>
+</h3>
+<h3 class="topic">
+<a name="6d45uk7vqhm0u51gba6tc0n97v">&nbsp;&nbsp;&nbsp;备注</a>
+</h3>
+<h3 class="topic">
+<a name="148nd665k6a7k61fqlp47nngs6">&nbsp;&nbsp;&nbsp;&nbsp;计算属性最终会出现在vm上，直接读取使用即可</a>
+</h3>
+<h3 class="topic">
+<a name="48td7e7dthsr91ljivu33sdi97">&nbsp;&nbsp;&nbsp;&nbsp;如果计算属性要被修改，必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变</a>
+</h3>
+<h3 class="topic">
+<a name="3ukd1t0a752fgrk9v2elou4mt7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="500" src="VUE_files/4p4asmn3g59hb2ss7slktraf15.png" width="530"></p>
+<h3 class="topic">
+<a name="6ngf504vhlgeoi0d7gf53cc3v1">&nbsp;&nbsp;&nbsp;&nbsp;计算属性依赖data中的数据时，data中它所依赖的数据变化时，他也跟着变化</a>
+</h3>
+<h3 class="topic">
+<a name="2ah2lelkti8p7j9l062mdo0jf4">&nbsp;&nbsp;&nbsp;&nbsp;简写</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">只有get，没有set才能简写</span>
+</p>
+<h3 class="topic">
+<a name="7qnmgovg9t2iqoso6k1lf458oa">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="284" src="VUE_files/09m66muaitr029ca6en52anq7u.png" width="471"></p>
+<h3 class="topic">
+<a name="0ohevhqc0k3h7fu0ikid1dstjn">&nbsp;&nbsp;watched：监视属性</a>
+</h3>
+<h3 class="topic">
+<a name="79ogd062mtrvkg94ln4q3akhcg">&nbsp;&nbsp;&nbsp;当被监视的属性变化时，回调函数自动调用，进行相关操作</a>
+</h3>
+<h3 class="topic">
+<a name="25pot4g6vtl9vv81ttr6lcvv8e">&nbsp;&nbsp;&nbsp;监视的属性必须存在，才能进行监视</a>
+</h3>
+<h3 class="topic">
+<a name="10q1o34g466f5v2bu52ojt2rkk">&nbsp;&nbsp;&nbsp;data中的属性可以被监视，计算属性computed中的属性也可以被监视</a>
+</h3>
+<h3 class="topic">
+<a name="7qtjc9aqcpehdv7fk8c43grin2">&nbsp;&nbsp;&nbsp;监视的两种写法</a>
+</h3>
+<h3 class="topic">
+<a name="47kfcdgqlu9n1h6ca90ff0jr07">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="464" src="VUE_files/4h6t74c4r53ud0ddur7vt2u61i.png" width="462"></p>
+<h3 class="topic">
+<a name="0t8n9hqvf3gkaudtpm33cm26jr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Vue时传入watch配置</a>
+</h3>
+<h3 class="topic">
+<a name="6ds7p659k5ilijhark7bdie1ft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过vm.$watch监视</a>
+</h3>
+<h3 class="topic">
+<a name="44u1auug421uc2kju4ros67unj">&nbsp;&nbsp;&nbsp;立即执行</a>
+</h3>
+<h3 class="topic">
+<a name="2fhfnbdhf863r1ovusegprplt4">&nbsp;&nbsp;&nbsp;&nbsp;immediate：true</a>
+</h3>
+<h3 class="topic">
+<a name="42ktapljus750m3bicea7juvu8">&nbsp;&nbsp;&nbsp;深度监视</a>
+</h3>
+<h3 class="topic">
+<a name="11b0e139dirgi4civ9ht1du1sq">&nbsp;&nbsp;&nbsp;&nbsp;deep：true</a>
+</h3>
+<h3 class="topic">
+<a name="42a828c661l70l53l8rtkcla4i">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="501" src="VUE_files/1gj4knh47sglusuuf6dhtd1re3.png" width="669"></p>
+<h3 class="topic">
+<a name="0he5go0odfgv98jjbacevk7sju">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vue中的watch默认不监视对象内部值的改变（一层）</a>
+</h3>
+<h3 class="topic">
+<a name="6a0ioseov3emndbsnjrk0gugp1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配置watch里面的deep：true可以监测到对象内部值得改变（多层）</a>
+</h3>
+<h3 class="topic">
+<a name="31b807rg2grg1t895miu2f5nvs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vue自身可以读取到或者改变多层的内部值，但是Vue提供的watch默认不能监视到</a>
+</h3>
+<h3 class="topic">
+<a name="14fta863v6dplfgm3edkphpnor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用watch时根据数据的具体结构，决定是否采用深度监视</a>
+</h3>
+<h3 class="topic">
+<a name="691kj238htilicfass8oe8vda8">&nbsp;&nbsp;&nbsp;监视简写</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">监视可以简写的前提条件是被监视这个属性里面只有handler（）{}</span>
+</p>
+<h3 class="topic">
+<a name="6me8bom6skkvqdulbi1of0smhd">&nbsp;&nbsp;&nbsp;&nbsp;new Vue直接配置时简写第一种</a>
+</h3>
+<h3 class="topic">
+<a name="22iegfkh8kth93ir9rgbgnr7qs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="278" src="VUE_files/2sn5ts484cvibb3tmcv02v4vlt.png" width="561"></p>
+<h3 class="topic">
+<a name="7ctfssgfev54gsa2o4r2etjm4m">&nbsp;&nbsp;&nbsp;&nbsp;vm.$watch监视简写</a>
+</h3>
+<h3 class="topic">
+<a name="4n2chqkj6aucppq67b5bfftdsm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="230" src="VUE_files/47ibkd5sub0004ktn6u09kt669.png" width="533"></p>
+<h3 class="topic">
+<a name="2a6brm3o26dfvl5pcp1ja9fnn7">&nbsp;&nbsp;&nbsp;计算属性与监视属性区别</a>
+</h3>
+<h3 class="topic">
+<a name="7rhcfto89hur66pb2cmhrc5jbo">&nbsp;&nbsp;&nbsp;&nbsp;computed能完成的功能，watch都可以完成</a>
+</h3>
+<h3 class="topic">
+<a name="4v9od8hcn41gl8entaen2hs6ce">&nbsp;&nbsp;&nbsp;&nbsp;watch能完成的功能，computed不一定能完成，例如：watch可以进行异步操作</a>
+</h3>
+<h3 class="topic">
+<a name="6g0vgf2lv5irs114oq23od7um0">&nbsp;&nbsp;&nbsp;原则</a>
+</h3>
+<h3 class="topic">
+<a name="4va8hevb5fs7q79vu9tf29dc2c">&nbsp;&nbsp;&nbsp;&nbsp;&loz; 所有被Vue管理的函数，最好写成普通函数，这样this的指向才是vm或者组件实例对象</a>
+</h3>
+<h3 class="topic">
+<a name="5mi3nesuf5duqu9m13rgei1c61">&nbsp;&nbsp;&nbsp;&nbsp;所有不被Vue管理的函数（定时器函数、AJAX的回调函数，Promise的回调函数）最好写成箭头函数，这样this的指向才是vm或者组件实例对象</a>
+</h3>
+<h3 class="topic">
+<a name="5ti5g38irbjoplenp28ec1c25c">&nbsp;&nbsp;props：接收数据属性</a>
+</h3>
+<h3 class="topic">
+<a name="7vpj6kifqb0k3dbqm9te6luubd">&nbsp;&nbsp;&nbsp;功能</a>
+</h3>
+<h3 class="topic">
+<a name="2c24sda83hgeuv3tshtku0m83k">&nbsp;&nbsp;&nbsp;&nbsp;让组件接收外部传过来的数据</a>
+</h3>
+<h3 class="topic">
+<a name="10ptg7ld4j846pdu5j8h2l0gig">&nbsp;&nbsp;&nbsp;数据传递</a>
+</h3>
+<h3 class="topic">
+<a name="04c7280kuvt6mgdrcf5hekkjoq">&nbsp;&nbsp;&nbsp;&nbsp;父组件传递数据</a>
+</h3>
+<h3 class="topic">
+<a name="1kupb0de1l2st202ejjkv70vhk">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="318" src="VUE_files/410d9gi6onr2fe3q8c1bfv86o5.png" width="522"></p>
+<h3 class="topic">
+<a name="3obo1gsvk89q22o7p4nriof7ce">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;子组件名 传递数据定义的名字="具体数据"/&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="64cpooehsb6sssq3f3ehciinhs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Demo name="xxx"/&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="6gs60ga3nqn7qrmrf21qd095pt">&nbsp;&nbsp;&nbsp;&nbsp;子组件接收数据</a>
+</h3>
+<h3 class="topic">
+<a name="5gdi8vde6ugm7prq563ma8c5nn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="454" src="VUE_files/21l15i1h4l98k8v70rn4oi75ju.png" width="406"></p>
+<h3 class="topic">
+<a name="4ege3d3p2i3esib1vbn07nt8jr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一种方式（只接收）【数组形式】</a>
+</h3>
+<h3 class="topic">
+<a name="3l92etfjuqnorau76ou9qek479">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;props:['name'，&lsquo;age&rsquo;]</a>
+</h3>
+<h3 class="topic">
+<a name="4a9pevmlc6c06rt3qb3hv7ce7i">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二种方式（限制类型）【对象形式】</a>
+</h3>
+<h3 class="topic">
+<a name="1qf18dtcv2sndef329miffbkv7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;props:{name:String}</a>
+</h3>
+<h3 class="topic">
+<a name="1jrp7oua43hknscrm98d3rtl8s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三种方式（限制类型、限制必要性、指定默认值）【对象形式】</a>
+</h3>
+<h3 class="topic">
+<a name="039k5sfi6nm0ckablht7ggtjba">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;props:{&#13;
+ name:{&#13;
+type:String, //类型&#13;
+required:true, //必要性&#13;
+default:'老王' //默认值&#13;
+}&#13;
+ }</a>
+</h3>
+<h3 class="topic">
+<a name="7vf3c0h3otpja1t4qolk1ks233">&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="351jjpne5rhjl9qq7gbbh9j7js">&nbsp;&nbsp;&nbsp;&nbsp;props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据</a>
+</h3>
+<h3 class="topic">
+<a name="64uci96jt2qv7qlel1k01lmfi3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="384" src="VUE_files/4rhjoag1bunqu0cnvltkscshfu.png" width="564"></p>
+<h3 class="topic">
+<a name="20j9m3aguledrdajikt74rj186">&nbsp;mixin混入</a>
+</h3>
+<h3 class="topic">
+<a name="034kicb032ned5n53ljnoc2n8a">&nbsp;&nbsp;功能</a>
+</h3>
+<h3 class="topic">
+<a name="4jkvlfvlpvanj0lkcm8a511pc6">&nbsp;&nbsp;&nbsp;可以把多个组件共用的配置提取成一个混入对象</a>
+</h3>
+<h3 class="topic">
+<a name="4v5r3nfktnmvobp7t8f4649ib8">&nbsp;&nbsp;使用方式</a>
+</h3>
+<h3 class="topic">
+<a name="609pvl73efag43olr86aptje7j">&nbsp;&nbsp;&nbsp;定义混入</a>
+</h3>
+<h3 class="topic">
+<a name="4l2h0n5uetsmk0lsfk9jvodj8a">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="251" src="VUE_files/1facstov6411p5u605bhgjdfm2.png" width="440"></p>
+<h3 class="topic">
+<a name="5gujavhg4s3timt9e018p9nptu">&nbsp;&nbsp;&nbsp;使用混入</a>
+</h3>
+<h3 class="topic">
+<a name="1e655drj7f3hnuo250c3jp1db7">&nbsp;&nbsp;&nbsp;&nbsp;全局混入 Vue.mixin(xxx)</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">main.js中</span>
+</p>
+<h3 class="topic">
+<a name="6spvifsjmaucdd4quo0a1rjpha">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/3bqojfmeq20i6m31o37p60vhvv.png"></p>
+<h3 class="topic">
+<a name="5d9a5ur6a1a8u6cu8uu30lq5d2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/3stbbcd6tarnubu67bnb5da4mp.png"></p>
+<h3 class="topic">
+<a name="6pvn84brh8a3i1r3jjbkoj2uss">&nbsp;&nbsp;&nbsp;&nbsp;局部混入 mixins:[xxx]</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">组件中</span>
+</p>
+<h3 class="topic">
+<a name="2nkuqemka4ko00kd98r58hi5t2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/5paqu92qs8noq2q28ch06cb0bb.png"></p>
+<h3 class="topic">
+<a name="6q84fgfm6l29hcq8v4ek0g5lgn">&nbsp;filter过滤器</a>
+</h3>
+<h3 class="topic">
+<a name="6d0vpm311ghkn963d3rbv1p1i7">&nbsp;&nbsp;定义</a>
+</h3>
+<h3 class="topic">
+<a name="24sbgtuf4vlah97q4g72plrp9s">&nbsp;&nbsp;&nbsp;对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）</a>
+</h3>
+<h3 class="topic">
+<a name="1l1746f0fg6fa8rdhtb6kgi8fp">&nbsp;&nbsp;语法</a>
+</h3>
+<h3 class="topic">
+<a name="5q5h8uj83ovkmmufqrm5oi5kju">&nbsp;&nbsp;&nbsp;注册过滤器：Vue.filter(name,callback)【全局过滤器】 或 new Vue{filters:{}}【局部过滤器】</a>
+</h3>
+<h3 class="topic">
+<a name="1o57chbvosjh91sn3gr4g56c1g">&nbsp;&nbsp;&nbsp;使用过滤器：{{ xxx | 过滤器名}}  或  v-bind:属性 = "xxx | 过滤器名"</a>
+</h3>
+<h3 class="topic">
+<a name="63b5grpe201tc7ba9f23tc10di">&nbsp;&nbsp;备注</a>
+</h3>
+<h3 class="topic">
+<a name="615if96qr68h18rpqnltmb7qgh">&nbsp;&nbsp;&nbsp;过滤器也可以接收额外参数、多个过滤器也可以串联</a>
+</h3>
+<h3 class="topic">
+<a name="6dror7ejsra9djt2d45kvkeurr">&nbsp;&nbsp;&nbsp;并没有改变原本的数据, 是产生新的对应的数据，所以要return</a>
+</h3>
+<h3 class="topic">
+<a name="6tfu5jl2nvj37ucdtphc5q3256">&nbsp;&nbsp;示例</a>
+</h3>
+<h3 class="topic">
+<a name="56krps3gvvpjd6gjqrmvkl4gk5">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="326" src="VUE_files/1ueql4bt0jnav7f5nokdmeiism.png" width="649"></p>
+<h3 class="topic">
+<a name="03rb18r10n7qj19dta678d6bfh">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="601" src="VUE_files/5r3f4td54e5b658eurs1q1ns0k.png" width="597"></p>
+<h3 class="topic">
+<a name="7s6tio363ccifme4l4522psp3u">&nbsp;生命周期</a>
+</h3>
+<h3 class="topic">
+<a name="6eiihvcahg47gtboa4nnuc3jfh">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="1019" src="VUE_files/4evqvmo6j8n6k0j9u5bb4stq9s.png" width="791"></p>
+<h3 class="topic">
+<a name="0k1ukrviflennh6rb3m986sek2">&nbsp;&nbsp;&nbsp;又名</a>
+</h3>
+<h3 class="topic">
+<a name="0occo0ndl07prqi6ncrsaflogf">&nbsp;&nbsp;&nbsp;&nbsp;生命周期回调函数（没调用，但是执行了）、生命周期函数、生命周期钩子</a>
+</h3>
+<h3 class="topic">
+<a name="6h84v7amefck76t77qhaop5rs2">&nbsp;&nbsp;&nbsp;概念</a>
+</h3>
+<h3 class="topic">
+<a name="6ujait4brp6rt7drqk9s7j50mu">&nbsp;&nbsp;&nbsp;&nbsp;Vue在关键时刻帮我们调用的一些特殊名称的函数</a>
+</h3>
+<h3 class="topic">
+<a name="39fqfu65l6kqf0jk61nfa2p0gs">&nbsp;&nbsp;&nbsp;生命周期函数中的this指向是vm或者组件实例对象</a>
+</h3>
+<h3 class="topic">
+<a name="49ef1onmgesb6ae464lsddef8m">&nbsp;&nbsp;&nbsp;常用的生命周期钩子</a>
+</h3>
+<h3 class="topic">
+<a name="78a320c3tjgn8kpn85tdh40dfe">&nbsp;&nbsp;&nbsp;&nbsp;mounted</a>
+</h3>
+<h3 class="topic">
+<a name="55fe7va83ojr7varguhn3jkg0c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发送AJAX请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】</a>
+</h3>
+<h3 class="topic">
+<a name="3rm3ja1a151bm65so04pr23cb1">&nbsp;&nbsp;&nbsp;&nbsp;beforeDestroy</a>
+</h3>
+<h3 class="topic">
+<a name="12ndlca02jveb1pb8bsteh4eev">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】</a>
+</h3>
+<h3 class="topic">
+<a name="7lnu7hm60qao2bj3sqroh8uqch">&nbsp;&nbsp;&nbsp;关于销毁Vue实例</a>
+</h3>
+<h3 class="topic">
+<a name="6kvdcul2l3kjc5tn3gphbbjull">&nbsp;&nbsp;&nbsp;&nbsp;销毁后借助Vue开发者工具看不到任何消息</a>
+</h3>
+<h3 class="topic">
+<a name="2b3p6chr6vnv2890k1m3l9rf5q">&nbsp;&nbsp;&nbsp;&nbsp;销毁后自定义事件会失效，但原生DOM事件依然有效</a>
+</h3>
+<h3 class="topic">
+<a name="7jk7f1gp8279fvui6mbvgk73cq">&nbsp;&nbsp;&nbsp;&nbsp;一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程了</a>
+</h3>
+<h3 class="topic">
+<a name="0ootklh0kgbnqjo0ui3137454c">&nbsp;动画与过渡</a>
+</h3>
+<h3 class="topic">
+<a name="4s2jh4kigrdlbsklgam5g638ds">&nbsp;&nbsp;写法</a>
+</h3>
+<h3 class="topic">
+<a name="0qgdgir3vlvgkhnldpnsisn5cu">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="400" src="VUE_files/2dmpqgr1jr07t8krcja3lgt3cp.png" width="391"></p>
+<h3 class="topic">
+<a name="5jt36vb6lvo7rpuuucltilo98i">&nbsp;&nbsp;&nbsp;若有name属性，定义动画或者过渡样式的时候不要写.v-enter等,要写成.名字-enter</a>
+</h3>
+<p class="topicImage">
+<img height="106" src="VUE_files/3ddlkiov5ggunp5te2o761if33.png" width="488"></p>
+<h3 class="topic">
+<a name="39tg8uavgcsi10qvvpr9efjjch">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="26" src="VUE_files/62njt8i8dmtn5jcp3rv00n5fg2.png" width="635"></p>
+<h3 class="topic">
+<a name="36048rdr1t945epg2mj598vkft">&nbsp;&nbsp;动画</a>
+</h3>
+<h3 class="topic">
+<a name="7pdcfbevll7rkl0m7rruv4onhu">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="485" src="VUE_files/7op6d97pgvu59odo1gc82f1rkn.png" width="583"></p>
+<h3 class="topic">
+<a name="11o0j2ucgj5itbphhvg3k1cq6u">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="556" src="VUE_files/0ib1mf6have616lbojrghmp9ml.png" width="586"></p>
+<h3 class="topic">
+<a name="1g8j4evrmd77jdmdmfmud3e3h7">&nbsp;&nbsp;过渡</a>
+</h3>
+<h3 class="topic">
+<a name="6avnk6kdagv7kerddsgj9jr1vb">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="458" src="VUE_files/3t46vo9tpcl0h183o0l2ia44l1.png" width="543"></p>
+<h3 class="topic">
+<a name="6plnm8dd04j3ka9hp9jomc7jtr">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="652" src="VUE_files/2412bo99tueh24vs8bs83jm87m.png" width="517"></p>
+<h3 class="topic">
+<a name="0uthcrk5ljnqven9ploauohqgh">&nbsp;&nbsp;第三方</a>
+</h3>
+<h3 class="topic">
+<a name="15l1bulqt61hsng9s23dt0bvko">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="644" src="VUE_files/0r9p2oj13c75p63fjkf82294nr.png" width="540"></p>
+<h2 class="topic">
+<a name="56n0bqthhth8m0487bm3k2k1gd">2.vue组件化编程</a>
+</h2>
+<p class="labelsAndMarkers">
+<span class="label">单文件组件：一个文件只包含一个组件</span>
+</p>
+<h3 class="topic">
+<a name="3mhfg30u1332smlmq3frrtr9cv">&nbsp;组件概念</a>
+</h3>
+<h3 class="topic">
+<a name="5ci6s7pjftitim3ulegnocl2n3">&nbsp;&nbsp;用来实现局部(特定)功能效果的代码集合</a>
+</h3>
+<h3 class="topic">
+<a name="3q3q3isgg28b3qo31rolv2ru99">&nbsp;组件（.vue 文件）的组成</a>
+</h3>
+<h3 class="topic">
+<a name="06ah67bam2aa48u8shs1i9s4nh">&nbsp;&nbsp;模板页面</a>
+</h3>
+<h3 class="topic">
+<a name="4jei7351ghllp950bme3r03a22">&nbsp;&nbsp;&nbsp;&lt;template&gt;&#13;
+页面模板 &#13;
+&lt;/template&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="72k7k616inom18g0ijnj56j5uf">&nbsp;&nbsp;JS 模块对象</a>
+</h3>
+<h3 class="topic">
+<a name="6mlqtjrf1eejvsovr7l6ntre8e">&nbsp;&nbsp;&nbsp;&lt;script&gt;&#13;
+export default {&#13;
+	data() {return{}},&#13;
+methods:{},&#13;
+computed:{},&#13;
+components:{}&#13;
+}&#13;
+&lt;/script&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="2msvjuvrilqtfcrd2fkjf3uc3u">&nbsp;&nbsp;样式</a>
+</h3>
+<h3 class="topic">
+<a name="3mua0e5bqi8kpsqpovv5ns07f7">&nbsp;&nbsp;&nbsp;&lt;style&gt;&#13;
+样式定义&#13;
+&lt;/style&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="6o6bdib3ajp4bebmh2jk799keh">&nbsp;组件的使用</a>
+</h3>
+<h3 class="topic">
+<a name="2g95iebvp7s824pia68vne2i6a">&nbsp;&nbsp;局部注册组件的使用</a>
+</h3>
+<h3 class="topic">
+<a name="66jmn46sb1j19dgt5cp7uho3bm">&nbsp;&nbsp;&nbsp;引入组件（import）+注册组件（components）：{}</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">在需要使用的组件中引入</span>
+</p>
+<p class="topicImage">
+<img height="111" src="VUE_files/3028pc57vhlhcs71pikhc3o0gc.png" width="635"></p>
+<h3 class="topic">
+<a name="708j12q9mqs9ir5jg3ek08furf">&nbsp;&nbsp;&nbsp;&nbsp;使用组件</a>
+</h3>
+<p class="topicImage">
+<img height="62" src="VUE_files/2a0beuqlu1ff4f63m97n7ec97e.png" width="360"></p>
+<h3 class="topic">
+<a name="69q3so2jk051vgcv9btaifdebg">&nbsp;&nbsp;全局注册组件的使用</a>
+</h3>
+<h3 class="topic">
+<a name="6imcmgegvu5d35t5p9cfijuoss">&nbsp;&nbsp;&nbsp;引入组件（import）+注册组件（Vue.component（'组件名',组件））</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">在main.js中引入</span>
+</p>
+<p class="topicImage">
+<img height="358" src="VUE_files/49ho2507vdftt6gqco18j5m9e8.png" width="495"></p>
+<h3 class="topic">
+<a name="34p2hokkhrm3qsoui78siugl3s">&nbsp;&nbsp;&nbsp;&nbsp;使用组件</a>
+</h3>
+<p class="topicImage">
+<img height="62" src="VUE_files/0e31gapoqe3cpv5rmtsjsp1fbj.png" width="360"></p>
+<h3 class="topic">
+<a name="4dj0l0hhqti89cf67b8q5oomf2">&nbsp;VueComponent构造函数</a>
+</h3>
+<h3 class="topic">
+<a name="56hjbi8trn6q0c01ghkl259mko">&nbsp;&nbsp;组件本质是一个名为VueComponent的构造函数</a>
+</h3>
+<h3 class="topic">
+<a name="3vei1knf0j4g91tiudq83o26g3">&nbsp;&nbsp;我们只需要写&lt;school/&gt;或&lt;school&gt;&lt;/school&gt;，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：new VueComponent(options)</a>
+</h3>
+<h3 class="topic">
+<a name="46b60n7j1q911n915k31gg775k">&nbsp;&nbsp;关于this指向</a>
+</h3>
+<h3 class="topic">
+<a name="4hei3m56kqqui6cqloobvildb8">&nbsp;&nbsp;&nbsp;组件配置中</a>
+</h3>
+<h3 class="topic">
+<a name="26i9uqmqgti47b4oi0l1g32gnf">&nbsp;&nbsp;&nbsp;&nbsp;data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【VueComponent实例对象】</a>
+</h3>
+<h3 class="topic">
+<a name="5tr6het8ulf8r79on7ob53nm29">&nbsp;&nbsp;&nbsp;new Vue(options)配置中</a>
+</h3>
+<h3 class="topic">
+<a name="33r7r81q2ic7qaa7sm3210hkib">&nbsp;&nbsp;&nbsp;&nbsp;data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【Vue实例对象】</a>
+</h3>
+<h3 class="topic">
+<a name="11volriqdk9rku8lgoo4rbmnf0">&nbsp;&nbsp;内置关系</a>
+</h3>
+<h3 class="topic">
+<a name="5sr0jjot8cm007iafkjqv7odn0">&nbsp;&nbsp;&nbsp;注：这个关系使得组件实例对象（vc）也可以访问到Vue原型上的属性、方法</a>
+</h3>
+<p class="topicImage">
+<img height="424" src="VUE_files/3uqlrh8kv96j6pclvjn81u4aq4.png" width="723"></p>
+<h3 class="topic">
+<a name="0m99jlqkgnrqrtsmhqq8vksh6t">&nbsp;组件间数据通信</a>
+</h3>
+<h3 class="topic">
+<a name="5svn6iq7vgdl0in9ef2djc8piu">&nbsp;&nbsp;props：父给子传递数据</a>
+</h3>
+<h3 class="topic">
+<a name="4ohtufclmbnmr8p1shpjhtmivh">&nbsp;&nbsp;&nbsp;父组件中在子组件自身传递数据</a>
+</h3>
+<h3 class="topic">
+<a name="34buf1cmj4k428o1flke3sof20">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/2friv46qa978sri668c2vca8jr.png"></p>
+<h3 class="topic">
+<a name="14bqdfbql759q68a6m0s1gbm47">&nbsp;&nbsp;&nbsp;子组件在props接收父组件传递过来的数据</a>
+</h3>
+<h3 class="topic">
+<a name="5btj01q28a73fa9efljqalvjom">&nbsp;&nbsp;&nbsp;&nbsp;props中的数据直接挂载到组件实例中，直接用this...可以访问的到</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/2fj69o51epsfga36via5l36fk5.png"></p>
+<h3 class="topic">
+<a name="009u5n5i5rh1s0s51o0hif6fq8">&nbsp;&nbsp;自定义事件：子给父传递数据</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">【$on、$emit】</span>
+</p>
+<h3 class="topic">
+<a name="2r7h1akdort6mffjqi4r1c4ac0">&nbsp;&nbsp;&nbsp;子组件中触发自定义事件</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">传递方emit触发</span>
+</p>
+<h3 class="topic">
+<a name="077ijh7irh1gfbp74qj7cd7drb">&nbsp;&nbsp;&nbsp;&nbsp;在子组件中有一个点击事件：点击事件中的方法中this.$emit('自定义事件名称'，传递的参数)</a>
+</h3>
+<h3 class="topic">
+<a name="31rtafjo181odlobege817s9en">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="54" src="VUE_files/2qvttsoj92bbnverrrurb3tn4u.png" width="394"></p>
+<h3 class="topic">
+<a name="50utljhd1u01b8qdsrdec1ktdf">&nbsp;&nbsp;&nbsp;父组件定义自定义事件并接收数据</a>
+</h3>
+<h3 class="topic">
+<a name="7rtv0e46jlh51gmfnvibp0v2o8">&nbsp;&nbsp;&nbsp;&nbsp;在父组件中的子标签上写自定义事件及方法@自定义事件名称="方法名称"</a>
+</h3>
+<h3 class="topic">
+<a name="7pqvh79eaf9ot8hglh5vi9554k">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父组件methods方法中定义test方法methods：{test（接收的参数） {}}</a>
+</h3>
+<p class="topicImage">
+<img height="66" src="VUE_files/6ev02ti572uvucmhr62vsk5pe0.png" width="694"></p>
+<h3 class="topic">
+<a name="3k8648oj4cq7dh0dpnfmtl0m5l">&nbsp;&nbsp;全局事件总线：任意组件间通信</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">$bus</span>
+</p>
+<h3 class="topic">
+<a name="0qm6a8jcgv4f6gmqqkblk4cdsu">&nbsp;&nbsp;&nbsp;安装全局事件总线</a>
+</h3>
+<h3 class="topic">
+<a name="5rgek3971o62a2rpv057i2fu33">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="157" src="VUE_files/0c0km7cv71u8b2afqul3p1raam.png" width="609"></p>
+<h3 class="topic">
+<a name="4q5k5lubmjeiiqisn8kuf213ot">&nbsp;&nbsp;&nbsp;使用全局事件总线</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">传递方emit触发</span>
+</p>
+<h3 class="topic">
+<a name="1jdpc7f4761fo7agbd6ful9o5p">&nbsp;&nbsp;&nbsp;&nbsp;传递方this.$bus.$emit('xxx',数据）</a>
+</h3>
+<h3 class="topic">
+<a name="459n3d2lsbucg96epmngch5ml4">&nbsp;&nbsp;&nbsp;&nbsp;接收方this.$bus.$on('xxx',this.方法名)/this.$bus.$on('xxx',回调函数)【回调函数写成箭头函数】</a>
+</h3>
+<h3 class="topic">
+<a name="05nhlco82o0pttq4edi0is3va0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="170" src="VUE_files/0i884s3h87v37s1qlllrs0oftb.png" width="438"></p>
+<h3 class="topic">
+<a name="2pdh7unsjnk5qk5fvjgas198em">&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="3q390jptrsul84a107lbapapoq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">$on:绑定事件；$emit:触发事件；$off:解绑事件</span>
+</p>
+<p class="topicImage">
+<img height="32" src="VUE_files/7bif45bnku9pfgo92nsgsk3n43.png" width="512"></p>
+<h3 class="topic">
+<a name="0tgss4lg0j6dsvt2vrmeuqvtqf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="73" src="VUE_files/6sar62el4blk6qkkn1tjfaig52.png" width="325"></p>
+<h3 class="topic">
+<a name="7rb4aq5i4v5p80nekmkiobcas4">&nbsp;&nbsp;消息订阅与发布：任意组件间通信</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">pubsub.js</span>
+</p>
+<div class="notesContainer">
+<p>react用的多，vue用的较少</p>
+</div>
+<h3 class="topic">
+<a name="1fu44gjl7vqfego4mmkc92cs2e">&nbsp;&nbsp;&nbsp;安装pubsub</a>
+</h3>
+<h3 class="topic">
+<a name="1ritagi2t65ujktfrtokh0kpp3">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="37" src="VUE_files/2d9vbqisthfbp2eqhrinpt7mop.png" width="277"></p>
+<h3 class="topic">
+<a name="582kn82m5johiet68ca1uofv8p">&nbsp;&nbsp;&nbsp;使用pubsub</a>
+</h3>
+<h3 class="topic">
+<a name="426o4vkn46d4c7ag0nubarl6j5">&nbsp;&nbsp;&nbsp;&nbsp;引入pubsub</a>
+</h3>
+<h3 class="topic">
+<a name="1elvm9fko24kctduc0qiet9gfg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="40" src="VUE_files/3tvlrtcj94nntn410k3eujr0j3.png" width="339"></p>
+<h3 class="topic">
+<a name="320506asrkm1ajcdfdm197k8h0">&nbsp;&nbsp;&nbsp;&nbsp;传递方</a>
+</h3>
+<h3 class="topic">
+<a name="6kqgp005mfrt8i0r2u6nj5rqjl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="41" src="VUE_files/7onm3f516j0u7g2jf54bhctnpe.png" width="257"></p>
+<h3 class="topic">
+<a name="3ujuhss7kn9tuo8g6eq50crhs9">&nbsp;&nbsp;&nbsp;&nbsp;接收方</a>
+</h3>
+<h3 class="topic">
+<a name="2ahe4149rdes36s08o5e2b1908">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="191" src="VUE_files/2nbcij9nmnhfsieelcrrmd018i.png" width="612"></p>
+<h3 class="topic">
+<a name="6oegtfdjfmlla7hti5drigu33o">&nbsp;&nbsp;&nbsp;&nbsp;注意</a>
+</h3>
+<h3 class="topic">
+<a name="4v377lkoo6oi79brd62j0v6ibu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">$on:绑定事件；$emit:触发事件；$off:解绑事件</span>
+</p>
+<p class="topicImage">
+<img height="43" src="VUE_files/62tdo1tg64v6q5tq28fejklnem.png" width="637"></p>
+<h3 class="topic">
+<a name="3rgtqlbk6f47je3hu8pv58h2r2">&nbsp;&nbsp;vuex：万能</a>
+</h3>
+<h3 class="topic">
+<a name="2gaugq96qggoei7s0scbelb2em">&nbsp;&nbsp;插槽：父子组件间通信（一般是结构，即标签）</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">子组件无法决定自己的结构，需要父组件决定</span>
+</p>
+<h3 class="topic">
+<a name="3j0oihvmk7p2c1u6s1pn3fqa08">&nbsp;&nbsp;&nbsp;作用</a>
+</h3>
+<h3 class="topic">
+<a name="3b6kajfj0fai30vm0tai8rgclq">&nbsp;&nbsp;&nbsp;&nbsp;父组件向子组件指定位置插入html结构（默认插槽、具名插槽），或者子组件给父组件传递数据，父组件决定插入子组件对应位置的结构（作用域插槽）</a>
+</h3>
+<h3 class="topic">
+<a name="7jaib6iin7scueiegij6jvqp6c">&nbsp;&nbsp;&nbsp;分类</a>
+</h3>
+<h3 class="topic">
+<a name="11pco8u6cqshuip07a34vldijq">&nbsp;&nbsp;&nbsp;&nbsp;默认插槽</a>
+</h3>
+<h3 class="topic">
+<a name="6aopfoivoqc12tna7mgs9m6tc3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="269" src="VUE_files/14cmnpk610ql7sikl0gtbgi2ol.png" width="400"></p>
+<h3 class="topic">
+<a name="5d1nii9q8v4n11ek8f13jfl38i">&nbsp;&nbsp;&nbsp;&nbsp;具名插槽</a>
+</h3>
+<h3 class="topic">
+<a name="2c53rgld9hs67fni30niv0qnlg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="309" src="VUE_files/5li53ij3rmtsns5llcl6n1d4cm.png" width="400"></p>
+<h3 class="topic">
+<a name="0hebj7vc6k0v4hfvqisp6jnsj4">&nbsp;&nbsp;&nbsp;&nbsp;作用域插槽</a>
+</h3>
+<h3 class="topic">
+<a name="6tb7cut2gs4288bs65nsneujto">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据在子组件中，但是自己不能决定结构，需要将数据传递给父组件，父组件决定结构</a>
+</h3>
+<h3 class="topic">
+<a name="0hp6u0q77bpi4jkmcjf18h1416">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="372" src="VUE_files/45gja6926t3np0rlfcl3dtd122.png" width="659"></p>
+<h3 class="topic">
+<a name="4gbk0n1on9q29s2du37g4opt60">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="444" src="VUE_files/7i9tcp4inh45oondulqdh3psd8.png" width="644"></p>
+<h3 class="topic">
+<a name="7j364taf6v71kd3epadomdjf71">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例子</a>
+</h3>
+<h3 class="topic">
+<a name="6bmbqbg9nah5l38l40b8g7qifj">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/248fvd6em9k33t16su31gcgb73.png"></p>
+<h3 class="topic">
+<a name="4tggoun1fj11dc532mjuk8fm39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父组件</a>
+</h3>
+<h3 class="topic">
+<a name="5hl65rmg1sibauk1ss9721kmja">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="646" src="VUE_files/2p6rrfepj0a9df256ilt0ks1bl.png" width="728"></p>
+<h3 class="topic">
+<a name="0dd66jb1ipn7m8r7ic7pjpp1ni">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子组件1</a>
+</h3>
+<h3 class="topic">
+<a name="6h3aoi3mc92v106brra1j0i92s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="377" src="VUE_files/2e75kt75olabvuqs34jn70tcoe.png" width="687"></p>
+<h3 class="topic">
+<a name="1u7uajd1ftear3qu2ifp24kffj">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子组件2</a>
+</h3>
+<h3 class="topic">
+<a name="0d9vof9kmegua825ocv1pe7d41">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="353" src="VUE_files/5tqdkka97s3bamfhfns4vtrd6i.png" width="683"></p>
+<h3 class="topic">
+<a name="09pjm3fr1jo4889li8850ccm2c">&nbsp;&nbsp;v-model：子组件有表单元素时</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">实现子组件与父组件数据实时同步</span>
+</p>
+<div class="notesContainer">
+<p>v-model是vue框架中的指令，他主要结合表单元素一起使用（文本框、复选框、单选等），它主要的作用是收集表单数据</p>
+<p>@input与@change有区别，@change需要在外面点一下，而input不需要，只要改变就行</p>
+</div>
+<h3 class="topic">
+<a name="6d4en5g0a8ul4l03p055mnpuj6">&nbsp;&nbsp;&nbsp;父子组件数据实时同步实现</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">原理：input事件与value实现</span>
+</p>
+<h3 class="topic">
+<a name="54nuu78r3q2bu7bkkkksbvgmro">&nbsp;&nbsp;&nbsp;&nbsp;父组件传递数据，在子组件input中显示，并接收子组件input改变的值，修改data中的相关数据</a>
+</h3>
+<h3 class="topic">
+<a name="6i3oa5h0a3squ4grpcfccl5bg1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="462" src="VUE_files/34mse2cbn59tjpel4p816nihlm.png" width="566"></p>
+<h3 class="topic">
+<a name="4me29mt5qvum2qaavk8l14nooo">&nbsp;&nbsp;&nbsp;&nbsp;子组件接收父组件的数据在input中展示，并传递自己改变的值在父组件中修改对应的data中的数据</a>
+</h3>
+<h3 class="topic">
+<a name="3kru1vpocqf9in47pt8clg8s6r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="340" src="VUE_files/6356bhijeq41vjtl0je0cjkq8c.png" width="704"></p>
+<h3 class="topic">
+<a name="10mepkf2ecg7651kro41mdfefc">&nbsp;&nbsp;sync属性修饰符【与v-model类似】</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">实现父子组件之间数据实时同步</span>
+</p>
+<h3 class="topic">
+<a name="39v03l8gmdfaef6rijiq3sgi0s">&nbsp;&nbsp;&nbsp;父组件</a>
+</h3>
+<h3 class="topic">
+<a name="2t7let7v9bi8as2ol3kv151ht9">&nbsp;&nbsp;&nbsp;&nbsp;：money.sync="moneys",代表了两个含义</a>
+</h3>
+<h3 class="topic">
+<a name="3uu0q2c9scd4m27d7lb6i3lmtm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给子组件传递了一个名为money的props</a>
+</h3>
+<p class="relationships">参见: <a href="#2qsje42gaj4l1j8mo2tp0g2a78"></a>
+</p>
+<h3 class="topic">
+<a name="1ut7usqqlidl11f5p8gt8lffrr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给自身自动绑定了一个自定义事件，自定义事件为子组件触发的事件名称，并将子组件触发自定义事件时传递过来的值自动赋予自身money所绑定的data中的特定数据moneys</a>
+</h3>
+<h3 class="topic">
+<a name="2qsje42gaj4l1j8mo2tp0g2a78">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="412" src="VUE_files/40s9al7jlmgkhel96rsop9do21.png" width="491"></p>
+<p class="relationships">参见: <a href="#3uu0q2c9scd4m27d7lb6i3lmtm">给子组件传递了一个名为money的props</a>
+</p>
+<h3 class="topic">
+<a name="1n9nd3fqi5plegstut05fhosjv">&nbsp;&nbsp;&nbsp;子组件</a>
+</h3>
+<h3 class="topic">
+<a name="7v0kd3svikq4npdk2nhnp8csll">&nbsp;&nbsp;&nbsp;&nbsp;当一个子组件改变了一个带 .sync 的prop的值时，这个变化也会同步到父组件中所绑定的值</a>
+</h3>
+<p class="topicImage">
+<img height="307" src="VUE_files/5nocpk645tlmta1oltrur4q7rj.png" width="623"></p>
+<h3 class="topic">
+<a name="1ucb1vd811ja0bg8h1vo84pn85">&nbsp;&nbsp;$attrs与$listeners（都是对象形式）</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">获取父组件传递过来的props和自定义方法</span>
+</p>
+<h3 class="topic">
+<a name="2t129pndf5i4ullfek2knhmop6">&nbsp;&nbsp;&nbsp;$attrs与$listeners它们两者是组件实例的属性，可以获取到父组件给子组件传递的props和自定义事件</a>
+</h3>
+<h3 class="topic">
+<a name="748uf0vchln7sbab3n8a15nsms">&nbsp;&nbsp;&nbsp;&nbsp;父组件</a>
+</h3>
+<h3 class="topic">
+<a name="0ijhiburdf7bsb5tpn95la2lrn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="438" src="VUE_files/1pt9ta00c0vrsj7n8bjcovjbpi.png" width="918"></p>
+<h3 class="topic">
+<a name="52t0gipooaamc9vrv1s4sjcrn7">&nbsp;&nbsp;&nbsp;&nbsp;子组件</a>
+</h3>
+<h3 class="topic">
+<a name="5dhugnscrenh89sp0g5ls8229n">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="479" src="VUE_files/1tv63oil3oh46i27ao2shtmoe3.png" width="918"></p>
+<h3 class="topic">
+<a name="2iabm9vfn2m7va8aaar6ko6vgv">&nbsp;&nbsp;$children（数组）与$parent</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">非响应式数据，可以通过$children与$parent获取或操作父、子组件的数据和方法</span>
+</p>
+<h3 class="topic">
+<a name="7moau644n6fqprfjmagnh7u5fb">&nbsp;&nbsp;&nbsp;例子</a>
+</h3>
+<h3 class="topic">
+<a name="2te0k34rjrpj9rjj91q24ap2ml">&nbsp;&nbsp;&nbsp;&nbsp;要实现的功能</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/27vmi2c0mvt8meftdvrfih825t.png"></p>
+<h3 class="topic">
+<a name="595ggj5op7flsp8geu47780e2q">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父组件</a>
+</h3>
+<h3 class="topic">
+<a name="4bhbm4s7o917jbi0src37mqi5k">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="457" src="VUE_files/1j7vr9e40gj6pb1qbtfqjueo1i.png" width="589"></p>
+<h3 class="topic">
+<a name="43e21jntfj2fj3plcj1jrf64jr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref可以获取到某一个DOM节点、组件标签、子组件标签（以便操作子组件的数据与方法）；$children组件实例的属性，可以获取到当前组件的全部子组件【数组】</a>
+</h3>
+<p class="topicImage">
+<img height="456" src="VUE_files/4vqmfo1fma00bspkmvigq8aoam.png" width="506"></p>
+<h3 class="topic">
+<a name="6ic28oc9hnj4o01c7elbiih0sf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子组件</a>
+</h3>
+<h3 class="topic">
+<a name="5i4f11c1v4gtvmpthe0k5eakvf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$parent组件实例的属性，可以获取到当前子组件的父组件。从而可以操作父组件的数据和方法</a>
+</h3>
+<p class="topicImage">
+<img height="490" src="VUE_files/41q4gl7qf0o9s9mjk70vdfg0gr.png" width="587"></p>
+<h3 class="topic">
+<a name="6mgcp5vmtjqqlld3u1kqp783t3">&nbsp;&nbsp;依赖注入（（provide/ inject））</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">依赖注入所提供的属性是非响应式的</span>
+</p>
+<div class="notesContainer">
+<p>这种方式就是Vue中的依赖注入，该方法用于父子组件之间的通信。当然这里所说的父子不一定是真正的父子，也可以是祖孙组件，在层数很深的情况下，可以使用这种方法来进行传值。就不用一层一层的传递了。</p>
+</div>
+<h3 class="topic">
+<a name="3skk55v1hku18ibv80f54tqoa8">&nbsp;&nbsp;&nbsp;provide / inject是Vue提供的两个钩子，和data、methods是同级的。并且provide的书写形式和data一样。● provide 钩子用来发送数据或方法● inject钩子用来接收数据或方法</a>
+</h3>
+<h3 class="topic">
+<a name="4p4v87evk481khavmuukjkt02f">&nbsp;&nbsp;&nbsp;&nbsp;父组件</a>
+</h3>
+<p class="topicImage">
+<img height="135" src="VUE_files/1eb294i209p2j7jf8qr9dt476t.png" width="280"></p>
+<h3 class="topic">
+<a name="3p0q1g1mkmlgafvb3ujlfgla5a">&nbsp;&nbsp;&nbsp;&nbsp;子组件</a>
+</h3>
+<p class="topicImage">
+<img height="42" src="VUE_files/7a8rn2hop3phnh9pq0jaoh711v.png" width="193"></p>
+<h3 class="topic">
+<a name="278rl10228g559dvkep5opsbt6">&nbsp;&nbsp;&nbsp;&nbsp;或者这样写可以访问父组件中的所有属性</a>
+</h3>
+<p class="topicImage">
+<img height="343" src="VUE_files/68dnr62kft2qubvhvknq2113ui.png" width="289"></p>
+<h2 class="topic">
+<a name="7qhtg2804lc79qja8s4r7d5esj">3.vue-cli脚手架</a>
+</h2>
+<h3 class="topic">
+<a name="76fvajfp3995gh6145r6frqng1">&nbsp;作用</a>
+</h3>
+<h3 class="topic">
+<a name="3iep0r7rn3jmb6bbfv9pmlho6s">&nbsp;&nbsp;vue脚手架的作用是用来自动一键生成vue+webpack的项目模版,包括依赖库,免去你手动安装各种插件,寻找各种cdn并一个个引入的麻烦</a>
+</h3>
+<h3 class="topic">
+<a name="06ta372151rgrf3j4sk32e0c4c">&nbsp;使用步骤</a>
+</h3>
+<h3 class="topic">
+<a name="3hnjc8u5en05o7n5fid9t4p5cp">&nbsp;&nbsp;第一步（仅第一次执行）：全局安装@vue/cli</a>
+</h3>
+<h3 class="topic">
+<a name="0esfn2era36ilvn8u7j0jbm1eh">&nbsp;&nbsp;&nbsp;npm install -g @vue/cli</a>
+</h3>
+<h3 class="topic">
+<a name="12tkddki9re1ia01huh38gkvdb">&nbsp;&nbsp;第二步：切换到你要创建项目的目录，然后使用命令创建项目</a>
+</h3>
+<h3 class="topic">
+<a name="481iq2nblhfaehgc7phbn86o1i">&nbsp;&nbsp;&nbsp;vue create xxxx</a>
+</h3>
+<h3 class="topic">
+<a name="4fgik9mti6jotgsmspt63t08cc">&nbsp;&nbsp;第三步：启动项目</a>
+</h3>
+<h3 class="topic">
+<a name="13kdu07ali856v88cbbusr5b0m">&nbsp;&nbsp;&nbsp;npm run serve</a>
+</h3>
+<h3 class="topic">
+<a name="1al3ej85p6h0ig2juihph2sl97">&nbsp;模板项目结构</a>
+</h3>
+<h3 class="topic">
+<a name="1g7toja6ra46b7qa33i0c1k4g2">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="542" src="VUE_files/25dvo5jfutf25jpf8dcle4m6qm.png" width="381"></p>
+<h2 class="topic">
+<a name="154kjki2kvptt6ft9i947d5gfr">4.vue中的AJAX</a>
+</h2>
+<h3 class="topic">
+<a name="4pndfnr53lnu6o4qtje8iffivh">&nbsp;配置代理   </a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">vue.config.js</span>
+</p>
+<h3 class="topic">
+<a name="0t4pab2m2id4saik84f6bf41e7">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="171" src="VUE_files/63k4q2njjodfs1ppqm0ee8oko2.png" width="589"></p>
+<h3 class="topic">
+<a name="2n23n9ced5t2rvsgc3hgdht7jn">&nbsp;配置axios</a>
+</h3>
+<h3 class="topic">
+<a name="62c7c0cfe4lal5is9fa1ea9f9t">&nbsp;&nbsp;</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">下载axios以及nprogress：npm install --save axios nprogress</span>, <span class="label">并引入到页面，配置创建axios并配置请求拦截器、相应拦截器，并向外暴露requests</span>
+</p>
+<p class="topicImage">
+<img height="488" src="VUE_files/5jlubl3d0f04smaeto8jvdmckg.png" width="953"></p>
+<h3 class="topic">
+<a name="3rtu0d7gd4ka2gjv7gc4n9esva">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="434" src="VUE_files/1obpuj6977rdva4pp448ac7q98.png" width="950"></p>
+<h3 class="topic">
+<a name="1l1dr2rjq5rrs04dgou68d1m1o">&nbsp;配置API</a>
+</h3>
+<h3 class="topic">
+<a name="4h4g1j3ehkdueblubh50in8p4j">&nbsp;&nbsp;配置</a>
+</h3>
+<h3 class="topic">
+<a name="0utao61srflglpp9vrr4qv2bik">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="278" src="VUE_files/4adbjddu6rd2tnn4haadn69d4g.png" width="538"></p>
+<h3 class="topic">
+<a name="64dqc1ei4n0qa39npjaa2c3qtt">&nbsp;&nbsp;使用</a>
+</h3>
+<h3 class="topic">
+<a name="4o6uqv6doht3ev5d15u0g7g3bl">&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="99" src="VUE_files/4su7dn40hqre2apb9cdkbv9qg1.png" width="536"></p>
+<h2 class="topic">
+<a name="2f0eul68h0fukf4il173fmogc4">5.vuex</a>
+</h2>
+<h3 class="topic">
+<a name="3uj6n7jp4eqnfeisnhkkvbg9bl">&nbsp;vuex概念</a>
+</h3>
+<h3 class="topic">
+<a name="792n9v0ec26urp8e9mtp1h8jj9">&nbsp;&nbsp;专门在 Vue 中实现集中式状态（数据）管理的一个 Vue 插件，对 vue 应 用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方 式，且适用于任意组件间通信</a>
+</h3>
+<h3 class="topic">
+<a name="168jirfik3vibl8uk62ht1pmjr">&nbsp;vuex工作原理图</a>
+</h3>
+<h3 class="topic">
+<a name="66f2c02jq5iber218reld5t27a">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="440" src="VUE_files/5lvqs4q88cocvlkpr1lk142j67.png" width="563"></p>
+<h3 class="topic">
+<a name="76eodmc3e2nrr6l236s4i38bn3">&nbsp;vuex</a>
+</h3>
+<h3 class="topic">
+<a name="1f1ooamqlvcfvepceid50ll2om">&nbsp;&nbsp;vuex构造</a>
+</h3>
+<h3 class="topic">
+<a name="3hlns0ird2g6ca3cq4m4b24q8q">&nbsp;&nbsp;&nbsp;actions</a>
+</h3>
+<h3 class="topic">
+<a name="7rgtnqveu7k77g0crig1ao7p28">&nbsp;&nbsp;&nbsp;&nbsp;由子组件this.$store.dispatch('actions名',传递的数据）触发</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">传递的数据只能是单个数据，多个数据用对象传递</span>
+</p>
+<h3 class="topic">
+<a name="1flhevcfpogo87qpiffacd42u7">&nbsp;&nbsp;&nbsp;&nbsp;actions： { action名（{commit}，数据）{...}}</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">store中actions内，commit用于触发mutations，actions只做业务逻辑，不修改state</span>
+</p>
+<h3 class="topic">
+<a name="36f9rukf9097h0tgf0si961rfr">&nbsp;&nbsp;&nbsp;mutations</a>
+</h3>
+<h3 class="topic">
+<a name="0h4q7vh9p32i8ukkbtki3lh53e">&nbsp;&nbsp;&nbsp;&nbsp;由actions中的commit('mutations名',传递的数据）触发</a>
+</h3>
+<h3 class="topic">
+<a name="10kk5ktbp310bp7n3g3rup2k42">&nbsp;&nbsp;&nbsp;&nbsp;mutations：{mutations名（state,数据）{...}}</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">store中的mutations内，mutations可以修改state中的数据</span>
+</p>
+<h3 class="topic">
+<a name="56m7af77a9cdbhfraod6pkifal">&nbsp;&nbsp;&nbsp;state</a>
+</h3>
+<h3 class="topic">
+<a name="5to75b1obafi992r484n9fbhdr">&nbsp;&nbsp;&nbsp;&nbsp;存储数据：state：{userInfor：{}}</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">可以通过mutations存储或者修改，也是getters里面计算属性的依据</span>
+</p>
+<h3 class="topic">
+<a name="5637m2uqoq13hvcubhm9hai9v4">&nbsp;&nbsp;&nbsp;getters</a>
+</h3>
+<h3 class="topic">
+<a name="1lbir28enrhgrgr2udbvvrlo1p">&nbsp;&nbsp;&nbsp;&nbsp;计算state中的数据：getters：{getters名（state）{...}}</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">state用于getters计算属性的依据</span>
+</p>
+<h3 class="topic">
+<a name="3b7lj3ecp8685ru69o3r6a5pq1">&nbsp;&nbsp;vuex中的模块(module)和命名空间(namespaced)</a>
+</h3>
+<h3 class="topic">
+<a name="347emkgcu5dek90obg0ej47798">&nbsp;&nbsp;&nbsp;vuex模块(module)</a>
+</h3>
+<h3 class="topic">
+<a name="3jg67i6podmvdmrsdqcqe17vmo">&nbsp;&nbsp;&nbsp;&nbsp;由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。&#13;
+为了解决以上问题，Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的state、mutations、actions、getters、甚至是嵌套子模块。</a>
+</h3>
+<h3 class="topic">
+<a name="4bb6d6lmjir0eqe5944aftfm54">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vuex的常规用法（不使用模块(module)的store）</a>
+</h3>
+<h3 class="topic">
+<a name="70pv2oajt34ekjunngk5quc25f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建store    </a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">store/index.js</span>
+</p>
+<h3 class="topic">
+<a name="6ddhd8ck46frum9hcobjpic7c6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="589" src="VUE_files/7o51f7h1s89ms3iek4atljrd1u.png" width="538"></p>
+<h3 class="topic">
+<a name="5jvucumiu8h2ctl4s8oth9oq94">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="279" src="VUE_files/55odts6vfn3olq0c2p6i36pdnt.png" width="459"></p>
+<h3 class="topic">
+<a name="5934n9n586ojma9hd9rff7vp2d">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在组件中使用</a>
+</h3>
+<h3 class="topic">
+<a name="7lnlt6ptvciqgo48hg711s8o6n">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="463" src="VUE_files/3ueukjl2p2tdrltr8nc87ej7bj.png" width="531"></p>
+<h3 class="topic">
+<a name="4rbn87h34u6ship6p7io92p3tb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="276" src="VUE_files/78acod77jfuqeima065v683jgf.png" width="657"></p>
+<h3 class="topic">
+<a name="3cs212e9i1blpb2l054ncoo02h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mapState、mapGetters、mapActions、mapMutations两种写法</a>
+</h3>
+<h3 class="topic">
+<a name="7unv66tlj1h3v2sqmc4ijhgf3b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mapState、mapGetters两种写法</a>
+</h3>
+<p class="topicImage">
+<img height="370" src="VUE_files/73rid6d1gv6vg6lj3r51ngmolh.png" width="541"></p>
+<h3 class="topic">
+<a name="5shf2gqikcq5b13mt1d5h07bhi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mapActions、mapMutations两种写法</a>
+</h3>
+<p class="topicImage">
+<img height="388" src="VUE_files/4u68od9g00bkan3pute0h175qk.png" width="753"></p>
+<h3 class="topic">
+<a name="42nqslnaffglh82gkmu9pl36u0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vuex中模块的基础使用（不开启命名空间时）</a>
+</h3>
+<p class="relationships">参见: <a href="#1n9i9bg18bq1a2fgm73coth2qm">vuex中模块的基础使用（开启命名空间时）</a>
+</p>
+<h3 class="topic">
+<a name="6vhbq2pemu784299vi98p3020o">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;默认情况下，模块内部的 actions、mutations 和 getters 是注册在全局命名空间的&mdash;&mdash;这样使得多个模块能够对同一 mutations 或 actions 作出响应。对于actions、mutations 和 getters，是在模块中还是在全局中，它们的使用方式是相同的，只是state会有所不同，模块中的state会多一层模块名。格式变成store.state.模块名.状态名</a>
+</h3>
+<h3 class="topic">
+<a name="4lju105d4onk7qv14sgq2ssv4q">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目录结构</a>
+</h3>
+<h3 class="topic">
+<a name="0dd5eq9cncpi3qhreqfl9rk0mu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="202" src="VUE_files/4t9of7fgcer8ct0blo4jrd8r34.png" width="451"></p>
+<h3 class="topic">
+<a name="1gpf7k9dfdclb68khrk4nkusto">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;store模块</a>
+</h3>
+<h3 class="topic">
+<a name="15tgia6egipr49s4t091df1vjo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建一个带模块的根store</a>
+</h3>
+<h3 class="topic">
+<a name="3ob9ni0aerf76o41gsdbh1p1bh">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="506" src="VUE_files/0vaa5dm71bashtdtr7s7r4uub6.png" width="433"></p>
+<h3 class="topic">
+<a name="5m5dpsqh6rkpk73i9g55ufprqr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="493" src="VUE_files/2tbin2muc72hebgjg3tp30jmmd.png" width="654"></p>
+<h3 class="topic">
+<a name="701sh674k7ephmbrbqj61lpvo3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;store子模块</a>
+</h3>
+<h3 class="topic">
+<a name="0po7uhjtl9geh8k1ljjdrikkk3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主题模块（store/modules/theme.js）内容</a>
+</h3>
+<h3 class="topic">
+<a name="4iejcesss3i75daqrn99nfn6th">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="453" src="VUE_files/3ef6ir2jb88v51apdgebmpo82r.png" width="524"></p>
+<h3 class="topic">
+<a name="48qisi56j2bvvfq2abckln5ola">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="345" src="VUE_files/6sn4dcnj5p9tm2dt56imvtftm0.png" width="754"></p>
+<h3 class="topic">
+<a name="16n3nt33uv9il5l3cu92cos46e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品模块（store/modules/product.js）内容</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">产品模块store类似于主题模块</span>
+</p>
+<h3 class="topic">
+<a name="68f9sk7lelngv0uvmfb0r64k8j">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在组件中使用</a>
+</h3>
+<h3 class="topic">
+<a name="7g8mcagbj26agj000tfc7ntkr8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="430" src="VUE_files/7pi3th0n52itgi66lufl92crlv.png" width="513"></p>
+<h3 class="topic">
+<a name="0icf36u9mmiji0e1m6o3aceg1a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="427" src="VUE_files/0tao5eir3in53jqi9l652p7ii5.png" width="627"></p>
+<h3 class="topic">
+<a name="6occqhguuhn9cikg46mei1e15c">&nbsp;&nbsp;&nbsp;vuex命名空间(namespaced)</a>
+</h3>
+<h3 class="topic">
+<a name="22s6m7l8gkfmq3k8kgg3qoukt2">&nbsp;&nbsp;&nbsp;&nbsp;默认情况下，模块内部的 actions、mutations 和 getters 是注册在全局命名空间的&mdash;&mdash;这样使得多个模块能够对同一 mutations 或 actions 作出响应，如果希望你的模块具有更高的封装度和复用性，你可以通过添加 namespaced: true 的方式使其成为带命名空间的模块。当模块被注册后，它的所有 getters、actions 及 mutations 都会自动根据模块注册的路径调整命名。</a>
+</h3>
+<h3 class="topic">
+<a name="1n9i9bg18bq1a2fgm73coth2qm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vuex中模块的基础使用（开启命名空间时）</a>
+</h3>
+<p class="relationships">参见: <a href="#42nqslnaffglh82gkmu9pl36u0">vuex中模块的基础使用（不开启命名空间时）</a>
+</p>
+<h3 class="topic">
+<a name="2tpta1dc1h2c07l3klbhv3rc8e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你想模块之间相互独立、互不影响。可以通过添加 namespaced: true 的方式使其成为带命名空间的模块，当模块被注册后，它的所有 getters、actions 和 mutations 都会自动根据模块注册的路径调整命名。所以开启命名空间的模块中的getters、actions 和 mutations的使用方式都会改变；但是开启命名空间和不开启命名空间的模块中的state的使用方式不会改变。格式依然是store.state.模块名.状态名</a>
+</h3>
+<h3 class="topic">
+<a name="23k1uadrp0i4nl35ncd6g9qfij">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开启store子模块的命名空间</a>
+</h3>
+<h3 class="topic">
+<a name="66jd5vln7qidqm75m6cun8im5o">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="522" src="VUE_files/5noigd6e5f76b42kn53k4600un.png" width="465"></p>
+<h3 class="topic">
+<a name="5qh1162vh850jttfbpnq492j6f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在组件中使用</a>
+</h3>
+<h3 class="topic">
+<a name="3gtu6q4ddmlo953eqljrrob9ie">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="561" src="VUE_files/6o2v3tt1a8sc2tgs2ljv1d7ea5.png" width="677"></p>
+<h3 class="topic">
+<a name="7ikskni3ah3uhi0uvpvjmbtpet">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="539" src="VUE_files/552af8nsqs55ic6vvrb9337ldj.png" width="858"></p>
+<h2 class="topic">
+<a name="71qvh70f5sinb13p1qdbfaqb1h">6.vue-router</a>
+</h2>
+<h3 class="topic">
+<a name="084d3g4nean5515b7n76qcja0m">&nbsp;相关概念</a>
+</h3>
+<h3 class="topic">
+<a name="49dc3ae4dc6bvsnh9dkqpm6j6p">&nbsp;&nbsp;vue-router</a>
+</h3>
+<h3 class="topic">
+<a name="6evcl34r4mn4os0h2333foje4b">&nbsp;&nbsp;&nbsp;vue 的一个插件库，专门用来实现 SPA 应用</a>
+</h3>
+<h3 class="topic">
+<a name="2ogbbtibvj1i3rkkb0i75ajdq7">&nbsp;&nbsp;SPA 应用</a>
+</h3>
+<h3 class="topic">
+<a name="1724r9snnmar0clknf9l6b5a5u">&nbsp;&nbsp;&nbsp;单页 Web 应用（single page web application，SPA）</a>
+</h3>
+<h3 class="topic">
+<a name="2u5t6j243pttcoq3pk3hp1o3g9">&nbsp;&nbsp;&nbsp;整个应用只有一个完整的页面</a>
+</h3>
+<h3 class="topic">
+<a name="17s7gr319ds0nb1lea3ir0uk3p">&nbsp;&nbsp;&nbsp;点击页面中的导航链接不会刷新页面，只会做页面的局部更新</a>
+</h3>
+<h3 class="topic">
+<a name="6kp6bkovc0duhrdodg6to1a00b">&nbsp;&nbsp;&nbsp;数据需要通过 ajax 请求获得</a>
+</h3>
+<h3 class="topic">
+<a name="26pjn7bhtrcv4fh3oc8e60vo59">&nbsp;&nbsp;路由</a>
+</h3>
+<h3 class="topic">
+<a name="4ipn7uu5pu2nbeq6842tumdlch">&nbsp;&nbsp;&nbsp;路由概念</a>
+</h3>
+<h3 class="topic">
+<a name="70fl81876s9v9anor3gdoq431u">&nbsp;&nbsp;&nbsp;&nbsp;个路由就是一组映射关系（key - value）</a>
+</h3>
+<h3 class="topic">
+<a name="4n9doffklui06qr78t0n3e6801">&nbsp;&nbsp;&nbsp;&nbsp;key 为路径, value 可能是 function 或 component</a>
+</h3>
+<h3 class="topic">
+<a name="5msg74i52jav8tcfnhtauesnb5">&nbsp;&nbsp;&nbsp;路由分类</a>
+</h3>
+<h3 class="topic">
+<a name="44t9v8it0u6lhrc6gt9plrsqm2">&nbsp;&nbsp;&nbsp;&nbsp;后端路由</a>
+</h3>
+<h3 class="topic">
+<a name="3cnceh8jkd06ugn602brrd4598">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理解：value 是 function, 用于处理客户端提交的请求</a>
+</h3>
+<h3 class="topic">
+<a name="11eu1tc6oe6isoiis1800avmr3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工作过程：服务器接收到一个请求时, 根据请求路径找到匹配的函数 来处理请求, 返回响应数据</a>
+</h3>
+<h3 class="topic">
+<a name="09k5mbs0geegptqul2fhf3gku3">&nbsp;&nbsp;&nbsp;&nbsp;前端路由</a>
+</h3>
+<h3 class="topic">
+<a name="6n0iohtd5aafbeuiqb2o7f0ck0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理解：value 是 component，用于展示页面内容</a>
+</h3>
+<h3 class="topic">
+<a name="3qo6ooku1d4ckme92c81k3anf6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工作过程：当浏览器的路径改变时, 对应的组件就会显示</a>
+</h3>
+<h3 class="topic">
+<a name="1ljrh1j15331kn7vc7la9gh490">&nbsp;路由组件与非路由组件区别</a>
+</h3>
+<h3 class="topic">
+<a name="0e1qojh3p7t3gcdbqmpgsg0g60">&nbsp;&nbsp;非路由组件放在components中，路由组件放在pages或views中</a>
+</h3>
+<h3 class="topic">
+<a name="3cgl6l78tgjqne6uvh7dv6do8f">&nbsp;&nbsp;非路由组件通过标签使用，路由组件通过路由使用</a>
+</h3>
+<h3 class="topic">
+<a name="7r0k1dgdrqb8p9kkn9p8mr29e8">&nbsp;&nbsp;在main.js注册完路由，所有的路由和非路由组件身上都会拥有$router 、$route属性</a>
+</h3>
+<h3 class="topic">
+<a name="6j0g5o8v2pj43d78cq44qcjr06">&nbsp;&nbsp;$route： 一般获取路由信息（ path query  params meta等）</a>
+</h3>
+<h3 class="topic">
+<a name="6o1qb4btsjgp2olacab19da52e">&nbsp;&nbsp;$router：一般进行编程式导航进行路由跳转（push replace 【还有forward（）、back（）、go（参数：可正可负）】）</a>
+</h3>
+<h3 class="topic">
+<a name="33pvdnijob6uphj7em8877onlf">&nbsp;路由的基本使用</a>
+</h3>
+<h3 class="topic">
+<a name="11bm0haq6ibfqbq54tu3ld1vhc">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="595" src="VUE_files/1ru73a3c3vs1g554ueavc60hhr.png" width="616"></p>
+<h3 class="topic">
+<a name="5ndj49hdugdfpm292q0nmh2i3a">&nbsp;&nbsp;&nbsp;下载vue-router</a>
+</h3>
+<h3 class="topic">
+<a name="0ta1re01bj1rbloljnehaclodl">&nbsp;&nbsp;&nbsp;&nbsp;npm i vue-router</a>
+</h3>
+<h3 class="topic">
+<a name="2t14q2a9o6qmu2e58vtq214d1a">&nbsp;&nbsp;&nbsp;引入vue及vue-router</a>
+</h3>
+<h3 class="topic">
+<a name="7fndpfo2tbltgdka6p4eqidda1">&nbsp;&nbsp;&nbsp;&nbsp;import Vue from '...';import router from '...';</a>
+</h3>
+<h3 class="topic">
+<a name="1sstms73dkebssan0sju7innp3">&nbsp;&nbsp;&nbsp;应用插件vue-router</a>
+</h3>
+<h3 class="topic">
+<a name="1shugo0kadr47r94mrckinkg1f">&nbsp;&nbsp;&nbsp;&nbsp;Vue.use(router)</a>
+</h3>
+<h3 class="topic">
+<a name="2vpfjurkh6lj6n6hlq5kgjfc5a">&nbsp;&nbsp;&nbsp;在main.js中引入并注册router</a>
+</h3>
+<h3 class="topic">
+<a name="5hruiqfes5nfup8h876ovqjm1m">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="314" src="VUE_files/1o8h7hit9vfk06v7q4fnv04r3m.png" width="599"></p>
+<h3 class="topic">
+<a name="507o3p603t2g6mi4fgrmap6rp7">&nbsp;&nbsp;&nbsp;配置vue-router</a>
+</h3>
+<h3 class="topic">
+<a name="0pua7la1ini9m7istfhsi96l4e">&nbsp;&nbsp;&nbsp;&nbsp;配置项</a>
+</h3>
+<h3 class="topic">
+<a name="40150cmbcvje1ehq1o78lvsl0b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routes：[ { },{ }...]</a>
+</h3>
+<h3 class="topic">
+<a name="5sbuj79b3ai665fmc6rovj9vgu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routes为数组，数组里面为每个路由的配置对象，配置对象中常用的属性包括</a>
+</h3>
+<h3 class="topic">
+<a name="3a98asg89i3vu0dtj38nt4qegr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path：&lsquo;/home';</a>
+</h3>
+<h3 class="topic">
+<a name="5sdb2sl84qt8u55jqrq0plth4d">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name:'Home'; </a>
+</h3>
+<h3 class="topic">
+<a name="4u53d0k3ps9rm7vfn0ltn140un">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component:Home(要事先引入Home这个路由组件）</a>
+</h3>
+<h3 class="topic">
+<a name="0q7i8cjc7op7vbe9q0qub6c26g">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;路由懒加载</a>
+</h3>
+<h3 class="topic">
+<a name="7st202dvlpd3354m0a17klub23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component：（）=&gt; import('@/Home')</a>
+</h3>
+<h3 class="topic">
+<a name="5pq1l6tfd60gglh1930kp07977">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children:[{ },{ }...]</a>
+</h3>
+<h3 class="topic">
+<a name="4cfqdumj16a1p47bg704vfll4o">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children为数组，数组中为每个路由的配置对象，配置对象常用的属性与routes一致，注意children中的每一个配置对象中的path后面的路径不加/，即path：'detail'</a>
+</h3>
+<h3 class="topic">
+<a name="7124hrkfa53cqggq13te49oeb9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么要二级路由（即配置children）：因为在跳转的时候不是全部覆盖掉原来的界面，而是在原来的基础上添加一个组件</a>
+</h3>
+<h3 class="topic">
+<a name="7mlamt09qfm9r5hl5visr4vc5d">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二级路由和引入组件不同，二级路由不需要在上一个页面引入，直接在路由页面引入即可（上一个页面的路由和子组件的路由都要引入，子组件的路由写在上一个页面组件（也就是父组件）路由的children里面，在父组件中写声明式导航或者编程式导航，在插入的位置上写&lt;router-view&gt;&lt;/router-view&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="60flq2telhlcfi6i90d5470j0s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meta:{ xxx:xxx,yyy:yyy...}</a>
+</h3>
+<h3 class="topic">
+<a name="0bltp9i4rt9225qr2kk4742rno">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;props（用于该路由接收传递过来的query或者params参数）</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">哪个路由接收就在哪个路由信息下面写props，与path同级，该路由组件内都用props接收，为数组形式，即props：['a'</span>, <span class="label">'b']</span>
+</p>
+<div class="notesContainer">
+<p>使用props目的：简便，将一些属性直接挂载到该路由组件上，而不需要在模板中通过$route.params.xxx或者$route.query.xxx获取，直接写xxx即可</p>
+<p></p>
+</div>
+<h3 class="topic">
+<a name="74bsk9ok0ltji07i19lfdo6igo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对象型--props：{a:100,b:200 }</a>
+</h3>
+<h3 class="topic">
+<a name="1qhfs32pv9cip606mksjrs0oat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;路由配置项</a>
+</h3>
+<p class="topicImage">
+<img height="352" src="VUE_files/62j7a64cq3145oppkjubcmdshs.png" width="625"></p>
+<h3 class="topic">
+<a name="0rq2papjs49353a28n7qajis6u">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该路由组件内用props接收</a>
+</h3>
+<p class="topicImage">
+<img height="372" src="VUE_files/1jvdta29r7g86q2le7u29sbfk7.png" width="671"></p>
+<h3 class="topic">
+<a name="78vrj59iodvdpv6vnniu0sj4v0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;布尔型（仅限params参数）--props：true/false；</a>
+</h3>
+<h3 class="topic">
+<a name="7h5a5rq1g4rjiqpk8uda5cmgcj">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;路由配置项</a>
+</h3>
+<p class="topicImage">
+<img height="329" src="VUE_files/7vf4ad2brnjvq790ao933kquno.png" width="692"></p>
+<h3 class="topic">
+<a name="0v3s4h8fi28gfhl3r3hvqlb6k0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳转到该路由组件的页面</a>
+</h3>
+<p class="topicImage">
+<img height="373" src="VUE_files/320kt678cufpptj2lcadk3o2on.png" width="714"></p>
+<h3 class="topic">
+<a name="5u4nd9sk4e092drdlqvh0fcr56">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该路由组件内用props接收</a>
+</h3>
+<p class="topicImage">
+<img height="367" src="VUE_files/1mqsd6u7qj89k08jnec7cktnjt.png" width="663"></p>
+<h3 class="topic">
+<a name="1pfltdckk7piqehsglim3s82l4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数型--props($route) {return {id:$route.query.id,name:$route.query.name}}</a>
+</h3>
+<h3 class="topic">
+<a name="2773ip0tlb3bl1r2ptne1vpr0q">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该路由配置项</a>
+</h3>
+<p class="topicImage">
+<img height="377" src="VUE_files/6qfiehsrhtb8hre2jpg4fg5c72.png" width="664"></p>
+<h3 class="topic">
+<a name="43mjebhj5cosa0tt4hep0sa26a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳转到该路由组件的页面</a>
+</h3>
+<p class="topicImage">
+<img height="393" src="VUE_files/2i9lt9koe0qftc93t6ec78o112.png" width="745"></p>
+<h3 class="topic">
+<a name="3rrfkv45i1o6ege89m47ikno41">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该路由组件内用props接收</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/1l673lnvftu7sh76g5ti71qi38.png"></p>
+<h3 class="topic">
+<a name="75i0orn8jtus0fl57sh6pk17d1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrollBehavior(to, from, savedPosition) {&#13;
+    // 始终滚动到顶部&#13;
+    return { y: 0 }&#13;
+  }</a>
+</h3>
+<h3 class="topic">
+<a name="3rbminr9vgtghqf56ila765l4h">&nbsp;路由跳转</a>
+</h3>
+<h3 class="topic">
+<a name="0stkag73ppslghvkj00vhhmpbb">&nbsp;&nbsp;路由跳转方式</a>
+</h3>
+<h3 class="topic">
+<a name="01cbvu5m8ti7r0k6ndkgotlnm6">&nbsp;&nbsp;&nbsp;声明式导航&lt;router-link to="/home"&gt;&lt;/router-link &gt;</a>
+</h3>
+<h3 class="topic">
+<a name="4ull158k7ktpd74vg6gghqghhn">&nbsp;&nbsp;&nbsp;&nbsp;直接跳转，无需业务逻辑的处理</a>
+</h3>
+<h3 class="topic">
+<a name="0648eft8b42q2sjo6kph68j92h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;router-link（可以理解为a标签，可以加class修饰）【就是把a替换成router-link】</a>
+</h3>
+<h3 class="topic">
+<a name="4d6mjt2bgc91t31628r4a5qngh">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="38" src="VUE_files/5ebhk3q88siaofddt7o3m7oqda.png" width="950"></p>
+<h3 class="topic">
+<a name="1f3q031gq4r0c5temagf4oieq5">&nbsp;&nbsp;&nbsp;编程式导航this.$router.push/replace( )</a>
+</h3>
+<h3 class="topic">
+<a name="43oms7e3c23osab4piur71ptgh">&nbsp;&nbsp;&nbsp;&nbsp;需要处理业务逻辑，比如发送ajax请求，需要响应数据</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">声明式导航能做的，编程式导航都可以做，但是编程式导航除了可以进行路由跳转之外，还可以做一些其他的业务逻辑</span>
+</p>
+<h3 class="topic">
+<a name="3eav92avstre644s9uh95kvk6f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push、replace【就是利用点击事件等配置methods，methods里面写this.$router.push("路径")（直接写路径的是无需传参数）】</a>
+</h3>
+<h3 class="topic">
+<a name="7fli3fgc3p2726vab79rj4qv5u">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push有历史记录，replace没有历史记录</a>
+</h3>
+<p class="topicImage">
+<img height="439" src="VUE_files/2pr3sis9jo6pruh7meg8bmmtmg.png" width="628"></p>
+<h3 class="topic">
+<a name="6273kplpsnrhgf576b27cm83ji">&nbsp;&nbsp;配置路由出口（在哪里展示）</a>
+</h3>
+<h3 class="topic">
+<a name="51rsmgsjofn07ptrv2vuet3kmo">&nbsp;&nbsp;&nbsp;&lt;router-view&gt;&lt;/router-view&gt;</a>
+</h3>
+<h3 class="topic">
+<a name="5i5h6rh946e0bktf5b6u1eg4ad">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="392" src="VUE_files/0togectppsongngnhda71hh8ja.png" width="552"></p>
+<h3 class="topic">
+<a name="6m88mosr5e7lpaij1fg9oi8m6i">&nbsp;路由传参</a>
+</h3>
+<h3 class="topic">
+<a name="26ak0q5b4g4lgcri9je9gr5do9">&nbsp;&nbsp;query参数</a>
+</h3>
+<h3 class="topic">
+<a name="1b2h6i8mhn5j3qrpkld5jonhit">&nbsp;&nbsp;&nbsp;不属于路径中的一部分，类似于ajax中的queryString  /home?k=v&amp;k=v，路径与参数之间用？隔开,路由信息配置path时不需要占位</a>
+</h3>
+<h3 class="topic">
+<a name="5spf9o3ctmtg9rh5u76f1vde87">&nbsp;&nbsp;&nbsp;&nbsp;声明式导航传递query参数</a>
+</h3>
+<h3 class="topic">
+<a name="0fi4sam6in4k80bopk17duje61">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to的对象写法中的path可以换成name</a>
+</h3>
+<p class="topicImage">
+<img height="443" src="VUE_files/5v95sf9opdnbnpgqgt58lfup4m.png" width="723"></p>
+<p class="relationships">参见: <a href="#5mtc618u2ep5up1pbmll5l0nls">编程式导航里面的配置项不能用path，要用name (接收query参数方式一致)</a>
+</p>
+<h3 class="topic">
+<a name="69145c2rnf0vqu7lg585s6h1qq">&nbsp;&nbsp;&nbsp;&nbsp;编程式导航传递query参数</a>
+</h3>
+<h3 class="topic">
+<a name="5mtc618u2ep5up1pbmll5l0nls">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编程式导航里面的配置项不能用path，要用name</a>
+</h3>
+<p class="topicImage">
+<img height="227" src="VUE_files/7voqs0hbbs49lnq86o0qeltmla.png" width="712"></p>
+<p class="relationships">参见: <a href="#0fi4sam6in4k80bopk17duje61">to的对象写法中的path可以换成name (接收query参数方式一致)</a>
+</p>
+<h3 class="topic">
+<a name="5cd2snl050hcq0f0cg8v759orv">&nbsp;&nbsp;params参数</a>
+</h3>
+<h3 class="topic">
+<a name="1t69p0cfqkhjron0rnebdv9dbu">&nbsp;&nbsp;&nbsp;属于路径中的一部分，需要注意，在配置路由时，路由信息配置path时需要占位</a>
+</h3>
+<h3 class="topic">
+<a name="6e8ah70oc2ost2krq57j8afn7p">&nbsp;&nbsp;&nbsp;&nbsp;跳转目标路由信息配置的path中需要占位</a>
+</h3>
+<p class="topicImage">
+<img height="442" src="VUE_files/3lhqvk28hjv0pcnlapd1tpept6.png" width="615"></p>
+<h3 class="topic">
+<a name="7egvgmak8vel4mb40rf1giu80b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;声明式导航传递params参数</a>
+</h3>
+<h3 class="topic">
+<a name="3q81t48q0sraj7tet5srr3hfsl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="389" src="VUE_files/034ajnrndlqcjestt92c3gfr0s.png" width="778"></p>
+<h3 class="topic">
+<a name="44kv82nds7v9uegst4s1t68fkn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收参数</a>
+</h3>
+<p class="topicImage">
+<img height="135" src="VUE_files/57mvhb2opee5ljl008ost3lp5c.png" width="574"></p>
+<p class="relationships">参见: <a href="#4n3gcu35o13rfodru43jj4s7b4">编程式导航里面的配置项不能用path，要用name (接收params参数方式一致)</a>
+</p>
+<h3 class="topic">
+<a name="5fgneidhuvq31t7dfg8hm209ue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编程式导航传递params参数</a>
+</h3>
+<h3 class="topic">
+<a name="4n3gcu35o13rfodru43jj4s7b4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编程式导航里面的配置项不能用path，要用name</a>
+</h3>
+<p class="topicImage">
+<img height="227" src="VUE_files/3rv29mpq2g7stgp77k8bga157l.png" width="712"></p>
+<p class="relationships">参见: <a href="#44kv82nds7v9uegst4s1t68fkn">接收参数 (接收params参数方式一致)</a>
+</p>
+<h3 class="topic">
+<a name="1na93uk0jf0v0kub7utvm9vv8v">&nbsp;&nbsp;&nbsp;params传参问题</a>
+</h3>
+<h3 class="topic">
+<a name="2d041eiuf7h6reb8c84ghsk1t6">&nbsp;&nbsp;&nbsp;&nbsp;如何指定params参数可传可不传？</a>
+</h3>
+<h3 class="topic">
+<a name="0c33qt8vg3eattk0d9omg8fvt2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="314" src="VUE_files/7djkli0snuk8gr5bu530p864fe.png" width="734"></p>
+<h3 class="topic">
+<a name="1v1jcuberfpocart15rl65l7kq">&nbsp;&nbsp;&nbsp;&nbsp;解决了params参数可传可不传问题后，若传递的params为空字符串怎么解决？</a>
+</h3>
+<h3 class="topic">
+<a name="07e408nmvt4ogkodqs3l0dg11m">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="138" src="VUE_files/11bio6lfle486h99std2m31u26.png" width="1082"></p>
+<h3 class="topic">
+<a name="5av8mg2kj9k4ap2o02pgqermlp">&nbsp;路由守卫</a>
+</h3>
+<h3 class="topic">
+<a name="510gmfknbs0669qjel75oo5rin">&nbsp;&nbsp;守卫分类</a>
+</h3>
+<h3 class="topic">
+<a name="6bc389h2huuk1u2heb64kc1civ">&nbsp;&nbsp;&nbsp;全局守卫</a>
+</h3>
+<h3 class="topic">
+<a name="6ok8atvh0rh8o9ocrdaiv91js2">&nbsp;&nbsp;&nbsp;&nbsp;前置路由守卫--router.beforeEach((to,from,next){...})</a>
+</h3>
+<h3 class="topic">
+<a name="63ot1s7hl30a3a6g3pvrlrn5ik">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="468" src="VUE_files/3uqg6mhsjd58pagjtr8ana1kna.png" width="587"></p>
+<p class="relationships">参见: <a href="#6d7ac58on6sdnrsh8t9a01ksl4">后置路由守卫----router.afterEach((to,from){...}) (后置路由守卫没有next)</a>
+</p>
+<h3 class="topic">
+<a name="6d7ac58on6sdnrsh8t9a01ksl4">&nbsp;&nbsp;&nbsp;&nbsp;后置路由守卫----router.afterEach((to,from){...})</a>
+</h3>
+<p class="relationships">参见: <a href="#63ot1s7hl30a3a6g3pvrlrn5ik"> (后置路由守卫没有next)</a>
+</p>
+<h3 class="topic">
+<a name="3h523dufao3kv1pq5jnr60bsdl">&nbsp;&nbsp;&nbsp;&nbsp;全局解析守卫--router.beforeResolve</a>
+</h3>
+<p class="labelsAndMarkers">
+<span class="label">在 beforeRouteEnter 调用之后调用</span>
+</p>
+<h3 class="topic">
+<a name="494hl92iu9bd3i0kklsueheo7l">&nbsp;&nbsp;&nbsp;独享守卫</a>
+</h3>
+<h3 class="topic">
+<a name="1ljvc03ijqrt99ehsi7icvpp8e">&nbsp;&nbsp;&nbsp;&nbsp;beforeEnter：（to,from,next）=&gt;{...}</a>
+</h3>
+<h3 class="topic">
+<a name="3sasglb0939s23nptrn8mv7fl9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写在哪个路由组件配置信息中就表示哪个组件需要权限</a>
+</h3>
+<p class="topicImage">
+<img height="406" src="VUE_files/3fnefe25hn2hk7p09j544lanr4.png" width="596"></p>
+<h3 class="topic">
+<a name="4ekrce176ecf9875qqq77s7c7f">&nbsp;&nbsp;&nbsp;组件内守卫</a>
+</h3>
+<h3 class="topic">
+<a name="394al4os06in176hil783era7c">&nbsp;&nbsp;&nbsp;&nbsp;beforeRouteEnter(to,from,next){...}</a>
+</h3>
+<h3 class="topic">
+<a name="4a1loeih753qqv38hh1pa1jt5f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;组件内路由守卫是在组件内写</a>
+</h3>
+<p class="topicImage">
+<img height="544" src="VUE_files/4iph0esv10kl8udi1a0fmfkn2k.png" width="542"></p>
+<p class="relationships">参见: <a href="#51d65gje2h3g0o78t61l26ufn1">beforeRouteupdate(to,from,next){...}</a>, <a href="#7rolv9rcbhgdbobcfp3c5ihoo5">beforeRouteLeave(to,from,next){...}</a>
+</p>
+<h3 class="topic">
+<a name="51d65gje2h3g0o78t61l26ufn1">&nbsp;&nbsp;&nbsp;&nbsp;beforeRouteupdate(to,from,next){...}</a>
+</h3>
+<p class="relationships">参见: <a href="#4a1loeih753qqv38hh1pa1jt5f">组件内路由守卫是在组件内写</a>
+</p>
+<h3 class="topic">
+<a name="7rolv9rcbhgdbobcfp3c5ihoo5">&nbsp;&nbsp;&nbsp;&nbsp;beforeRouteLeave(to,from,next){...}</a>
+</h3>
+<p class="relationships">参见: <a href="#4a1loeih753qqv38hh1pa1jt5f">组件内路由守卫是在组件内写</a>
+</p>
+<h3 class="topic">
+<a name="77o5vt4i5c76bbiifchdd6v0k0">&nbsp;&nbsp;守卫next（）问题</a>
+</h3>
+<h3 class="topic">
+<a name="6qfrvo1n71qjmc48thhsknni56">&nbsp;&nbsp;&nbsp;next（）直接放行</a>
+</h3>
+<h3 class="topic">
+<a name="6l3tolbmr9pqjhkadlvg209j2h">&nbsp;&nbsp;&nbsp;next（&lsquo;/home&rsquo;）放行到home路由</a>
+</h3>
+<h3 class="topic">
+<a name="0blgof76vak2hldklctruh4ehv">&nbsp;&nbsp;&nbsp;next（false）【停留在来的时候原来的页面】</a>
+</h3>
+<h3 class="topic">
+<a name="65ush28qiq9ekqr5636ji3l74o">&nbsp;路由独有的两个生命周期函数</a>
+</h3>
+<h3 class="topic">
+<a name="4amvo5portralrk8ombaqr0b7v">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="170" src="VUE_files/3q44unf0rnrej812v8vl8vfrh9.png" width="557"></p>
+<h3 class="topic">
+<a name="7qo1d8supsltgaupkl2toh5utr">&nbsp;&nbsp;应用</a>
+</h3>
+<h3 class="topic">
+<a name="4lc03ltho2s3l2bda35rbn8l4l">&nbsp;&nbsp;&nbsp;当绑定的表达式需要用键值对时，要写成对象形式</a>
+</h3>
+<p class="topicImage">
+<img height="422" src="VUE_files/115rh7evvs2o9re5i5o72hr18g.png" width="468"></p>
+<h3 class="topic">
+<a name="10fnepir7kc5930rmmcep9ji55">&nbsp;&nbsp;&nbsp;&nbsp;可以这样写</a>
+</h3>
+<p class="topicImage">
+<img height="239" src="VUE_files/39pcfohncvbktpic0pu8ttk6c1.png" width="400"></p>
+<h3 class="topic">
+<a name="08tjegretpq8drlp5rqlbhich6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也可以这样写</a>
+</h3>
+<p class="topicImage">
+<img src="VUE_files/31fjp5pmpqk7se35hccf7jndh3.png"></p>
+<h3 class="topic">
+<a name="4r0uanj4q3mp6e2h4oojm6dct8">&nbsp;缓存路由组件</a>
+</h3>
+<h3 class="topic">
+<a name="1qfjauh3safrl5r1l6p9orqogk">&nbsp;&nbsp;include后面跟的是组件名</a>
+</h3>
+<p class="topicImage">
+<img height="157" src="VUE_files/0er2j8np342024dt8guj5nedob.png" width="479"></p>
+<h3 class="topic">
+<a name="2b5q7aepdrcnva26hae63snebc">&nbsp;&nbsp;当要缓存多个组件时，可以写成数组形式，include前面要加冒号</a>
+</h3>
+<p class="topicImage">
+<img height="106" src="VUE_files/7pdesjedc1lso8roqv7s1ldp4m.png" width="623"></p>
+<h3 class="topic">
+<a name="4efq9vv7jva6vo9og1btkfto4c">&nbsp;路由history与hash模式</a>
+</h3>
+<h3 class="topic">
+<a name="6oo0gq284blolu1o2jpfbo4nf3">&nbsp;&nbsp;</a>
+</h3>
+<p class="topicImage">
+<img height="427" src="VUE_files/10qb87firlr89q313p6rgi8vq3.png" width="604"></p>
+<h2 class="topic">
+<a name="4c7catlk2ip2k6q3igi0uii00q">7.vue ui组件库</a>
+</h2>
+<h3 class="topic">
+<a name="65gujfmlevs0dteson9mq1sue9">&nbsp;移动端常用 UI 组件库</a>
+</h3>
+<h3 class="topic">
+<a name="6om1gir294ap3u6m8sutfi10ug">&nbsp;&nbsp;Vant https://youzan.github.io/vant</a>
+</h3>
+<h3 class="topic">
+<a name="3111503ud68o6cjct8b4aoevsl">&nbsp;&nbsp;Cube UI https://didi.github.io/cube-ui</a>
+</h3>
+<h3 class="topic">
+<a name="76vnmqc8dn2f8fi2cp1cfbt93l">&nbsp;&nbsp;Mint UI http://mint-ui.github.io</a>
+</h3>
+<h3 class="topic">
+<a name="40cvjggh5nedu5vbag34livdu2">&nbsp;PC 端常用 UI 组件</a>
+</h3>
+<h3 class="topic">
+<a name="5v622havra0baugml7b257jk1l">&nbsp;&nbsp;Element UI https://element.eleme.cn</a>
+</h3>
+<h3 class="topic">
+<a name="6ficj9a6t1jqb464ofkaamg1h5">&nbsp;&nbsp;IView UI https://www.iviewui.co</a>
+</h3>
+</body>
+</html>
